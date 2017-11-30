@@ -33,3 +33,26 @@
         display: none;
     }
 }
+
+/* my styles */
+
+/* listing all cats style */
+.img-cat {
+    height: 250px !important;
+    width: 100%;
+    border-radius: 50%;
+    opacity: 1;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.overlay {
+    transition: .5s ease;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%)
+}
+
+.hovereffect:hover .img-cat {
+    opacity: 0.3;
+}

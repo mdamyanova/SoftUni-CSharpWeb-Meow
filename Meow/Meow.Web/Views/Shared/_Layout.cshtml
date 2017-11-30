@@ -32,9 +32,15 @@
                 <ul class="nav navbar-nav">
                     @if (this.User.IsInRole(WebConstants.AdministratorRole))
                     {
-                        <li><a asp-area="Admin" asp-controller="Cats" asp-action="Add">Add Cat</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Administration<span class="caret"></span></a>  
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a asp-area="Admin" asp-controller="Cats" asp-action="Add">Add Cat</a></li>
+                                <li><a asp-area="Admin" asp-controller="Users" asp-action="Index">Users</a></li>
+                            </ul>
+                        </li>
                     }
-                
+                    <li><a asp-area="" asp-controller="Cats" asp-action="All">Cats</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>

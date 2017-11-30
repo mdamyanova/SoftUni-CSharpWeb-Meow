@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "All Cats";
+}
+
+<div class="row">
+
+    @foreach (var cat in this.Model)
+    {
+        <div class="col-md-4">
+            <div class="hovereffect">
+                <a asp-action="Details" asp-route-id="@cat.Id">
+                    <img class="img-fluid img-circle img-cat" src="http://thecatapi.com/api/images/get?format=src&type=gif" alt="">
+                </a>
+            </div>
+        </div>
+    } 
+</div>
