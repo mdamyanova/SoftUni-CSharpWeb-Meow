@@ -11,9 +11,10 @@ using System;
 namespace Meow.Web.Data.Migrations
 {
     [DbContext(typeof(MeowDbContext))]
-    partial class MeowDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171130150421_EditTablesAndRelations")]
+    partial class EditTablesAndRelations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

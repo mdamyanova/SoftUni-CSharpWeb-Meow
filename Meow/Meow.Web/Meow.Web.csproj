@@ -22,12 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Meow.Core\Meow.Core.csproj" />
     <ProjectReference Include="..\Meow.Data\Meow.Data.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\" />
+    <ProjectReference Include="..\Meow.Services\Meow.Services.csproj" />
   </ItemGroup>
 
 </Project>

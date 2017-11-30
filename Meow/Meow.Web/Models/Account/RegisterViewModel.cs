@@ -5,6 +5,13 @@
     public class RegisterViewModel
     {
         [Required]
+        [StringLength(50)]
+        public string Username { get; set; }
+
+        [Required]      
+        public string Name { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

@@ -8,8 +8,4 @@
     <PackageReference Include="AutoMapper" Version="6.2.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Meow.Services\Meow.Services.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -9,4 +9,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Meow.Core\Meow.Core.csproj" />
+    <ProjectReference Include="..\Meow.Data\Meow.Data.csproj" />
+  </ItemGroup>
+
 </Project>
