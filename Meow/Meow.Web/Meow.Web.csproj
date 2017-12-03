@@ -25,4 +25,10 @@
     <ProjectReference Include="..\Meow.Services\Meow.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Volunteer\Controllers\" />
+    <Folder Include="Areas\Volunteer\Models\" />
+    <Folder Include="Areas\Volunteer\Views\" />
+  </ItemGroup>
+
 </Project>

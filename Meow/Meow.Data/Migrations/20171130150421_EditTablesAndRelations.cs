@@ -1,9 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
-
-namespace Meow.Web.Data.Migrations
+﻿namespace Meow.Web.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class EditTablesAndRelations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

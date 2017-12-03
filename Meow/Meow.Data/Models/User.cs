@@ -7,6 +7,8 @@
     {
         public string Name { get; set; }
 
-        public IEnumerable<Cat> Cats { get; set; } = new List<Cat>();
+        public IEnumerable<AdoptionCat> AdoptedCats { get; set; } = new List<AdoptionCat>();
+
+        public IEnumerable<HomeCat> HomeCats { get; set; } = new List<HomeCat>();
     }
 }

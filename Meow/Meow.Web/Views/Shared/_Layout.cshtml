@@ -30,17 +30,66 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+
+                    <!--Administrator have access to Managing all Cats and Users-->
                     @if (this.User.IsInRole(WebConstants.AdministratorRole))
                     {
+                        <!--home cats-->
                         <li class="dropdown">
-                            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Administration<span class="caret"></span></a>  
+                            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Cats<span class="caret"></span></a>  
                             <ul class="dropdown-menu" role="menu">
-                                <li><a asp-area="Admin" asp-controller="Cats" asp-action="Add">Add Cat</a></li>
-                                <li><a asp-area="Admin" asp-controller="Users" asp-action="Index">Users</a></li>
+                                <li><a asp-area="" asp-controller="Cats" asp-action="All">Home Cats</a></li>             
+                                <li><a asp-area="Admin" asp-controller="Cats" asp-action="Manage">Manage</a></li>
+                            </ul>
+                        </li>
+
+                        <!--cats for adoption-->
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">iCatRescue<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a asp-area="" asp-controller="Cats" asp-action="Adoption">Cats</a></li>
+                                <li><a asp-area="Volunteer" asp-controller="Cats" asp-action="Manage">Manage</a></li>
+                            </ul>
+                        </li>
+
+                        <!--users-->
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Users<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a asp-area="" asp-controller="Users" asp-action="All">All Users</a></li>
+
+                                <!--user manager? todo-->
+                                <li><a asp-area="Admin" asp-controller="Users" asp-action="Manage">Manage</a></li>
                             </ul>
                         </li>
                     }
-                    <li><a asp-area="" asp-controller="Cats" asp-action="All">Cats</a></li>
+
+                    <!--Volunteer have access to Managing Adoption Cats-->
+                    @if (this.User.IsInRole(WebConstants.VolunteerRole))
+                    {
+                         <!--cats for adoption-->
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">iCatRescue<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a asp-area="" asp-controller="Cats" asp-action="Adoption">Cats</a></li>
+                                <li><a asp-area="Volunteer" asp-controller="Cats" asp-action="Manage">Manage</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a asp-area="" asp-controller="Users" asp-action="All">Users</a></li>
+
+                    }
+
+                    <!--find smarter way for checking normal user-->
+                    @if (!this.User.IsInRole(WebConstants.AdministratorRole)
+                            && !this.User.IsInRole(WebConstants.VolunteerRole))
+                    {
+                        <li><a asp-area="" asp-controller="Cats" asp-action="All">Cats</a></li>
+                        <li><a asp-area="" asp-controller="Cats" asp-action="Adoption">iCatRescue</a></li>
+                        <li><a asp-area="" asp-controller="Users" asp-action="All">Users</a></li>
+                    }
+
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>

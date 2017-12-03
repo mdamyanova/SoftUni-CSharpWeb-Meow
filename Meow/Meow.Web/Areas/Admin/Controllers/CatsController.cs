@@ -38,5 +38,11 @@
             // get out from the area 
             return this.RedirectToAction(nameof(HomeController.Index), "Home", new { area = string.Empty });
         }
+
+        // manage cats - crud
+        public IActionResult Manage()
+        {
+            return this.View();
+        }
     }
 }

@@ -18,7 +18,7 @@
 
         public IEnumerable<CatServiceModel> All()
         {
-            var allCats = this.db.Cats.ProjectTo<CatServiceModel>().ToList();
+            var allCats = this.db.AdoptionCats.ProjectTo<CatServiceModel>().ToList();
 
             return allCats;
         }

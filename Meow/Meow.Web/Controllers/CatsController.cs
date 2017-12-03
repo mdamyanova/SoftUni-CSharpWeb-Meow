@@ -12,10 +12,17 @@
             this.cats = cats;
         }
 
+        // all home cats
         public IActionResult All()
         {
             var model = this.cats.All();
             return this.View(model);
+        }
+
+        // all adoption cats 
+        public IActionResult Adoption()
+        {
+            return this.View();
         }
 
         public IActionResult Details(int id)

@@ -23,11 +23,13 @@
                     .Run(async () =>
                     {
                         var adminName = WebConstants.AdministratorRole;
+                        var volunteerName = WebConstants.VolunteerRole;
 
-                        // todo: contributor role?
+                        // admin, volunteer, normal user
                         var roles = new[]
                         {
                             adminName,
+                            volunteerName
                         };
 
                         foreach (var role in roles)

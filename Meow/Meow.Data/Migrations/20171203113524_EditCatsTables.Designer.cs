@@ -8,8 +8,8 @@ namespace Meow.Web.Data.Migrations
     using System;
 
     [DbContext(typeof(MeowDbContext))]
-    [Migration("20171130150421_EditTablesAndRelations")]
-    partial class EditTablesAndRelations
+    [Migration("20171203113524_EditCatsTables")]
+    partial class EditCatsTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -18,12 +18,14 @@ namespace Meow.Web.Data.Migrations
                 .HasAnnotation("ProductVersion", "2.0.1-rtm-125")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Meow.Data.Models.Cat", b =>
+            modelBuilder.Entity("Meow.Data.Models.AdoptionCat", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description");
+
+                    b.Property<int>("Gender");
 
                     b.Property<string>("ImageUrl");
 
@@ -39,7 +41,31 @@ namespace Meow.Web.Data.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Cats");
+                    b.ToTable("AdoptionCats");
+                });
+
+            modelBuilder.Entity("Meow.Data.Models.HomeCat", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<int>("Gender");
+
+                    b.Property<string>("ImageUrl");
+
+                    b.Property<string>("Location");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("OwnerId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OwnerId");
+
+                    b.ToTable("HomeCats");
                 });
 
             modelBuilder.Entity("Meow.Data.Models.User", b =>
@@ -203,10 +229,17 @@ namespace Meow.Web.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Meow.Data.Models.Cat", b =>
+            modelBuilder.Entity("Meow.Data.Models.AdoptionCat", b =>
                 {
                     b.HasOne("Meow.Data.Models.User", "Owner")
-                        .WithMany("Cats")
+                        .WithMany("AdoptedCats")
+                        .HasForeignKey("OwnerId");
+                });
+
+            modelBuilder.Entity("Meow.Data.Models.HomeCat", b =>
+                {
+                    b.HasOne("Meow.Data.Models.User", "Owner")
+                        .WithMany("HomeCats")
                         .HasForeignKey("OwnerId");
                 });
 

@@ -4,7 +4,7 @@
     using Core.Mapping;
     using Data.Models;
 
-    public class CatServiceModel : IMapFrom<Cat>, IHaveCustomMapping
+    public class CatServiceModel : IMapFrom<AdoptionCat>, IHaveCustomMapping
     {
         public string Name { get; set; }
 
@@ -20,7 +20,7 @@
     
         public void ConfigureMapping(Profile mapper)
             => mapper
-                .CreateMap<Cat, CatServiceModel>()
+                .CreateMap<AdoptionCat, CatServiceModel>()
                 .ForMember(c => c.Owner, cfg => cfg.MapFrom(c => c.Owner.UserName));
     }
 }

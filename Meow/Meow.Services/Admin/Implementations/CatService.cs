@@ -15,7 +15,7 @@
 
         public void Add(string name, string imageUrl, string description, string location, string ownerId)
         {
-            var cat = new Cat
+            var adoptionCat = new AdoptionCat
             {
                 Name = name,
                 ImageUrl = imageUrl,
@@ -25,7 +25,7 @@
                 IsAdopted = false,
             };
 
-            this.db.Add(cat);
+            this.db.Add(adoptionCat);
             this.db.SaveChanges();
         }      
     }
