@@ -60,6 +60,10 @@ Logged in users can:
 -	View users profiles
 -	Edit their profile
 
+Volunteers can: 
+- View kitties for adoption and add, edit, delete them
+- Move kitty from for adoption to is adopted
+
 Administrators can:
 -	View admin panel
   		- admin panel consists list of users, all kitties, when they can manage them
