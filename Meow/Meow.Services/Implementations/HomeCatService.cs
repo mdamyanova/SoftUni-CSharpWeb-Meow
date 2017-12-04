@@ -4,6 +4,7 @@
     using Contracts;
     using Data;
     using Data.Models;
+    using Data.Models.Enums;
     using Models;
     using System.Collections.Generic;
     using System.Linq;
@@ -23,14 +24,25 @@
                 .ProjectTo<CatListingServiceModel>()
                 .ToList();
 
-        public bool Add(string name, string imageUrl, string description, string ownerId)
+        public HomeCatServiceModel ById(int id)
+              => this.db
+                .HomeCats
+                .Where(a => a.Id == id)
+                .ProjectTo<HomeCatServiceModel>()
+                .FirstOrDefault();
+
+        public bool Add(string name, int age, string imageUrl, string description, Gender gender, string ownerId)
         {
             if (!this.db.Users.Any(u => u.Id == ownerId))
             {
                 return false;
             }
             
-            var location = this.db.Users.Where(u => u.Id == ownerId).Select(u => u.Location).ToString();
+            var location = this.db
+                .Users
+                .Where(u => u.Id == ownerId)
+                .Select(u => u.Location)
+                .FirstOrDefault();
 
             if (location == null)
             {
@@ -40,8 +52,10 @@
             var homeCat = new HomeCat
             {
                 Name = name,
+                Age = age,
                 ImageUrl = imageUrl,
                 Description = description,
+                Gender = gender,
                 OwnerId = ownerId,
                 Location = location
             };

@@ -1,5 +1,6 @@
 ﻿namespace Meow.Services.Contracts
 {
+    using Data.Models.Enums;
     using Models;
     using System.Collections.Generic;
 
@@ -7,6 +8,8 @@
     {
         IEnumerable<CatListingServiceModel> All();
 
-        bool Add(string name, string imageUrl, string description, string ownerId);
+        HomeCatServiceModel ById(int id);
+
+        bool Add(string name, int age, string imageUrl, string description, Gender gender, string ownerId);
     }
 }

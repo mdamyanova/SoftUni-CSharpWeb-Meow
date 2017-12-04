@@ -1,23 +1,29 @@
 ﻿namespace Meow.Web.Models.Account
 {
+    using Data;
+    using Meow.Data.Validation;
     using System;
     using System.ComponentModel.DataAnnotations;
 
     public class RegisterViewModel
     {
         [Required]
-        [StringLength(50)]
+        [MaxLength(DataConstants.UsernameMaxLength)]
         public string Username { get; set; }
 
-        [Required]      
+        [Required]
+        [MinLength(DataConstants.UserNameMinLength)]
+        [MaxLength(DataConstants.UserNameMaxLength)]
         public string Name { get; set; }
 
         [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "E-mail")]
         public string Email { get; set; }
 
         [DataType(DataType.Date)]
+        [Birthdate(ErrorMessage = "You must be 18 or older to register.")]
+        [Display(Name = "Birth date")]
         public DateTime Birthdate { get; set; }
 
         public string Location { get; set; }

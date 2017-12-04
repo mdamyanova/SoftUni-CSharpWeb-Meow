@@ -16,8 +16,8 @@
         public int Age { get; set; }
 
         [Required]
-        [MinLength(DataConstants.CatImageUrlMinLength)]
-        [MaxLength(DataConstants.CatImageUrlMaxLength)]
+        [MinLength(DataConstants.ImageUrlMinLength)]
+        [MaxLength(DataConstants.ImageUrlMaxLength)]
         public string ImageUrl { get; set; }
 
         [MaxLength(DataConstants.CatDescriptionMaxLength)]
@@ -30,8 +30,6 @@
         public Gender Gender { get; set; }
 
         public bool IsAdopted { get; set; }
-
-        public Gender Gender { get; set; }
 
         public string OwnerId { get; set; }
 

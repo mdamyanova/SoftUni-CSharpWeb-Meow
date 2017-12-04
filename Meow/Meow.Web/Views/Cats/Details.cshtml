@@ -1,0 +1,16 @@
+﻿@model HomeCatServiceModel
+
+@{
+    ViewData["Title"] = $"The sweety kitty {this.Model.Name}";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<!--damn... this still waits for me to style it-->
+
+<img src="@this.Model.ImageUrl" />
+<h4>@this.Model.Name</h4>
+<h4>@this.Model.Description</h4>
+<h4>@this.Model.Location</h4>
+<h4>@this.Model.Gender.ToString()</h4>
+<a asp-controller="Users" asp-action="Profile" asp-route-id="@this.Model.OwnerId">@this.Model.Owner</a>

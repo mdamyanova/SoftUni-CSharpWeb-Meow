@@ -17,6 +17,8 @@
 
         public Gender Gender { get; set; }
 
+        public string OwnerId { get; set; }
+
         public string Owner { get; set; }
     
         public void ConfigureMapping(Profile mapper)

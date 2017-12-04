@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using Contracts;
     using Models;
-    using Models;
     using Meow.Data;
     using Meow.Data.Models;
 

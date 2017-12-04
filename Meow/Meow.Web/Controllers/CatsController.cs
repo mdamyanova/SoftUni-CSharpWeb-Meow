@@ -1,6 +1,7 @@
 ﻿namespace Meow.Web.Controllers
 {
     using Data.Models;
+    using Meow.Web.Infrastructure.Extensions;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
@@ -22,6 +23,7 @@
         public IActionResult All()
         {
             var model = this.homeCats.All();
+
             return this.View(model);
         }
 
@@ -32,10 +34,11 @@
             return this.View();
         }
 
+        // authorize ? 
         public IActionResult Details(int id)
         {
-            // todo 
-            return null;
+            var cat = this.homeCats.ById(id);
+            return this.ViewOrNotFound(cat);      
         }
 
         [Authorize]
@@ -50,7 +53,8 @@
         {
             var ownerId = this.userManager.GetUserId(User);
 
-            var success = this.homeCats.Add(model.Name, model.ImageUrl, model.Description, ownerId);
+            var success = this.homeCats.Add(
+                model.Name, model.Age, model.ImageUrl, model.Description, model.Gender, ownerId);
 
             if (!success)
             {

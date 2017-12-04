@@ -15,8 +15,8 @@
         public int Age { get; set; }
 
         [Required]
-        [MinLength(DataConstants.CatImageUrlMinLength)]
-        [MaxLength(DataConstants.CatImageUrlMaxLength)]
+        [MinLength(DataConstants.ImageUrlMinLength)]
+        [MaxLength(DataConstants.ImageUrlMaxLength)]
         [Display(Name = "Image URL")]
         public string ImageUrl { get; set; }
 
