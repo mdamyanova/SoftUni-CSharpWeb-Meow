@@ -1,10 +1,11 @@
-﻿namespace Meow.Services.Admin.Models
+﻿namespace Meow.Services.Models
 {
     using AutoMapper;
     using Core.Mapping;
     using Data.Models;
+    using Meow.Data.Models.Enums;
 
-    public class CatServiceModel : IMapFrom<AdoptionCat>, IHaveCustomMapping
+    public class HomeCatServiceModel : IMapFrom<HomeCat>, IHaveCustomMapping
     {
         public string Name { get; set; }
 
@@ -13,14 +14,14 @@
         public string Description { get; set; }
 
         public string Location { get; set; }
-        
-        public bool IsAdopted { get; set; }
+
+        public Gender Gender { get; set; }
 
         public string Owner { get; set; }
     
         public void ConfigureMapping(Profile mapper)
             => mapper
-                .CreateMap<AdoptionCat, CatServiceModel>()
+                .CreateMap<HomeCat, HomeCatServiceModel>()
                 .ForMember(c => c.Owner, cfg => cfg.MapFrom(c => c.Owner.UserName));
     }
 }

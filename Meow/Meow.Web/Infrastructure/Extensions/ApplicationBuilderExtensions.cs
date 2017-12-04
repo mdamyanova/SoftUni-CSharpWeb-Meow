@@ -6,6 +6,7 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
+    using System;
     using System.Threading.Tasks;
 
     public static class ApplicationBuilderExtensions
@@ -50,11 +51,14 @@
 
                         if (adminUser == null)
                         {
+                            //todo: edit this
                             adminUser = new User
                             {
                                 Email = adminEmail,
                                 UserName = adminName,
-                                Name = adminName,                      
+                                Name = adminName,
+                                Birthdate = DateTime.UtcNow,
+                                Location = "Sofia"
                             };
 
                             await userManager.CreateAsync(adminUser, "admin11");
@@ -62,7 +66,7 @@
                         }
                     })
                     .Wait();
-            }
+        }
         
             return app;
         }

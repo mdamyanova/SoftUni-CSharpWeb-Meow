@@ -14,4 +14,10 @@
     <ProjectReference Include="..\Meow.Data\Meow.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Admin\Contracts\" />
+    <Folder Include="Admin\Implementations\" />
+    <Folder Include="Admin\Models\" />
+  </ItemGroup>
+
 </Project>

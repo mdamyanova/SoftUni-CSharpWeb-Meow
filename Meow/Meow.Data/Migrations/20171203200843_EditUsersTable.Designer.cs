@@ -4,12 +4,14 @@ namespace Meow.Web.Data.Migrations
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Infrastructure;
     using Microsoft.EntityFrameworkCore.Metadata;
+    using Microsoft.EntityFrameworkCore.Migrations;
     using System;
 
     [DbContext(typeof(MeowDbContext))]
-    partial class MeowDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171203200843_EditUsersTable")]
+    partial class EditUsersTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
