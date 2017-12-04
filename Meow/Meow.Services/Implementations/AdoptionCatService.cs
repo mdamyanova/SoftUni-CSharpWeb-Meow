@@ -3,7 +3,8 @@
     using System.Collections.Generic;
     using Contracts;
     using Models;
-    using Meow.Web.Data;
+    using Models;
+    using Meow.Data;
     using Meow.Data.Models;
 
     public class AdoptionCatService : ICatService

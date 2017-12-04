@@ -1,13 +1,14 @@
 ﻿namespace Meow.Services.Implementations
 {
+    using AutoMapper.QueryableExtensions;
     using Contracts;
+    using Data;
     using Data.Models;
     using Models;
     using System.Collections.Generic;
     using System.Linq;
-    using Web.Data;
 
-    public class HomeCatService : ICatService
+    public class HomeCatService : IHomeCatService
     {
         private MeowDbContext db;
 
@@ -17,21 +18,24 @@
         }
 
         public IEnumerable<CatListingServiceModel> All()
+            => this.db
+                .HomeCats
+                .ProjectTo<CatListingServiceModel>()
+                .ToList();
+
+        public bool Add(string name, string imageUrl, string description, string ownerId)
         {
-            throw new System.NotImplementedException();
-        }
+            if (!this.db.Users.Any(u => u.Id == ownerId))
+            {
+                return false;
+            }
+            
+            var location = this.db.Users.Where(u => u.Id == ownerId).Select(u => u.Location).ToString();
 
-        // todo: make it bool and return false where there's invalid data?
-        public void Create(string name, string imageUrl, string description, string location, string ownerId)
-        {
-            // some nasty logic for the location, you know
-
-            //var location = this.db.Users.Where(u => u.Id == ownerId).Select(u => u.Location).ToString();
-
-            //if (location == null)
-            //{
-            //    return;
-            //}
+            if (location == null)
+            {
+                return false;
+            }
 
             var homeCat = new HomeCat
             {
@@ -45,6 +49,8 @@
             this.db.Add(homeCat);
 
             this.db.SaveChanges();
+
+            return true;
         } 
 
         public void Delete()

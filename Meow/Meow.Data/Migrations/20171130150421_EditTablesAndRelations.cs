@@ -1,4 +1,4 @@
-﻿namespace Meow.Web.Data.Migrations
+﻿namespace Meow.Data.Migrations
 {
     using Microsoft.EntityFrameworkCore.Migrations;
 

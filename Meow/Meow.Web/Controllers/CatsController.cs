@@ -1,18 +1,17 @@
 ﻿namespace Meow.Web.Controllers
 {
-    using Services.Contracts;
-    using Microsoft.AspNetCore.Mvc;
-    using Meow.Web.Models.HomeCats;
-    using Microsoft.AspNetCore.Identity;
-    using Meow.Data.Models;
+    using Data.Models;
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Models.HomeCats;
+    using Services.Contracts;
 
     public class CatsController : Controller
     {
         private readonly UserManager<User> userManager;
-        private readonly ICatService homeCats;
+        private readonly IHomeCatService homeCats;
 
-        // todo: fix it
         public CatsController(UserManager<User> userManager, IHomeCatService homeCats)
         {
             this.userManager = userManager;
@@ -29,7 +28,7 @@
         // all adoption cats 
         public IActionResult Adoption()
         {
-            var model = this.adoptionCats.All();
+            //var model = this.adoptionCats.All();
             return this.View();
         }
 
@@ -51,11 +50,16 @@
         {
             var ownerId = this.userManager.GetUserId(User);
 
-            this.homeCats.Create(model.Name, model.ImageUrl, model.Description, ownerId);
+            var success = this.homeCats.Add(model.Name, model.ImageUrl, model.Description, ownerId);
+
+            if (!success)
+            {
+                return this.BadRequest();
+            }
 
             //this.TempData.AddSuccessMessage($"The cat {model.Name} was added successfully!");
 
-            return this.RedirectToAction(nameof(HomeController.Index), "Home");
+            return this.RedirectToAction(nameof(All));
         }
     }
 }

@@ -1,11 +1,28 @@
 ﻿namespace Meow.Web.Models.HomeCats
 {
+    using Data;
+    using Data.Models.Enums;
+    using System.ComponentModel.DataAnnotations;
+
     public class AddHomeCatFormModel
     {
+        [Required]
+        [MinLength(DataConstants.CatNameMinLength)]
+        [MaxLength(DataConstants.CatNameMaxLength)]
         public string Name { get; set; }
 
+        [Range(DataConstants.CatMinAge, DataConstants.CatMaxAge)]
+        public int Age { get; set; }
+
+        [Required]
+        [MinLength(DataConstants.CatImageUrlMinLength)]
+        [MaxLength(DataConstants.CatImageUrlMaxLength)]
+        [Display(Name = "Image URL")]
         public string ImageUrl { get; set; }
 
+        [MaxLength(DataConstants.CatDescriptionMaxLength)]
         public string Description { get; set; }
+
+        public Gender Gender { get; set; }
     }
 }

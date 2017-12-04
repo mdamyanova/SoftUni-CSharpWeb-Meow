@@ -17,6 +17,7 @@
         [Display(Name = "Email")]
         public string Email { get; set; }
 
+        [DataType(DataType.Date)]
         public DateTime Birthdate { get; set; }
 
         public string Location { get; set; }

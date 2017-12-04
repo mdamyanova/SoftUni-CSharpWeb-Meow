@@ -1,4 +1,4 @@
-﻿namespace Meow.Web.Data
+﻿namespace Meow.Data
 {
     using Meow.Data.Models;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
