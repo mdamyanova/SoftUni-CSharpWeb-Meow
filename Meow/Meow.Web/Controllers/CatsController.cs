@@ -2,10 +2,10 @@
 {
     using Data.Models;
     using Meow.Web.Infrastructure.Extensions;
+    using Meow.Web.Models;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using Models.HomeCats;
     using Services.Contracts;
 
     public class CatsController : Controller
@@ -49,7 +49,7 @@
 
         [HttpPost]
         [Authorize]
-        public IActionResult Add(AddHomeCatFormModel model)
+        public IActionResult Add(HomeCatFormModel model)
         {
             var ownerId = this.userManager.GetUserId(User);
 
@@ -64,6 +64,46 @@
             //this.TempData.AddSuccessMessage($"The cat {model.Name} was added successfully!");
 
             return this.RedirectToAction(nameof(All));
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var homeCat = this.homeCats.ById(id);
+
+            if (homeCat == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.View(new HomeCatFormModel
+            {
+              Name = homeCat.Name,
+              Age = homeCat.Age,
+              ImageUrl = homeCat.ImageUrl,
+              Description = homeCat.Description,
+              Gender = homeCat.Gender
+            });
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, HomeCatFormModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
+            var homeCatExists = this.homeCats.Exists(id);
+
+            if (!homeCatExists)
+            {
+                return this.NotFound();
+            }
+
+            this.homeCats.Edit(
+                id, model.Name, model.Age, model.ImageUrl, model.Description, model.Gender);
+
+            return this.RedirectToAction(nameof(this.All));
         }
     }
 }

@@ -1,10 +1,10 @@
-﻿namespace Meow.Web.Models.HomeCats
+﻿namespace Meow.Web.Models
 {
     using Data;
     using Data.Models.Enums;
     using System.ComponentModel.DataAnnotations;
 
-    public class AddHomeCatFormModel
+    public class HomeCatFormModel
     {
         [Required]
         [MinLength(DataConstants.CatNameMinLength)]

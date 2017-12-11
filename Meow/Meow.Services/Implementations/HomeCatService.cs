@@ -31,6 +31,11 @@
                 .ProjectTo<HomeCatServiceModel>()
                 .FirstOrDefault();
 
+        public bool Exists(int id)
+        {
+            return this.db.HomeCats.Any(c => c.Id == id);
+        }
+
         public bool Add(string name, int age, string imageUrl, string description, Gender gender, string ownerId)
         {
             if (!this.db.Users.Any(u => u.Id == ownerId))
@@ -67,14 +72,24 @@
             return true;
         } 
 
-        public void Delete()
+        public void Edit(int id, string name, int age, string imageUrl, string description, Gender gender)
         {
-            throw new System.NotImplementedException();
-        }
+            var homeCat = this.db.HomeCats.Find(id);
 
-        public void Edit()
-        {
-            throw new System.NotImplementedException();
+            if (homeCat == null)
+            {
+                return;
+            }
+
+            // smarter look pls 
+
+            homeCat.Name = name;
+            homeCat.Age = age;
+            homeCat.ImageUrl = imageUrl;
+            homeCat.Description = description;
+            homeCat.Gender = gender;
+
+            this.db.SaveChanges();
         }
     }
 }

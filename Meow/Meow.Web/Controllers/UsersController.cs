@@ -1,6 +1,7 @@
 ﻿namespace Meow.Web.Controllers
 {
     using Data.Models;
+    using Meow.Services.Contracts;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
@@ -11,22 +12,23 @@
 
         public UsersController(IUserService users, UserManager<User> userManager)
         {
-            this.users = users;
-            this.userManager = userManager;
+            //this.users = users;
+            //this.userManager = userManager;
         }
 
         public IActionResult Profile(string username)
         {
-            var user = this.userManager.FindByNameAsync(username);
+            //var user = this.userManager.FindByNameAsync(username);
 
-            if (user == null)
-            {
-                return NotFound();
-            }
+            //if (user == null)
+            //{
+            //    return NotFound();
+            //}
 
-            var profile = await this.users.ProfileAsync(user.Id);
+            //var profile = await this.users.ProfileAsync(user.Id);
 
-            return View(profile);
+            //return View(profile);
+            return null;
         }
     }
 }
