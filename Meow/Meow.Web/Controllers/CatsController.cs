@@ -1,22 +1,24 @@
 ﻿namespace Meow.Web.Controllers
 {
     using Data.Models;
-    using Meow.Web.Infrastructure.Extensions;
-    using Meow.Web.Models;
+    using Infrastructure.Extensions;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Models;
     using Services.Contracts;
 
     public class CatsController : Controller
     {
         private readonly UserManager<User> userManager;
         private readonly IHomeCatService homeCats;
+        private readonly IAdoptionCatService adoptionCats;
 
-        public CatsController(UserManager<User> userManager, IHomeCatService homeCats)
+        public CatsController(UserManager<User> userManager, IHomeCatService homeCats, IAdoptionCatService adoptionCats)
         {
             this.userManager = userManager;
             this.homeCats = homeCats;
+            this.adoptionCats = adoptionCats;
         }
 
         // all home cats
@@ -30,11 +32,14 @@
         // all adoption cats 
         public IActionResult Adoption()
         {
-            //var model = this.adoptionCats.All();
-            return this.View();
+            var model = this.adoptionCats.All();
+
+            // if model is empty show message no cats ? 
+
+            return this.View(model);
         }
 
-        // authorize ? 
+        [Authorize]
         public IActionResult Details(int id)
         {
             var cat = this.homeCats.ById(id);
@@ -66,6 +71,7 @@
             return this.RedirectToAction(nameof(All));
         }
 
+        [Authorize]
         public IActionResult Edit(int id)
         {
             var homeCat = this.homeCats.ById(id);
@@ -85,6 +91,7 @@
             });
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Edit(int id, HomeCatFormModel model)
         {
@@ -102,6 +109,49 @@
 
             this.homeCats.Edit(
                 id, model.Name, model.Age, model.ImageUrl, model.Description, model.Gender);
+
+            return this.RedirectToAction(nameof(this.All));
+        }
+
+        [Authorize]
+        public IActionResult Delete(int id)
+        {
+            var homeCat = this.homeCats.ById(id);
+
+            if (homeCat == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.View(new HomeCatFormModel
+            {
+                Name = homeCat.Name,
+                Age = homeCat.Age,
+                ImageUrl = homeCat.ImageUrl,
+                Description = homeCat.Description,
+                Gender = homeCat.Gender
+            });
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult Delete(int id, HomeCatFormModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
+            var homeCatExists = this.homeCats.Exists(id);
+
+            if (!homeCatExists)
+            {
+                return this.NotFound();
+            }
+
+            var result = this.homeCats.Remove(id);
+
+            // todo
 
             return this.RedirectToAction(nameof(this.All));
         }

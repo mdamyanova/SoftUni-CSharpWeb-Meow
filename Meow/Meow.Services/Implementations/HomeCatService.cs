@@ -91,5 +91,20 @@
 
             this.db.SaveChanges();
         }
+
+        public bool Remove(int id)
+        {
+            var homeCat = this.db.HomeCats.Find(id);
+
+            if (homeCat == null)
+            {
+                return false;
+            }
+
+            this.db.HomeCats.Remove(homeCat);
+            this.db.SaveChanges();
+
+            return true;
+        }
     }
 }

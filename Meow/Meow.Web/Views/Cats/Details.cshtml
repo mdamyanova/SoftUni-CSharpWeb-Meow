@@ -8,9 +8,12 @@
 
 <!--damn... this still waits for me to style it-->
 
-<img src="@this.Model.ImageUrl" />
-<h4>@this.Model.Name</h4>
-<h4>@this.Model.Description</h4>
-<h4>@this.Model.Location</h4>
-<h4>@this.Model.Gender.ToString()</h4>
-<a asp-controller="Users" asp-action="Profile" asp-route-id="@this.Model.OwnerId">@this.Model.Owner</a>
+<a asp-action="Edit" asp-route-id="@this.Model.Id" class="btn btn-primary">Edit</a>
+<a asp-action="Delete" asp-route-id="@this.Model.Id" class="btn btn-primary">Delete</a>
+
+    <img src="@this.Model.ImageUrl" />
+    <h4>@this.Model.Name</h4>
+    <h4>@this.Model.Description</h4>
+    <h4>@this.Model.Location</h4>
+    <h4>@this.Model.Gender.ToString()</h4>
+    <a asp-controller="Users" asp-action="Profile" asp-route-id="@this.Model.OwnerId">@this.Model.Owner</a>

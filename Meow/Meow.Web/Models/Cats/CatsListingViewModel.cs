@@ -1,6 +1,6 @@
 ﻿namespace Meow.Web.Models.Cats
 {
-    public class HomeCatsListingViewModel
+    public class CatsListingViewModel
     {
         public int Id { get; set; }
 

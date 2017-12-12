@@ -15,5 +15,7 @@
         bool Add(string name, int age, string imageUrl, string description, Gender gender, string ownerId);
  
         void Edit(int id, string name, int age, string imageUrl, string description, Gender gender);
+
+        bool Remove(int id);
     }
 }

@@ -1,12 +1,13 @@
 ﻿namespace Meow.Services.Implementations
 {
-    using System.Collections.Generic;
+    using AutoMapper.QueryableExtensions;
     using Contracts;
+    using Data;
     using Models;
-    using Meow.Data;
-    using Meow.Data.Models;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public class AdoptionCatService : ICatService
+    public class AdoptionCatService : IAdoptionCatService
     {
         private MeowDbContext db;
 
@@ -15,35 +16,10 @@
             this.db = db;
         }
 
-        public IEnumerable<CatListingServiceModel> All()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Create(string name, string imageUrl, string description, string location, string ownerId)
-        {
-            var adoptionCat = new AdoptionCat
-            {
-                Name = name,
-                ImageUrl = imageUrl,
-                Description = description,
-                OwnerId = ownerId,
-                Location = location
-            };
-
-            this.db.Add(adoptionCat);
-
-            this.db.SaveChanges();
-        }
-
-        public void Edit()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Delete()
-        {
-            throw new System.NotImplementedException();
-        }
+        public IEnumerable<CatListingServiceModel> All() 
+            => this.db
+                .AdoptionCats
+                .ProjectTo<CatListingServiceModel>()
+                .ToList();
     }
 }
