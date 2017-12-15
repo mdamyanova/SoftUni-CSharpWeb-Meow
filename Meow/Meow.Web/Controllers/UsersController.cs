@@ -1,34 +1,43 @@
 ﻿namespace Meow.Web.Controllers
 {
     using Data.Models;
-    using Meow.Services.Contracts;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Services.Contracts;
+    using System.Threading.Tasks;
 
     public class UsersController : Controller
     {
-        //private readonly IUserService users;
+        private readonly IUserService users;
         private readonly UserManager<User> userManager;
 
         public UsersController(IUserService users, UserManager<User> userManager)
         {
-            //this.users = users;
-            //this.userManager = userManager;
+            this.users = users;
+            this.userManager = userManager;
         }
 
-        public IActionResult Profile(string username)
+        [Authorize]
+        public IActionResult All()
         {
-            //var user = this.userManager.FindByNameAsync(username);
+            var model = this.users.All();
 
-            //if (user == null)
-            //{
-            //    return NotFound();
-            //}
+            return this.View(model);
+        }
 
-            //var profile = await this.users.ProfileAsync(user.Id);
+        public async Task<IActionResult> Profile(string username)
+        {
+            var user = await this.userManager.FindByNameAsync(username);
 
-            //return View(profile);
-            return null;
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var profile = await this.users.ProfileAsync(user.Id);
+
+            return View(profile);
         }
     }
 }

@@ -21,5 +21,12 @@
                 .AdoptionCats
                 .ProjectTo<CatListingServiceModel>()
                 .ToList();
+
+        public AdoptionCatServiceModel ById(int id)
+              => this.db
+                .AdoptionCats
+                .Where(a => a.Id == id)
+                .ProjectTo<AdoptionCatServiceModel>()
+                .FirstOrDefault();
     }
 }

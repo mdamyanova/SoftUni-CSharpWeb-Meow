@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "All";
+}
+
+<h2>All</h2>
+
+<div class="container">
+
+    <h1 class="my-4 text-center text-lg-left">Users</h1>
+
+    <div class="row text-center text-lg-left">
+
+        @foreach (var user in this.Model)
+        {
+            <div class="col-lg-3 col-md-4 col-xs-6 hovereffect">
+                <a asp-action="Profile" asp-route-username="@user.UserName"class="d-block mb-4 h-100">
+                    <img class="img-fluid img-thumbnail img-cat img-circle" src="@("data:image;base64," + Convert.ToBase64String(user.ProfilePhoto))" alt="@user.Name">
+                </a>
+            </div>
+        }
+    </div>
+</div>

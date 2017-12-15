@@ -13,15 +13,14 @@
         [MaxLength(DataConstants.UserNameMaxLength)]
         public string Name { get; set; }
 
-        // I don't want to make it byte array ;(
-        //public string ProfilePhotoUrl { get; set; }
-
         [Required]
         [Location]
         public string Location { get; set; }
         
         [Birthdate]
         public DateTime Birthdate { get; set; }
+
+        public byte[] ProfilePhoto { get; set; }
 
         public IEnumerable<AdoptionCat> AdoptedCats { get; set; } = new List<AdoptionCat>();
 

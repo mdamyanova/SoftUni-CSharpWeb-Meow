@@ -7,6 +7,8 @@
     {
         IEnumerable<CatListingServiceModel> All();
 
+        AdoptionCatServiceModel ById(int id);
+
         //HomeCatServiceModel ById(int id);
 
         //bool Exists(int id);

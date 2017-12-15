@@ -4,6 +4,7 @@
     using Meow.Data.Validation;
     using System;
     using System.ComponentModel.DataAnnotations;
+    using Microsoft.AspNetCore.Http;
 
     public class RegisterViewModel
     {
@@ -38,5 +39,9 @@
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [DataType(DataType.Upload)]
+        [Display(Name = "Profile Photo")]
+        public IFormFile ProfilePhoto { get; set; }
     }
 }

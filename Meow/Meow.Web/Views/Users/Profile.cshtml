@@ -4,4 +4,15 @@
 }
 
 <h2>Profile</h2>
+@if (Model.UserName == User.Identity.Name)
+{
+    <a asp-controller="Manage" asp-action="Index" class="btn btn-default">Edit Profile</a>
+}
+<h6>@this.Model.UserName</h6>
+<h6>@this.Model.Name</h6>
+<h6>@this.Model.Birthdate</h6>
+@foreach (var cat in this.Model.HomeCats)
+{
+    <h6></h6>
 
+}

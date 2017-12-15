@@ -1,5 +1,4 @@
 ﻿@model HomeCatServiceModel
-
 @{
     ViewData["Title"] = $"The sweety kitty {this.Model.Name}";
 }
@@ -8,8 +7,11 @@
 
 <!--damn... this still waits for me to style it-->
 
-<a asp-action="Edit" asp-route-id="@this.Model.Id" class="btn btn-primary">Edit</a>
-<a asp-action="Delete" asp-route-id="@this.Model.Id" class="btn btn-primary">Delete</a>
+@if (this.Model.Owner == User.Identity.Name)
+{
+    <a asp-action="Edit" asp-route-id="@this.Model.Id" class="btn btn-primary">Edit</a>
+    <a asp-action="Delete" asp-route-id="@this.Model.Id" class="btn btn-primary">Delete</a>
+}
 
     <img src="@this.Model.ImageUrl" />
     <h4>@this.Model.Name</h4>

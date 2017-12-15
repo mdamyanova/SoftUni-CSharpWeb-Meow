@@ -12,7 +12,7 @@
         @foreach (var cat in this.Model)
         {
             <div class="col-lg-3 col-md-4 col-xs-6 hovereffect">
-                <a asp-action="Details" asp-route-id="@cat.Id" class="d-block mb-4 h-100">
+                <a asp-action="Request" asp-route-id="@cat.Id" class="d-block mb-4 h-100">
                     <img class="img-fluid img-thumbnail img-cat img-circle" src="@cat.ImageUrl" alt="@cat.Name">
                 </a>
             </div>

@@ -3,11 +3,13 @@
     using Meow.Data.Models;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
     using Models.Account;
     using System;
+    using System.IO;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
@@ -18,15 +20,18 @@
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly ILogger _logger;
+        private IHostingEnvironment environment;
 
         public AccountController(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
-            ILogger<AccountController> logger)
+            ILogger<AccountController> logger,
+            IHostingEnvironment environment)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+            this.environment = environment;
         }
 
         [TempData]
@@ -210,6 +215,7 @@
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
+
             if (ModelState.IsValid)
             {
                 var user = new User
@@ -220,6 +226,12 @@
                     Birthdate = model.Birthdate,
                     Location = model.Location
                 };
+
+                using (var memoryStream = new MemoryStream())
+                {
+                    await model.ProfilePhoto.CopyToAsync(memoryStream);
+                    user.ProfilePhoto = memoryStream.ToArray();
+                }
 
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

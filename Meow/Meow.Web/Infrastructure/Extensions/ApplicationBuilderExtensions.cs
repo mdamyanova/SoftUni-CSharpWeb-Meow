@@ -20,52 +20,53 @@
                 var userManager = serviceScope.ServiceProvider.GetService<UserManager<User>>();
                 var roleManager = serviceScope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
 
-                Task
-                    .Run(async () =>
-                    {
-                        var adminName = WebConstants.AdministratorRole;
-                        var volunteerName = WebConstants.VolunteerRole;
+                //Task
+                //    .Run(async () =>
+                //    {
+                //        var adminName = WebConstants.AdministratorRole;
+                //        var volunteerName = WebConstants.VolunteerRole;
 
-                        // admin, volunteer, normal user
-                        var roles = new[]
-                        {
-                            adminName,
-                            volunteerName
-                        };
+                //        // admin, volunteer, normal user
+                //        var roles = new[]
+                //        {
+                //            adminName,
+                //            volunteerName
+                //        };
 
-                        foreach (var role in roles)
-                        {
-                            var roleExists = await roleManager.RoleExistsAsync(role);
+                //        foreach (var role in roles)
+                //        {
+                //            var roleExists = await roleManager.RoleExistsAsync(role);
 
-                            if (!roleExists)
-                            {
-                                await roleManager.CreateAsync(new IdentityRole
-                                {
-                                    Name = role
-                                });
-                            }
-                        }
+                //            if (!roleExists)
+                //            {
+                //                await roleManager.CreateAsync(new IdentityRole
+                //                {
+                //                    Name = role
+                //                });
+                //            }
+                //        }
 
-                        var adminEmail = "admin@mysite.com";
-                        var adminUser = await userManager.FindByEmailAsync(adminEmail);
+                //        var adminEmail = "admin@mysite.com";
+                //        var adminUser = await userManager.FindByEmailAsync(adminEmail);
 
-                        if (adminUser == null)
-                        {
-                            //todo: edit this
-                            adminUser = new User
-                            {
-                                Email = adminEmail,
-                                UserName = adminName,
-                                Name = adminName,
-                                Birthdate = DateTime.UtcNow,
-                                Location = "Sofia"
-                            };
+                //        if (adminUser == null)
+                //        {
+                //            //todo: edit this
+                //            adminUser = new User
+                //            {
+                //                Email = adminEmail,
+                //                UserName = adminName,
+                //                Name = adminName,
+                //                Birthdate = DateTime.UtcNow,
+                //                Location = "Sofia",
+                //                ProfilePhoto = null
+                //            };
 
-                            await userManager.CreateAsync(adminUser, "admin11");
-                            await userManager.AddToRoleAsync(adminUser, adminName);
-                        }
-                    })
-                    .Wait();
+                //            await userManager.CreateAsync(adminUser, "admin11");
+                //            await userManager.AddToRoleAsync(adminUser, adminName);
+                //        }
+                //    })
+                //    .Wait();
         }
         
             return app;

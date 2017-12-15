@@ -1,7 +1,9 @@
 ﻿namespace Meow.Web.Controllers
 {
+    using System;
     using Data.Models;
     using Infrastructure.Extensions;
+    using Meow.Web.Models.Cats;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
@@ -43,7 +45,7 @@
         public IActionResult Details(int id)
         {
             var cat = this.homeCats.ById(id);
-            return this.ViewOrNotFound(cat);      
+            return this.ViewOrNotFound(cat);
         }
 
         [Authorize]
@@ -73,7 +75,7 @@
 
         [Authorize]
         public IActionResult Edit(int id)
-        {
+        {        
             var homeCat = this.homeCats.ById(id);
 
             if (homeCat == null)
@@ -81,13 +83,19 @@
                 return this.NotFound();
             }
 
+            if (User.Identity.Name != homeCat.Owner)
+            {
+                // user doesn't have the rights
+                return this.RedirectToAction(nameof(this.All));
+            }
+
             return this.View(new HomeCatFormModel
             {
-              Name = homeCat.Name,
-              Age = homeCat.Age,
-              ImageUrl = homeCat.ImageUrl,
-              Description = homeCat.Description,
-              Gender = homeCat.Gender
+                Name = homeCat.Name,
+                Age = homeCat.Age,
+                ImageUrl = homeCat.ImageUrl,
+                Description = homeCat.Description,
+                Gender = homeCat.Gender
             });
         }
 
@@ -116,11 +124,19 @@
         [Authorize]
         public IActionResult Delete(int id)
         {
+            // todo: check if user has rights to delete
+
             var homeCat = this.homeCats.ById(id);
 
             if (homeCat == null)
             {
                 return this.NotFound();
+            }
+
+            if (User.Identity.Name != homeCat.Owner)
+            {
+                // user doesn't have the rights
+                return this.RedirectToAction(nameof(this.All));
             }
 
             return this.View(new HomeCatFormModel
@@ -154,6 +170,34 @@
             // todo
 
             return this.RedirectToAction(nameof(this.All));
+        }
+
+        [Authorize]
+        public IActionResult Request(int id)
+        {
+            var adoptionCat = this.adoptionCats.ById(id);
+
+            if (adoptionCat == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.View(new AdoptionCatDetailsViewModel
+            {
+                Name = adoptionCat.Name,
+                Age = adoptionCat.Age,
+                ImageUrl = adoptionCat.ImageUrl,
+                Description = adoptionCat.Description,
+                Gender = adoptionCat.Gender,
+                IsAdopted = adoptionCat.IsAdopted
+            });
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult Request(int id, AdoptionCatDetailsViewModel model)
+        {
+            return null;
         }
     }
 }
