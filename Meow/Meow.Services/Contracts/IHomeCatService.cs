@@ -6,7 +6,7 @@
 
     public interface IHomeCatService
     {
-        IEnumerable<CatListingServiceModel> All();
+        IEnumerable<HomeCatListingServiceModel> All();
 
         HomeCatServiceModel ById(int id);
 

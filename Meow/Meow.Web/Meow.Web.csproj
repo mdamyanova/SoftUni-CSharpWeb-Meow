@@ -27,7 +27,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\Volunteer\Models\" />
-    <Folder Include="Areas\Volunteer\Views\" />
   </ItemGroup>
 
 </Project>

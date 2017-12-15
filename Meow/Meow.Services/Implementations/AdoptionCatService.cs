@@ -16,10 +16,10 @@
             this.db = db;
         }
 
-        public IEnumerable<CatListingServiceModel> All() 
+        public IEnumerable<AdoptionCatListingServiceModel> All() 
             => this.db
                 .AdoptionCats
-                .ProjectTo<CatListingServiceModel>()
+                .ProjectTo<AdoptionCatListingServiceModel>()
                 .ToList();
 
         public AdoptionCatServiceModel ById(int id)

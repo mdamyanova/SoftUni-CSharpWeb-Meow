@@ -5,6 +5,7 @@
 
     [Area(WebConstants.AdminArea)]
     [Authorize(Roles = WebConstants.VolunteerRole)]
+    [Authorize(Roles = WebConstants.AdministratorRole)]
     public class BaseVolunteerController : Controller
     {
     }

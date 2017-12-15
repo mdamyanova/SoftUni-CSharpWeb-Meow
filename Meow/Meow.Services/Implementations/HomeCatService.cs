@@ -18,10 +18,10 @@
             this.db = db;
         }
 
-        public IEnumerable<CatListingServiceModel> All()
+        public IEnumerable<HomeCatListingServiceModel> All()
             => this.db
                 .HomeCats
-                .ProjectTo<CatListingServiceModel>()
+                .ProjectTo<HomeCatListingServiceModel>()
                 .ToList();
 
         public HomeCatServiceModel ById(int id)
