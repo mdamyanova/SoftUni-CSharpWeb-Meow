@@ -8,6 +8,16 @@
 {
     <a asp-controller="Manage" asp-action="Index" class="btn btn-default">Edit Profile</a>
 }
+@if(this.User.IsInRole("Administrator"))
+{
+    <h6>Role: Admin</h6>
+})
+@if (this.User.IsInRole("Volunteer"))
+{
+    <h6>Role: Volunteer</h6>
+})
+
+
 <h6>@this.Model.UserName</h6>
 <h6>@this.Model.Name</h6>
 <h6>@this.Model.Birthdate</h6>

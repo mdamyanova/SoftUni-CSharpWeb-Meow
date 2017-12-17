@@ -3,7 +3,7 @@
     using AutoMapper;
     using Data;
     using Infrastructure.Extensions;
-    using Meow.Data.Models;
+    using Data.Models;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;

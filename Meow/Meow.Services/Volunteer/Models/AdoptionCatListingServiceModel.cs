@@ -1,4 +1,4 @@
-﻿namespace Meow.Services.Models
+﻿namespace Meow.Services.Volunteer.Models
 {
     using AutoMapper;
     using Core.Mapping;

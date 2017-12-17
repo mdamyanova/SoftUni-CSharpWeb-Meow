@@ -8,6 +8,7 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Models;
+    using Services.Volunteer.Contracts;
     using Services.Contracts;
 
     public class CatsController : Controller
@@ -173,7 +174,7 @@
         }
 
         [Authorize]
-        public IActionResult Request(int id)
+        public IActionResult Adopt(int id)
         {
             var adoptionCat = this.adoptionCats.ById(id);
 
@@ -195,7 +196,7 @@
 
         [Authorize]
         [HttpPost]
-        public IActionResult Request(int id, AdoptionCatDetailsViewModel model)
+        public IActionResult Adopt(int id, AdoptionCatDetailsViewModel model)
         {
             return null;
         }

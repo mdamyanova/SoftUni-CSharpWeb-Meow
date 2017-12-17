@@ -1,17 +1,17 @@
 ﻿namespace Meow.Web.Areas.Volunteer.Controllers
 {
     using Data.Models;
-    using Meow.Web.Areas.Volunteer.Models;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using Services.Contracts;
+    using Models;
+    using Services.Volunteer.Contracts;
 
-    public class AdoptionCatsController : BaseVolunteerController
+    public class CatsController : BaseVolunteerController
     {
         private readonly UserManager<User> userManager;
         private readonly IAdoptionCatService adoptionCats;
 
-        public AdoptionCatsController(UserManager<User> userManager, IAdoptionCatService adoptionCats)
+        public CatsController(UserManager<User> userManager, IAdoptionCatService adoptionCats)
         {
             this.userManager = userManager;
             this.adoptionCats = adoptionCats;
@@ -44,7 +44,7 @@
 
             //this.TempData.AddSuccessMessage($"The cat {model.Name} was added successfully!");
 
-            //return this.RedirectToAction();
+            return RedirectToAction("Adopted", "Cats", new { area = "" });
         }
 
         public IActionResult Edit(int id)
@@ -59,7 +59,7 @@
             if (User.Identity.Name != adoptionCat.Owner)
             {
                 // user doesn't have the rights
-               // return this.RedirectToAction(nameof(this.All));
+                return RedirectToAction("Adopted", "Cats", new { area = "" });
             }
 
             return this.View(new AdoptionCatFormModel
@@ -90,7 +90,7 @@
             this.adoptionCats.Edit(
                 id, model.Name, model.Age, model.ImageUrl, model.Description, model.Gender);
 
-           // return this.RedirectToAction(nameof(this.All));
+            return RedirectToAction("Adopted", "Cats", new { area = "" });
         }
         
         public IActionResult Delete(int id)
@@ -107,7 +107,7 @@
             if (User.Identity.Name != adoptionCat.Owner)
             {
                 // user doesn't have the rights
-             //   return this.RedirectToAction(nameof(this.All));
+                return RedirectToAction("Adopted", "Cats", new { area = "" });
             }
 
             return this.View(new AdoptionCatFormModel
@@ -138,8 +138,7 @@
             var result = this.adoptionCats.Remove(id);
 
             // todo
-
-           // return this.RedirectToAction(nameof(this.All));
+            return RedirectToAction("Adopted", "Cats", new { area = "" });
         }
 
     }

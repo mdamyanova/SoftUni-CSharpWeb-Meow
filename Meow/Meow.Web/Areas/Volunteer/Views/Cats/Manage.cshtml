@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "Manage";
+}
+
+<h2>Manage</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cat in this.Model)
+        {
+            <tr>
+                <td>@cat.Name</td>
+                <td>
+                <a asp-action="Edit" asp-route-id="@cat.Id" class="btn btn-primary">Edit</a>
+                </td>
+                <td>
+                <a asp-action="Delete" asp-route-id="@cat.Id" class="btn btn-primary">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

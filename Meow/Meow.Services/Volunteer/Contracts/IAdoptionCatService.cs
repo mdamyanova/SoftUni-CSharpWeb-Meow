@@ -1,4 +1,4 @@
-﻿namespace Meow.Services.Contracts
+﻿namespace Meow.Services.Volunteer.Contracts
 {
     using Data.Models.Enums;
     using Models;

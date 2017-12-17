@@ -3,9 +3,8 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
-    [Area(WebConstants.AdminArea)]
+    [Area(WebConstants.VolunteerArea)]
     [Authorize(Roles = WebConstants.VolunteerRole)]
-    [Authorize(Roles = WebConstants.AdministratorRole)]
     public class BaseVolunteerController : Controller
     {
     }
