@@ -15,11 +15,8 @@
       
         [Range(DataConstants.CatMinAge, DataConstants.CatMaxAge)]
         public int Age { get; set; }
-
-        [Required] 
-        [MinLength(DataConstants.ImageUrlMinLength)]
-        [MaxLength(DataConstants.ImageUrlMaxLength)]
-        public string ImageUrl { get; set; }
+     
+        public byte[] Image { get; set; }
 
         [MaxLength(DataConstants.CatDescriptionMaxLength)]
         public string Description { get; set; }

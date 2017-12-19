@@ -25,4 +25,8 @@
     <ProjectReference Include="..\Meow.Services\Meow.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\main\" />
+  </ItemGroup>
+
 </Project>

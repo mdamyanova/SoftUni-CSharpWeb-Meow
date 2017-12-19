@@ -7,6 +7,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using Meow.Data.Models.Enums;
+    using Microsoft.AspNetCore.Http;
 
     public class AdoptionCatService : IAdoptionCatService
     {
@@ -17,7 +18,12 @@
             this.db = db;
         }
 
-        public bool Add(string name, int age, string imageUrl, string description, Gender gender, string ownerId)
+        public bool Add(int id, string name, int age, IFormFile image, string description, Gender gender)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool Add(string name, int age, IFormFile image, string description, Gender gender, string ownerId)
         {
             throw new System.NotImplementedException();
         }
@@ -35,7 +41,7 @@
                 .ProjectTo<AdoptionCatServiceModel>()
                 .FirstOrDefault();
 
-        public void Edit(int id, string name, int age, string imageUrl, string description, Gender gender)
+        public void Edit(int id, string name, int age, IFormFile image, string description, Gender gender, string ownerId)
         {
             var adoptionCat = this.db.AdoptionCats.Find(id);
 
@@ -48,7 +54,7 @@
 
             adoptionCat.Name = name;
             adoptionCat.Age = age;
-            adoptionCat.ImageUrl = imageUrl;
+            //adoptionCat.Image = image;
             adoptionCat.Description = description;
             adoptionCat.Gender = gender;
 

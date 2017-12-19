@@ -35,7 +35,7 @@
             var ownerId = this.userManager.GetUserId(User);
 
             var success = this.adoptionCats.Add(
-                model.Name, model.Age, model.ImageUrl, model.Description, model.Gender, ownerId);
+                model.Name, model.Age, model.Image, model.Description, model.Gender, ownerId);
 
             if (!success)
             {
@@ -66,7 +66,6 @@
             {
                 Name = adoptionCat.Name,
                 Age = adoptionCat.Age,
-                ImageUrl = adoptionCat.ImageUrl,
                 Description = adoptionCat.Description,
                 Gender = adoptionCat.Gender
             });
@@ -88,7 +87,7 @@
             }
 
             this.adoptionCats.Edit(
-                id, model.Name, model.Age, model.ImageUrl, model.Description, model.Gender);
+                model.Id, model.Name, model.Age, model.Image, model.Description, model.Gender, "");
 
             return RedirectToAction("Adopted", "Cats", new { area = "" });
         }
@@ -114,7 +113,7 @@
             {
                 Name = adoptionCat.Name,
                 Age = adoptionCat.Age,
-                ImageUrl = adoptionCat.ImageUrl,
+                
                 Description = adoptionCat.Description,
                 Gender = adoptionCat.Gender
             });

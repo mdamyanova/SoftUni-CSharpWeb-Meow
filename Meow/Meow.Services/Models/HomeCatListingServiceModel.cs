@@ -10,7 +10,7 @@
 
         public string Name { get; set; }
 
-        public string ImageUrl { get; set; }
+        public byte[] Image { get; set; }
 
         public string Owner { get; set; }
 

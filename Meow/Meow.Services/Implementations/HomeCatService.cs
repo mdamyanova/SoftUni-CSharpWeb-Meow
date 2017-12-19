@@ -5,9 +5,13 @@
     using Data;
     using Data.Models;
     using Data.Models.Enums;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.EntityFrameworkCore;
     using Models;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
+    using System.Threading.Tasks;
 
     public class HomeCatService : IHomeCatService
     {
@@ -19,7 +23,7 @@
         }
 
         public IEnumerable<HomeCatListingServiceModel> All()
-            => this.db
+            =>  this.db
                 .HomeCats
                 .ProjectTo<HomeCatListingServiceModel>()
                 .ToList();
@@ -36,7 +40,7 @@
             return this.db.HomeCats.Any(c => c.Id == id);
         }
 
-        public bool Add(string name, int age, string imageUrl, string description, Gender gender, string ownerId)
+        public bool Add(string name, IFormFile image, int age,  string description, Gender gender, string ownerId)
         {
             if (!this.db.Users.Any(u => u.Id == ownerId))
             {
@@ -57,13 +61,18 @@
             var homeCat = new HomeCat
             {
                 Name = name,
-                Age = age,
-                ImageUrl = imageUrl,
+                Age = age,              
                 Description = description,
                 Gender = gender,
                 OwnerId = ownerId,
                 Location = location
             };
+
+            using (var memoryStream = new MemoryStream())
+            {
+                image.CopyToAsync(memoryStream);
+                homeCat.Image = memoryStream.ToArray();
+            }
 
             this.db.Add(homeCat);
 
@@ -72,7 +81,7 @@
             return true;
         } 
 
-        public void Edit(int id, string name, int age, string imageUrl, string description, Gender gender)
+        public void Edit(int id, string name, int age, IFormFile image, string description, Gender gender)
         {
             var homeCat = this.db.HomeCats.Find(id);
 
@@ -85,7 +94,7 @@
 
             homeCat.Name = name;
             homeCat.Age = age;
-            homeCat.ImageUrl = imageUrl;
+            //todo - convert image to byte arr
             homeCat.Description = description;
             homeCat.Gender = gender;
 

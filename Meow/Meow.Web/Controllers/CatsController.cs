@@ -1,6 +1,5 @@
 ﻿namespace Meow.Web.Controllers
 {
-    using System;
     using Data.Models;
     using Infrastructure.Extensions;
     using Meow.Web.Models.Cats;
@@ -62,7 +61,7 @@
             var ownerId = this.userManager.GetUserId(User);
 
             var success = this.homeCats.Add(
-                model.Name, model.Age, model.ImageUrl, model.Description, model.Gender, ownerId);
+                model.Name, model.Image, model.Age, model.Description, model.Gender, ownerId);
 
             if (!success)
             {
@@ -75,7 +74,7 @@
         }
 
         [Authorize]
-        public IActionResult Edit(int id)
+        public IActionResult EditAsync(int id)
         {        
             var homeCat = this.homeCats.ById(id);
 
@@ -90,11 +89,11 @@
                 return this.RedirectToAction(nameof(this.All));
             }
 
-            return this.View(new HomeCatFormModel
+            return this.View(new HomeCatEditFormModel
             {
                 Name = homeCat.Name,
                 Age = homeCat.Age,
-                ImageUrl = homeCat.ImageUrl,
+                Image = homeCat.Image,
                 Description = homeCat.Description,
                 Gender = homeCat.Gender
             });
@@ -117,7 +116,7 @@
             }
 
             this.homeCats.Edit(
-                id, model.Name, model.Age, model.ImageUrl, model.Description, model.Gender);
+                id, model.Name, model.Age, model.Image, model.Description, model.Gender);
 
             return this.RedirectToAction(nameof(this.All));
         }
@@ -140,11 +139,11 @@
                 return this.RedirectToAction(nameof(this.All));
             }
 
-            return this.View(new HomeCatFormModel
+            return this.View(new HomeCatEditFormModel
             {
                 Name = homeCat.Name,
                 Age = homeCat.Age,
-                ImageUrl = homeCat.ImageUrl,
+                Image = homeCat.Image,
                 Description = homeCat.Description,
                 Gender = homeCat.Gender
             });
@@ -187,7 +186,7 @@
             {
                 Name = adoptionCat.Name,
                 Age = adoptionCat.Age,
-                ImageUrl = adoptionCat.ImageUrl,
+                ImageUrl = adoptionCat.Image,
                 Description = adoptionCat.Description,
                 Gender = adoptionCat.Gender,
                 IsAdopted = adoptionCat.IsAdopted

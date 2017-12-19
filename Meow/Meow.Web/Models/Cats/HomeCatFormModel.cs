@@ -2,6 +2,7 @@
 {
     using Data;
     using Data.Models.Enums;
+    using Microsoft.AspNetCore.Http;
     using System.ComponentModel.DataAnnotations;
 
     public class HomeCatFormModel
@@ -14,11 +15,8 @@
         [Range(DataConstants.CatMinAge, DataConstants.CatMaxAge)]
         public int Age { get; set; }
 
-        [Required]
-        [MinLength(DataConstants.ImageUrlMinLength)]
-        [MaxLength(DataConstants.ImageUrlMaxLength)]
-        [Display(Name = "Image URL")]
-        public string ImageUrl { get; set; }
+        [DataType(DataType.Upload)]
+        public IFormFile Image { get; set; }
 
         [MaxLength(DataConstants.CatDescriptionMaxLength)]
         public string Description { get; set; }
