@@ -14,8 +14,8 @@
             <th>
                 E-mail
             </th>
-            <th>
-            </th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -36,11 +36,13 @@
                                 <select name="Role" asp-items="this.Model.Roles" class="form-control"></select>
                             </div>
                             <div class="col-md-3">
-                                <input class="btn btn-sm btn-primary" type="submit" value="Add To Role" />
+                                <input class="btn btn-sm btn-default" type="submit" value="Add To Role" />
                             </div>
                         </div>
                     </form>
-
+                </th>
+                <th>
+                    <a class="btn btn-sm btn-default" asp-area="" asp-controller="Users" asp-action="Profile" asp-route-username="@user.Username">View Profile</a>
                 </th>
             </tr>
         }

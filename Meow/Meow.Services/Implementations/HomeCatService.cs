@@ -6,12 +6,10 @@
     using Data.Models;
     using Data.Models.Enums;
     using Microsoft.AspNetCore.Http;
-    using Microsoft.EntityFrameworkCore;
     using Models;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using System.Threading.Tasks;
 
     public class HomeCatService : IHomeCatService
     {
