@@ -223,6 +223,7 @@
                     UserName = model.Username,
                     Email = model.Email,                  
                     Name = model.Name,
+                    Gender = model.Gender,
                     Birthdate = model.Birthdate,
                     Location = model.Location
                 };

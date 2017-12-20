@@ -10,7 +10,7 @@
         public string UserName { get; set; }
 
         public string Name { get; set; }
-
+        
         public byte[] ProfilePhoto { get; set; }
     }
 }

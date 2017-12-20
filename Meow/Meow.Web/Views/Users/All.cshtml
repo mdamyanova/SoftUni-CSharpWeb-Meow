@@ -14,8 +14,11 @@
         @foreach (var user in this.Model)
         {
             <div class="col-lg-3 col-md-4 col-xs-6 hovereffect">
-                <a asp-action="Profile" asp-route-username="@user.UserName"class="d-block mb-4 h-100">
-                    <img class="img-fluid img-thumbnail img-cat img-circle" src="@("data:image;base64," + Convert.ToBase64String(user.ProfilePhoto))" alt="@user.Name">
+                <a asp-action="Profile" asp-route-username="@user.UserName" class="d-block mb-4 h-100">
+                    @{
+                        var imgSrc = user.ProfilePhoto != null ? $"" : "../images/default-profile.png";
+                    }
+                    <img class="img-fluid img-thumbnail img-cat img-circle" src="@imgSrc" alt="@user.Name">
                 </a>
             </div>
         }

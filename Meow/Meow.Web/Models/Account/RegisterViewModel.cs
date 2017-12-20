@@ -1,10 +1,11 @@
 ﻿namespace Meow.Web.Models.Account
 {
     using Data;
-    using Meow.Data.Validation;
+    using Data.Validation;
     using System;
     using System.ComponentModel.DataAnnotations;
     using Microsoft.AspNetCore.Http;
+    using Meow.Data.Models.Enums;
 
     public class RegisterViewModel
     {
@@ -21,6 +22,8 @@
         [EmailAddress]
         [Display(Name = "E-mail")]
         public string Email { get; set; }
+
+        public Gender Gender { get; set; }
 
         [DataType(DataType.Date)]
         [Birthdate(ErrorMessage = "You must be 18 or older to register.")]

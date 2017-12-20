@@ -6,6 +6,6 @@
 
     public interface IAdminUserService
     {
-        Task<IEnumerable<AdminUsersListingServiceModel>> AllAsync();
+        IEnumerable<AdminUsersListingServiceModel> All();
     }
 }

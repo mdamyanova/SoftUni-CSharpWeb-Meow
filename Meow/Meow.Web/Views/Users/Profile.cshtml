@@ -1,28 +1,81 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Profile";
 }
+<link rel="stylesheet" href="~/css/details.css">
+<div class="container">
+    <div class="row">
+        <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">@this.Model.Name</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 " align="center">
+                            @{
+                                var imgSrc = this.Model.ProfilePhoto != null ? $"data:image/gif;base64,{Convert.ToBase64String(this.Model.ProfilePhoto)}" : "../images/default-profile.png";
+                            }
+                            <img alt="@this.Model.UserName photo" src="@imgSrc" class="img-fluid img-thumbnail img-circle">
+                        </div>
+                        <div class=" col-md-9 col-lg-9 ">
+                            <table class="table table-user-information">
+                                <tbody>
+                                    <tr>
+                                        <td>Username:</td>
+                                        <td>@this.Model.UserName</td>
+                                    </tr>
+                                    <tr>
+                                        @{
+                                            var role = "Normal User";
+                                           
+                                            if (this.User.IsInRole(WebConstants.AdministratorRole))
+                                            {
+                                                role = WebConstants.AdministratorRole;
+                                            }
+                                            else if (this.User.IsInRole(WebConstants.VolunteerRole))
+                                            {
+                                                role = WebConstants.VolunteerRole;
+                                            }
+                                        }
 
-<h2>Profile</h2>
-@if (Model.UserName == User.Identity.Name)
-{
-    <a asp-controller="Manage" asp-action="Index" class="btn btn-default">Edit Profile</a>
-}
-@if(this.User.IsInRole("Administrator"))
-{
-    <h6>Role: Admin</h6>
-})
-@if (this.User.IsInRole("Volunteer"))
-{
-    <h6>Role: Volunteer</h6>
-})
-
-
-<h6>@this.Model.UserName</h6>
-<h6>@this.Model.Name</h6>
-<h6>@this.Model.Birthdate</h6>
-@foreach (var cat in this.Model.HomeCats)
-{
-    <h6></h6>
-
-}
+                                        <td>Role:</td>
+                                        <td>@role</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date of Birth:</td>
+                                        <td>@this.Model.Birthdate.ToShortDateString()</td>
+                                    </tr>
+                                    <tr>
+                                    <tr>
+                                        <td>Gender:</td>
+                                        <td>@this.Model.Gender</td>
+                                    </tr>                     
+                                    <tr>
+                                        <td>Email:</td>
+                                        <td><a href="mailto:@this.Model.Email">@this.Model.Email</a></td>
+                                    </tr>                              
+                                </tbody>
+                            </table>
+                            <a asp-controller="Users" asp-action="HomeCats" asp-route-username="@this.Model.UserName" class="btn btn-outline-success">Home cats</a>
+                            <a asp-controller="Users" asp-action="AdoptedCats" asp-route-username="@this.Model.UserName" class="btn btn-outline-success">Adopted cats</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <!--todo - adoption cats-->
+                    <a data-original-title="Broadcast Message" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-envelope"></i></a>
+                    <span class="pull-right">
+                        @if (this.Model.UserName == User.Identity.Name ||
+                                this.User.IsInRole(WebConstants.AdministratorRole))
+                    {
+                        <a asp-controller="Manage" asp-action="Index" data-original-title="Edit this user" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-edit"></i></a>
+                        <a data-original-title="Remove this user" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-remove"></i></a>
+                    }
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -8,13 +8,12 @@
     {
         public IActionResult Index()
         {
-            return View();
+            return this.View();
         }
 
         public IActionResult About()
         { 
-
-            return View();
+            return this.View();
         }
 
         public IActionResult Error()

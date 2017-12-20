@@ -1,5 +1,6 @@
 ﻿namespace Meow.Data.Models
 {
+    using Models.Enums;
     using Microsoft.AspNetCore.Identity;
     using System;
     using System.Collections.Generic;
@@ -21,6 +22,8 @@
         public DateTime Birthdate { get; set; }
 
         public byte[] ProfilePhoto { get; set; }
+
+        public Gender Gender { get; set; }
 
         public IEnumerable<AdoptionCat> AdoptedCats { get; set; } = new List<AdoptionCat>();
 

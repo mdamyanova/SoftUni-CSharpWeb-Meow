@@ -8,6 +8,7 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Microsoft.EntityFrameworkCore;
+    using Meow.Services.Volunteer.Models;
 
     public class UserService : IUserService
     {
@@ -16,6 +17,11 @@
         public UserService(MeowDbContext db)
         {
             this.db = db;
+        }
+
+        public bool Exists(string id)
+        {
+            return this.db.Users.Any(c => c.Id == id);
         }
 
         public IEnumerable<UserListingServiceModel> All()
@@ -32,10 +38,24 @@
                 .FirstOrDefault();
 
         public async Task<UserProfileServiceModel> ProfileAsync(string id)
-         => await this.db
-                .Users
-                .Where(u => u.Id == id)
-                .ProjectTo<UserProfileServiceModel>(new { userId = id })
-                .FirstOrDefaultAsync();
+             => await this.db
+                    .Users
+                    .Where(u => u.Id == id)
+                    .ProjectTo<UserProfileServiceModel>(new { userId = id })
+                    .FirstOrDefaultAsync();
+
+        public async Task<IEnumerable<HomeCatListingServiceModel>> HomeCatsAsync(string id)
+            => await this.db
+                .HomeCats
+                .Where(c => c.OwnerId == id)
+                .ProjectTo<HomeCatListingServiceModel>()
+                .ToListAsync();
+
+        public async Task<IEnumerable<AdoptionCatListingServiceModel>> AdoptedCatsAsync(string id)
+            => await this.db
+                .AdoptionCats
+                .Where(c => c.OwnerId == id)
+                .ProjectTo<AdoptionCatListingServiceModel>()
+                .ToListAsync();
     }
 }

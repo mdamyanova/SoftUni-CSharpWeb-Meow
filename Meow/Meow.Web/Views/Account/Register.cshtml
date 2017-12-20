@@ -20,7 +20,10 @@
 
         <input asp-for="Location" class="form-control" placeholder="location" />
         <span asp-validation-for="Location" class="text-danger"></span>
-
+        
+        <select asp-for="Gender" asp-items="@Html.GetEnumSelectList<Gender>()"></select>
+        <span asp-validation-for="Gender" class="text-danger"></span>
+     
         <input asp-for="Birthdate" class="form-control" placeholder="birthdate" />
         <span asp-validation-for="Birthdate" class="text-danger"></span>
 
@@ -32,7 +35,6 @@
 
         <input asp-for="ConfirmPassword" class="form-control" placeholder="confirm password" />
         <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-
 
         <input asp-for="ProfilePhoto" type="file" class="form-control" />
         <button type="submit" class="login-button">Register</button>

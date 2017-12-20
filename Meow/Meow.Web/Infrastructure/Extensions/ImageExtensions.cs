@@ -1,7 +1,7 @@
-﻿using System.IO;
-
-namespace Meow.Core
+﻿namespace Meow.Web
 {
+    using System;
+
     public class ImageExtensions
     {
         //public byte[] ImageToByteArray(System.Drawing.Image imageIn)
@@ -12,12 +12,9 @@ namespace Meow.Core
         //    return ms.ToArray();
         //}
 
-        //public Image byteArrayToImage(byte[] byteArrayIn)
-        //{
-        //    MemoryStream ms = new MemoryStream(byteArrayIn);
-        //    Image returnImage = Image.FromStream(ms);
-
-        //    return returnImage;
-        //}
+        public string ByteArrayToImage(byte[] imageArray)
+        {
+            return $"data:image/gif;base64,{Convert.ToBase64String(imageArray)}";
+        }
     }
 }

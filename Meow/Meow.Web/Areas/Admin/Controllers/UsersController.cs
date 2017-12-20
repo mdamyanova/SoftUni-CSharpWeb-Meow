@@ -26,18 +26,18 @@
             this.roleManager = roleManager;
         }
 
-        public async Task<IActionResult> Manage()
+        public IActionResult Manage()
         {
-            var users = await this.users.AllAsync();
+            var users = this.users.All();
 
-            var roles = await this.roleManager
+            var roles = this.roleManager
                 .Roles
                 .Select(r => new SelectListItem
                 {
                     Text = r.Name,
                     Value = r.Name
                 })
-                .ToListAsync();
+                .ToList();
 
             return View(new UsersListingViewModel
             {

@@ -1,7 +1,8 @@
 ﻿namespace Meow.Web.Infrastructure.Extensions
 {
     using Data;
-    using Meow.Data.Models;
+    using Data.Models;
+    using Data.Models.Enums;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
@@ -57,6 +58,7 @@
                                 Email = adminEmail,
                                 UserName = adminName,
                                 Name = adminName,
+                                Gender = Gender.Female,
                                 Birthdate = DateTime.UtcNow,
                                 Location = "Sofia",
                                 ProfilePhoto = null

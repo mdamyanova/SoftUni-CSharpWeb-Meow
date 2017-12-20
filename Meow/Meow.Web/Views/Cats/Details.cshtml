@@ -5,17 +5,62 @@
 
 <h2>@ViewData["Title"]</h2>
 
-<!--damn... this still waits for me to style it-->
-
-@if (this.Model.Owner == User.Identity.Name)
-{
-    <a asp-action="Edit" asp-route-id="@this.Model.Id" class="btn btn-primary">Edit</a>
-    <a asp-action="Delete" asp-route-id="@this.Model.Id" class="btn btn-primary">Delete</a>
-}
-
-    <img src="@this.Model.ImageUrl" />
-    <h4>@this.Model.Name</h4>
-    <h4>@this.Model.Description</h4>
-    <h4>@this.Model.Location</h4>
-    <h4>@this.Model.Gender.ToString()</h4>
-    <a asp-controller="Users" asp-action="Profile" asp-route-id="@this.Model.OwnerId">@this.Model.Owner</a>
+<link rel="stylesheet" href="~/css/details.css">
+<div class="container">
+    <div class="row">
+        <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">@this.Model.Name</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 " align="center">
+                            @{
+                                var imgSrc = this.Model.Image != null ? $"data:image/gif;base64,{Convert.ToBase64String(this.Model.Image)}" : "../images/default-cat.png";
+                            }
+                            <img alt="@this.Model.Name photo" src="@imgSrc" class="img-fluid img-thumbnail img-circle">
+                        </div>
+                        <div class=" col-md-9 col-lg-9 ">
+                            <table class="table table-user-information">
+                                <tbody>
+                                    <tr>
+                                        <td>Age:</td>
+                                        <td>@this.Model.Age</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Description:</td>
+                                        <td>@this.Model.Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gender:</td>
+                                        <td>@this.Model.Gender.ToString()</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Location:</td>
+                                        <td>@this.Model.Location</td>
+                                    </tr>                                
+                                </tbody>
+                            </table>
+                            <a asp-controller="Users" asp-action="Profile" asp-route-id="@this.Model.OwnerId" class="btn btn-outline-success">Owner</a>       
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <!--todo - adoption cats-->
+                    <a data-original-title="Broadcast Message" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-envelope"></i></a>
+                    <span class="pull-right">
+                        @if ((this.Model.Owner == User.Identity.Name) ||
+                              this.User.IsInRole(WebConstants.AdministratorRole))
+                        {
+                            <a asp-action="Edit"  asp-route-id="@this.Model.Id" data-original-title="Edit" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a asp-action="Delete" asp-route-id="@this.Model.Id" data-original-title="Remove" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-remove"></i></a>
+                        }
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

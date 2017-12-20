@@ -3,9 +3,11 @@
     using AutoMapper.QueryableExtensions;
     using Contracts;
     using Data;
+    using Meow.Services.Contracts;
     using Microsoft.EntityFrameworkCore;
     using Services.Admin.Models;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     public class AdminUserService : IAdminUserService
@@ -17,10 +19,10 @@
             this.db = db;
         }
 
-        public async Task<IEnumerable<AdminUsersListingServiceModel>> AllAsync()
-            => await this.db
-                    .Users
-                    .ProjectTo<AdminUsersListingServiceModel>()
-                    .ToListAsync();
+        public IEnumerable<AdminUsersListingServiceModel> All()
+            => this.db
+                .Users
+                .ProjectTo<AdminUsersListingServiceModel>()
+                .ToList();
     }
 }

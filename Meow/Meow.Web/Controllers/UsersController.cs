@@ -32,12 +32,40 @@
 
             if (user == null)
             {
-                return NotFound();
+                return this.NotFound();
             }
 
-            var profile = await this.users.ProfileAsync(user.Id);
+            var model = await this.users.ProfileAsync(user.Id);
 
-            return View(profile);
+            return View(model);
+        }
+
+        public async Task<IActionResult> HomeCats(string username)
+        {
+            var user = await this.userManager.FindByNameAsync(username);
+
+            if (user == null)
+            {
+                return this.NotFound();
+            }
+
+            var model = await this.users.HomeCatsAsync(user.Id);
+
+            return View(model);
+        }
+
+        public async Task<IActionResult> AdoptedCats(string username)
+        {
+            var user = await this.userManager.FindByNameAsync(username);
+
+            if (user == null)
+            {
+                return this.NotFound();
+            }
+
+            var model = await this.users.AdoptedCatsAsync(user.Id);
+
+            return View(model);
         }
     }
 }

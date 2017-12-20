@@ -16,5 +16,6 @@ body {
     height: auto;
     background-image: url(../images/weird-girl.jpg);
     background-size: cover;
+    background-repeat: no-repeat;
     z-index: 0;
 }
