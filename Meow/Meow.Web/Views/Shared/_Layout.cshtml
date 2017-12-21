@@ -48,7 +48,7 @@
                             <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">iCatRescue<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a asp-area="" asp-controller="Cats" asp-action="Adoption">Cats</a></li>
-                                <li><a asp-area="Volunteer" asp-controller="AdoptionCats" asp-action="Manage">Manage</a></li>
+                                <li><a asp-area="Volunteer" asp-controller="Cats" asp-action="Manage">Manage</a></li>
                             </ul>
                         </li>
 
@@ -65,7 +65,8 @@
                     }
 
                     <!--Volunteer have access to Managing Adoption Cats-->
-                    @if (this.User.IsInRole(WebConstants.VolunteerRole))
+                    @if (this.User.IsInRole(WebConstants.VolunteerRole) && 
+                            !this.User.IsInRole(WebConstants.AdministratorRole))
                     {
                         <li><a asp-area="" asp-controller="Cats" asp-action="All">Cats</a></li>
                          <!--cats for adoption-->

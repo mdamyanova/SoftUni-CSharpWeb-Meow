@@ -4,7 +4,6 @@
     using Microsoft.AspNetCore.Http;
     using Models;
     using System.Collections.Generic;
-    using System.Threading.Tasks;
 
     public interface IHomeCatService
     {
@@ -16,7 +15,8 @@
 
         bool Add(string name, IFormFile image, int age, string description, Gender gender, string ownerId);
  
-        void Edit(int id, string name, int age, IFormFile image, string description, Gender gender);
+        // todo - edit image if have time
+        void Edit(int id, string name, int age, string description, IFormFile image, Gender gender);
 
         bool Remove(int id);
     }

@@ -1,22 +1,9 @@
-﻿
+﻿@model RequestAdoptionViewModel
 @{
     ViewData["Title"] = "Request";
 }
 
 <h2>Request</h2>
 
-<h6>@this.Model.Name</h6>
-<h6>@this.Model.Age</h6>
-<h6>@this.Model.ImageUrl</h6>
-<h6>@this.Model.Description</h6>
-<h6>@this.Model.Location</h6>
-<h6>@this.Model.Gender</h6>
-
-@if (!this.Model.IsAdopted)
-{
-    <a class="btn btn-secondary" asp-action="Request">Request</a>
-}
-else
-{
-  <h6>this kitty is already adopted or someone else liked it</h6>
-}
+Are you sure you want to request adoption to the cat?
+<a asp-action="Request" asp-route-id="@this.Model.Id" asp-route-username="@this.Model.Username">Yes</a>

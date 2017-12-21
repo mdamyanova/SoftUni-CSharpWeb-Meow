@@ -1,13 +1,14 @@
 ﻿namespace Meow.Web.Infrastructure.Extensions
 {
+    using Meow.Services;
     using Microsoft.Extensions.DependencyInjection;
-    using Services;
     using System.Linq;
     using System.Reflection;
 
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddDomainServices(this IServiceCollection services)
+        public static IServiceCollection AddDomainServices(
+            this IServiceCollection services)
         {
             Assembly
                 .GetAssembly(typeof(IService))

@@ -1,6 +1,7 @@
 ﻿namespace Meow.Web.Areas.Volunteer.Controllers
 {
     using Data.Models;
+    using Meow.Web.Infrastructure.Extensions;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Models;
@@ -32,19 +33,17 @@
         [HttpPost]
         public IActionResult Add(AdoptionCatFormModel model)
         {
-            var ownerId = this.userManager.GetUserId(User);
-
             var success = this.adoptionCats.Add(
-                model.Name, model.Age, model.Image, model.Description, model.Gender, ownerId);
+                model.Name, model.Image, model.Age, model.Location, model.Description, model.Gender);
 
             if (!success)
             {
                 return this.BadRequest();
             }
 
-            //this.TempData.AddSuccessMessage($"The cat {model.Name} was added successfully!");
+            this.TempData.AddSuccessMessage($"The cat {model.Name} was added successfully!");
 
-            return RedirectToAction("Adopted", "Cats", new { area = "" });
+            return RedirectToAction("Adoption", "Cats", new { area = "" });
         }
 
         public IActionResult Edit(int id)
@@ -140,5 +139,38 @@
             return RedirectToAction("Adopted", "Cats", new { area = "" });
         }
 
+        public IActionResult Requests()
+        {
+            var model = this.adoptionCats.Requested();
+
+            return this.View(model);
+        }
+
+        public IActionResult Give(int id)
+        {
+            var adoptionCat = this.adoptionCats.ById(id);
+
+            if (adoptionCat == null)
+            {
+                return this.NotFound();
+            }
+
+            if (User.Identity.Name != adoptionCat.Owner)
+            {
+                // user doesn't have the rights
+                return RedirectToAction("Adopted", "Cats", new { area = "" });
+            }
+
+            var success = this.adoptionCats.Give(id);
+
+            if (!success)
+            {
+                //error message
+               
+            }
+
+            //success message
+            return this.RedirectToAction(nameof(Manage));
+        }
     }
 }

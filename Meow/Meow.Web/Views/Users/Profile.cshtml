@@ -70,6 +70,7 @@
                         @if (this.Model.UserName == User.Identity.Name ||
                                 this.User.IsInRole(WebConstants.AdministratorRole))
                     {
+                        <!--todo - edit user - add route-->
                         <a asp-controller="Manage" asp-action="Index" data-original-title="Edit this user" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-edit"></i></a>
                         <a data-original-title="Remove this user" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-remove"></i></a>
                     }

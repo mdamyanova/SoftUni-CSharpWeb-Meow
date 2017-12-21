@@ -2,6 +2,7 @@
 {
     using Data;
     using Data.Models.Enums;
+    using Microsoft.AspNetCore.Http;
     using System.ComponentModel.DataAnnotations;
 
     public class HomeCatEditFormModel
@@ -14,8 +15,8 @@
         [Range(DataConstants.CatMinAge, DataConstants.CatMaxAge)]
         public int Age { get; set; }
 
-        [DataType(DataType.Upload)]
-        public byte[] Image { get; set; }
+        //[DataType(DataType.Upload)]
+        //public byte[] Image { get; set; }
 
         [MaxLength(DataConstants.CatDescriptionMaxLength)]
         public string Description { get; set; }

@@ -74,7 +74,7 @@
         }
 
         [Authorize]
-        public IActionResult EditAsync(int id)
+        public IActionResult Edit(int id)
         {        
             var homeCat = this.homeCats.ById(id);
 
@@ -83,17 +83,17 @@
                 return this.NotFound();
             }
 
-            if (User.Identity.Name != homeCat.Owner)
+            if (User.Identity.Name != homeCat.Owner 
+                && User.Identity.Name != WebConstants.AdministratorUsername)
             {
                 // user doesn't have the rights
                 return this.RedirectToAction(nameof(this.All));
             }
 
-            return this.View(new HomeCatEditFormModel
+            return this.View(new HomeCatFormModel
             {
                 Name = homeCat.Name,
                 Age = homeCat.Age,
-                Image = homeCat.Image,
                 Description = homeCat.Description,
                 Gender = homeCat.Gender
             });
@@ -115,8 +115,7 @@
                 return this.NotFound();
             }
 
-            this.homeCats.Edit(
-                id, model.Name, model.Age, model.Image, model.Description, model.Gender);
+            this.homeCats.Edit(id, model.Name, model.Age, model.Description, model.Image, model.Gender);
 
             return this.RedirectToAction(nameof(this.All));
         }
@@ -133,17 +132,17 @@
                 return this.NotFound();
             }
 
-            if (User.Identity.Name != homeCat.Owner)
+            if (User.Identity.Name != homeCat.Owner
+                && User.Identity.Name != WebConstants.AdministratorUsername)
             {
                 // user doesn't have the rights
                 return this.RedirectToAction(nameof(this.All));
             }
 
-            return this.View(new HomeCatEditFormModel
+            return this.View(new HomeCatFormModel
             {
                 Name = homeCat.Name,
                 Age = homeCat.Age,
-                Image = homeCat.Image,
                 Description = homeCat.Description,
                 Gender = homeCat.Gender
             });
@@ -186,7 +185,7 @@
             {
                 Name = adoptionCat.Name,
                 Age = adoptionCat.Age,
-                ImageUrl = adoptionCat.Image,
+                Image = adoptionCat.Image,
                 Description = adoptionCat.Description,
                 Gender = adoptionCat.Gender,
                 IsAdopted = adoptionCat.IsAdopted
@@ -194,10 +193,26 @@
         }
 
         [Authorize]
-        [HttpPost]
-        public IActionResult Adopt(int id, AdoptionCatDetailsViewModel model)
+        public new IActionResult Request(int id)
         {
-            return null;
+            return this.View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public new IActionResult Request(RequestAdoptionViewModel model)
+        {
+            var success = this.adoptionCats.Adopt(model.Id, model.Username);
+
+            if (!success)
+            {
+                //error
+            }
+
+            //success msg
+            this.TempData.AddSuccessMessage("Kitty is requested!!!!");
+
+            return this.View();
         }
     }
 }

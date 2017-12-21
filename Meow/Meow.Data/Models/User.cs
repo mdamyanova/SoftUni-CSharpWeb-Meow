@@ -21,6 +21,7 @@
         [Birthdate]
         public DateTime Birthdate { get; set; }
 
+        [Required]
         public byte[] ProfilePhoto { get; set; }
 
         public Gender Gender { get; set; }

@@ -52,7 +52,6 @@
 
                         if (adminUser == null)
                         {
-                            //todo: edit this
                             adminUser = new User
                             {
                                 Email = adminEmail,
@@ -65,7 +64,9 @@
                             };
 
                             await userManager.CreateAsync(adminUser, "admin11");
+
                             await userManager.AddToRoleAsync(adminUser, adminName);
+                            await userManager.AddToRoleAsync(adminUser, volunteerName);
                         }
                     })
                     .Wait();

@@ -1,6 +1,5 @@
-﻿@model HomeCatServiceModel
-@{
-    ViewData["Title"] = $"The sweet {this.Model.Name}";
+﻿@{
+    ViewData["Title"] = "Adopt";
 }
 
 <link rel="stylesheet" href="~/css/details.css">
@@ -39,23 +38,25 @@
                                     <tr>
                                         <td>Location:</td>
                                         <td>@this.Model.Location</td>
-                                    </tr>                                
+                                    </tr>
                                 </tbody>
                             </table>
-                            <a asp-controller="Users" asp-action="Profile" asp-route-id="@this.Model.OwnerId" class="btn btn-outline-success">Owner</a>       
+                            <a asp-controller="Users" asp-action="Profile" asp-route-username="@this.Model.Owner" class="btn btn-outline-success">Owner</a>
                         </div>
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <!--todo - adoption cats-->
-                    <a data-original-title="Broadcast Message" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-envelope"></i></a>
-                    <span class="pull-right">
-                        @if ((this.Model.Owner == User.Identity.Name) ||
-                              this.User.IsInRole(WebConstants.AdministratorRole))
-                        {
-                            <a asp-action="Edit"  asp-route-id="@this.Model.Id" data-original-title="Edit" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-edit"></i></a>
-                            <a asp-action="Delete" asp-route-id="@this.Model.Id" data-original-title="Remove" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-remove"></i></a>
-                        }
+                     @if (this.Model.IsRequested == false)
+                     {
+                         <a asp-area="" asp-controller="Cats" asp-action="Request" asp-route-id="@this.Model.Id" data-original-title="Request Adoption" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-heart"></i></a>
+                     }
+                     <span class="pull-right">
+                         @if ((this.Model.Owner == User.Identity.Name) ||
+                            this.User.IsInRole(WebConstants.AdministratorRole))
+                         {
+                            <a asp-area="Volunteer" asp-controller="Cats" asp-action="Edit" asp-route-id="@this.Model.Id" data-original-title="Edit" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a asp-area="Volunteer" asp-controller="Cats" asp-action="Delete" asp-route-id="@this.Model.Id" data-original-title="Remove" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-remove"></i></a>
+                         }
                     </span>
                 </div>
             </div>

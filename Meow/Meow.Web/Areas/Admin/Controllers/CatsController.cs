@@ -7,8 +7,7 @@
     {
         private readonly IAdminCatService cats;
 
-        public CatsController(
-            IAdminCatService cats)
+        public CatsController(IAdminCatService cats)
         {
             this.cats = cats;
         }

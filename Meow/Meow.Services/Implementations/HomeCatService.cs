@@ -14,7 +14,7 @@
     public class HomeCatService : IHomeCatService
     {
         private MeowDbContext db;
-
+     
         public HomeCatService(MeowDbContext db)
         {
             this.db = db;
@@ -38,7 +38,7 @@
             return this.db.HomeCats.Any(c => c.Id == id);
         }
 
-        public bool Add(string name, IFormFile image, int age,  string description, Gender gender, string ownerId)
+        public bool Add(string name, IFormFile image, int age, string description, Gender gender, string ownerId)
         {
             if (!this.db.Users.Any(u => u.Id == ownerId))
             {
@@ -79,7 +79,7 @@
             return true;
         } 
 
-        public void Edit(int id, string name, int age, IFormFile image, string description, Gender gender)
+        public void Edit(int id, string name, int age, string description, IFormFile image, Gender gender)
         {
             var homeCat = this.db.HomeCats.Find(id);
 
@@ -87,12 +87,18 @@
             {
                 return;
             }
+            var img = new byte[] { };
 
             // smarter look pls 
+            using (var memoryStream = new MemoryStream())
+            {
+                image.CopyToAsync(memoryStream);
+                img =  memoryStream.ToArray();
+            }
 
             homeCat.Name = name;
             homeCat.Age = age;
-            //todo - convert image to byte arr
+            homeCat.Image = img;
             homeCat.Description = description;
             homeCat.Gender = gender;
 

@@ -2,6 +2,7 @@
 {
     using Data;
     using Data.Models.Enums;
+    using Meow.Data.Validation;
     using Microsoft.AspNetCore.Http;
     using System.ComponentModel.DataAnnotations;
 
@@ -20,6 +21,9 @@
         [Required]
         [DataType(DataType.Upload)]
         public IFormFile Image { get; set; }
+
+        [Location]
+        public string Location { get; set; }
 
         [MaxLength(DataConstants.CatDescriptionMaxLength)]
         public string Description { get; set; }

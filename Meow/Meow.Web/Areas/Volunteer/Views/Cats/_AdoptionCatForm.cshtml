@@ -1,4 +1,4 @@
-﻿@model HomeCatFormModel
+﻿@model AdoptionCatFormModel
 @{
     ViewData["Title"] = "Home Cat";
 }
@@ -19,7 +19,10 @@
 
         <input asp-for="Image" type="file" class="form-control" />
 
-        <input asp-for="Description" class="form-control"placeholder="description" />
+        <input asp-for="Location" class="form-control" placeholder="location" />
+        <span asp-validation-for="Location" class="text-danger"></span>
+
+        <input asp-for="Description" class="form-control" placeholder="description" />
         <span asp-validation-for="Description" class="text-danger"></span>
 
         <select asp-for="Gender" asp-items="@Html.GetEnumSelectList<Gender>()"></select>

@@ -7,7 +7,6 @@
 
     public class HomeCatServiceModel : IMapFrom<HomeCat>, IHaveCustomMapping
     {
-        // is it a good idea?
         public int Id { get; set; }
 
         public string Name { get; set; }

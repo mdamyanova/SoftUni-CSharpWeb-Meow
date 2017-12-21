@@ -13,10 +13,18 @@
 
         bool Exists(int id);
 
-        bool Add(string name, int age, IFormFile image, string description, Gender gender, string ownerId);
+        bool Add(string name, IFormFile image, int age, string location, string description, Gender gender);
 
         void Edit(int id, string name, int age, IFormFile image, string description, Gender gender, string ownerId);
 
         bool Remove(int id);
+
+        IEnumerable<AdoptionCatListingServiceModel> Requested();
+
+        bool Adopt(int id, string username);
+
+        bool Give(int id);
+
+
     }
 }

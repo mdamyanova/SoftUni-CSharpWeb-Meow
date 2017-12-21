@@ -7,8 +7,8 @@
     using Microsoft.AspNetCore.Mvc;
     using System.Linq;
     using Microsoft.AspNetCore.Mvc.Rendering;
-    using Microsoft.EntityFrameworkCore;
     using Meow.Web.Areas.Admin.Models;
+    using Meow.Web.Infrastructure.Extensions;
 
     public class UsersController : BaseAdminController
     {
@@ -65,7 +65,7 @@
 
             await this.userManager.AddToRoleAsync(user, model.Role);
 
-            //TempData.AddSuccessMessage($"User {user.UserName} successfully added to the {model.Role} role.");
+            TempData.AddSuccessMessage($"User {user.UserName} successfully added to the {model.Role} role.");
             return RedirectToAction(nameof(Manage));
         }
     }
