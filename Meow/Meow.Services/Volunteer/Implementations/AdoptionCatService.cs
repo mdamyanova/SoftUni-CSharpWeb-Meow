@@ -2,15 +2,15 @@
 {
     using AutoMapper.QueryableExtensions;
     using Contracts;
+    using Core;
     using Data;
+    using Data.Models;
+    using Data.Models.Enums;
+    using Microsoft.AspNetCore.Http;
     using Models;
     using System.Collections.Generic;
-    using System.Linq;
-    using Meow.Data.Models.Enums;
-    using Microsoft.AspNetCore.Http;
-    using Meow.Core;
-    using Meow.Data.Models;
     using System.IO;
+    using System.Linq;
 
     public class AdoptionCatService : IAdoptionCatService
     {
@@ -50,7 +50,7 @@
                 cat.Image = memoryStream.ToArray();
             }
 
-            this.db.Add(cat);
+            this.db.AdoptionCats.Add(cat);
 
             this.db.SaveChanges();
 
@@ -72,9 +72,9 @@
 
         public void Edit(int id, string name, int age, IFormFile image, string description, Gender gender, string ownerId)
         {
-            var homeCat = this.db.HomeCats.Find(id);
+            var cat = this.db.AdoptionCats.Find(id);
 
-            if (homeCat == null)
+            if (cat == null)
             {
                 return;
             }
@@ -87,11 +87,11 @@
                 img = memoryStream.ToArray();
             }
 
-            homeCat.Name = name;
-            homeCat.Age = age;
-            homeCat.Image = img;
-            homeCat.Description = description;
-            homeCat.Gender = gender;
+            cat.Name = name;
+            cat.Age = age;
+            cat.Image = img;
+            cat.Description = description;
+            cat.Gender = gender;
 
             this.db.SaveChanges();
         }
@@ -101,21 +101,15 @@
             return this.db.AdoptionCats.Any(c => c.Id == id);
         }
 
-        public bool Give(int id, string requestedOwnerId)
+        public bool Give(int id)
         {
             if (!this.db.AdoptionCats.Any(c => c.Id == id))
             {
                 return false;
             }
 
-            if (!this.db.Users.Any(u => u.Id == requestedOwnerId))
-            {
-                return false;
-            }
-
-
             var cat = this.db.AdoptionCats.FirstOrDefault(c => c.Id == id);
-            var owner = this.db.Users.FirstOrDefault(u => u.Id == requestedOwnerId);
+            var owner = this.db.Users.FirstOrDefault(u => u.Id == cat.RequestedOwnerId);
 
             cat.IsRequested = false;
             cat.IsAdopted = true;
@@ -128,14 +122,14 @@
 
         public bool Remove(int id)
         {
-            var adoptionCat = this.db.AdoptionCats.Find(id);
+            var cat = this.db.AdoptionCats.Find(id);
 
-            if (adoptionCat == null)
+            if (cat == null)
             {
                 return false;
             }
 
-            this.db.AdoptionCats.Remove(adoptionCat);
+            this.db.AdoptionCats.Remove(cat);
             this.db.SaveChanges();
 
             return true;
@@ -153,10 +147,10 @@
             var cat = this.db.AdoptionCats.FirstOrDefault(c => c.Id == id);
             var user = this.db.Users.FirstOrDefault(u => u.UserName == username);
 
-            if (cat == null || user == null)
+            if (cat == null || user == null || cat.Owner.UserName == username)
             {
                 return false;
-            }
+            } 
 
             cat.IsRequested = true;
             cat.RequestedOwnerId = user.Id;
@@ -164,11 +158,6 @@
             this.db.SaveChanges();
 
             return true;
-        }
-
-        public bool Give(int id)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

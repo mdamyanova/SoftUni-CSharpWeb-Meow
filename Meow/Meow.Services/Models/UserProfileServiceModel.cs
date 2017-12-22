@@ -2,10 +2,10 @@
 {
     using Core.Mapping;
     using Data.Models;
-    using Meow.Data.Models.Enums;
-    using Meow.Services.Volunteer.Models;
+    using Data.Models.Enums;
     using System;
     using System.Collections.Generic;
+    using Volunteer.Models;
 
     public class UserProfileServiceModel : IMapFrom<User>
     {

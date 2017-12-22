@@ -3,49 +3,43 @@
 }
 
 <h2>Manage</h2>
-@if (this.Model.Any())
-{
-    <h1>There's nothing here!</h1>
-}
-else
-{
-    <table class="table table-bordered table-hover">
-        <thead>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Owner
+            </th>
+            <th>
+                Details
+            </th>
+            <th>
+                Operations
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cat in this.Model)
+        {
             <tr>
                 <th>
-                    Name
+                    @cat.Name
                 </th>
                 <th>
-                    Owner
+                    @cat.Owner
                 </th>
                 <th>
-                    Details
+                    <a class="btn btn-sm btn-default" asp-area="" asp-controller="Cats" asp-action="Adopt" asp-route-id="@cat.Id">Details</a>
                 </th>
                 <th>
-                    Operations
+                    <!--todo-->
+                    <a class="btn btn-sm btn-default" asp-area="Volunteer" asp-controller="Cats" asp-action="Edit" asp-route-id="@cat.Id">Edit</a>
+                    <a class="btn btn-sm btn-default" asp-area="Volunteer" asp-controller="Cats" asp-action="Delete" asp-route-id="@cat.Id">Delete</a>
                 </th>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var cat in this.Model)
-            {
-                <tr>
-                    <th>
-                        @cat.Name
-                    </th>
-                    <th>
-                        @cat.Owner
-                    </th>
-                    <th>
-                        <a class="btn btn-sm btn-default" asp-area="" asp-controller="Cats" asp-action="Adopt" asp-route-id="@cat.Id">Details</a>
-                    </th>
-                    <th>
-                        <!--todo-->
-                        <a class="btn btn-sm btn-default" asp-area="Volunteer" asp-controller="Cats" asp-action="Edit" asp-route-id="@cat.Id">Edit</a>
-                        <a class="btn btn-sm btn-default" asp-area="Volunteer" asp-controller="Cats" asp-action="Delete" asp-route-id="@cat.Id">Delete</a>
-                    </th>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+        }
+    </tbody>
+</table>

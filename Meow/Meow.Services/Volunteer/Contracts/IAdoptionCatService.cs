@@ -24,7 +24,5 @@
         bool Adopt(int id, string username);
 
         bool Give(int id);
-
-
     }
 }

@@ -1,7 +1,7 @@
 ﻿namespace Meow.Data.Models
 {
-    using Models.Enums;
     using Microsoft.AspNetCore.Identity;
+    using Models.Enums;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;

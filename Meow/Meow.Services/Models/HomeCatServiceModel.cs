@@ -3,7 +3,7 @@
     using AutoMapper;
     using Core.Mapping;
     using Data.Models;
-    using Meow.Data.Models.Enums;
+    using Data.Models.Enums;
 
     public class HomeCatServiceModel : IMapFrom<HomeCat>, IHaveCustomMapping
     {

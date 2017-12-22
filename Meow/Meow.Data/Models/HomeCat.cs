@@ -1,8 +1,8 @@
 ﻿namespace Meow.Data.Models
 {
     using Enums;
-    using Validation;
     using System.ComponentModel.DataAnnotations;
+    using Validation;
 
     public class HomeCat
     {

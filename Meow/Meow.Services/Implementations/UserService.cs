@@ -3,12 +3,12 @@
     using AutoMapper.QueryableExtensions;
     using Contracts;
     using Data;
-    using Models;
-    using System.Linq;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
     using Microsoft.EntityFrameworkCore;
-    using Meow.Services.Volunteer.Models;
+    using Models;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Volunteer.Models;
 
     public class UserService : IUserService
     {

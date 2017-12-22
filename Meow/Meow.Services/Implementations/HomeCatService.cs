@@ -56,7 +56,7 @@
                 return false;
             }
 
-            var homeCat = new HomeCat
+            var cat = new HomeCat
             {
                 Name = name,
                 Age = age,              
@@ -69,10 +69,10 @@
             using (var memoryStream = new MemoryStream())
             {
                 image.CopyToAsync(memoryStream);
-                homeCat.Image = memoryStream.ToArray();
+                cat.Image = memoryStream.ToArray();
             }
 
-            this.db.Add(homeCat);
+            this.db.Add(cat);
 
             this.db.SaveChanges();
 
@@ -81,9 +81,9 @@
 
         public void Edit(int id, string name, int age, string description, IFormFile image, Gender gender)
         {
-            var homeCat = this.db.HomeCats.Find(id);
+            var cat = this.db.HomeCats.Find(id);
 
-            if (homeCat == null)
+            if (cat == null)
             {
                 return;
             }
@@ -96,25 +96,25 @@
                 img =  memoryStream.ToArray();
             }
 
-            homeCat.Name = name;
-            homeCat.Age = age;
-            homeCat.Image = img;
-            homeCat.Description = description;
-            homeCat.Gender = gender;
+            cat.Name = name;
+            cat.Age = age;
+            cat.Image = img;
+            cat.Description = description;
+            cat.Gender = gender;
 
             this.db.SaveChanges();
         }
 
         public bool Remove(int id)
         {
-            var homeCat = this.db.HomeCats.Find(id);
+            var cat = this.db.HomeCats.Find(id);
 
-            if (homeCat == null)
+            if (cat == null)
             {
                 return false;
             }
 
-            this.db.HomeCats.Remove(homeCat);
+            this.db.HomeCats.Remove(cat);
             this.db.SaveChanges();
 
             return true;

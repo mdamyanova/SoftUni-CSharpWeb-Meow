@@ -4,57 +4,50 @@
 
 <h2>Manage</h2>
 
-@if (this.Model.Any())
-{
-    <h1>There's nothing here!</h1>
-}
-else
-{
-    <table class="table table-bordered table-hover">
-        <thead>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                E-mail
+            </th>
+            <th>
+                Roles
+            </th>
+            <th>
+                Details
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in this.Model.Users)
+        {
             <tr>
                 <th>
-                    Name
+                    @user.Username
                 </th>
                 <th>
-                    E-mail
+                    @user.Email
                 </th>
                 <th>
-                    Roles
+                    <form asp-action="AddToRole" method="post">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <input type="hidden" name="UserId" value="@user.Id" />
+                                <select name="Role" asp-items="this.Model.Roles" class="form-control"></select>
+                            </div>
+                            <div class="col-md-3">
+                                <input class="btn btn-sm btn-default" type="submit" value="Add To Role" />
+                            </div>
+                        </div>
+                    </form>
                 </th>
                 <th>
-                    Details
+                    <a class="btn btn-sm btn-default" asp-area="" asp-controller="Users" asp-action="Profile" asp-route-username="@user.Username">View Profile</a>
                 </th>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var user in this.Model.Users)
-            {
-                <tr>
-                    <th>
-                        @user.Username
-                    </th>
-                    <th>
-                        @user.Email
-                    </th>
-                    <th>
-                        <form asp-action="AddToRole" method="post">
-                            <div class="row">
-                                <div class="col-md-9">
-                                    <input type="hidden" name="UserId" value="@user.Id" />
-                                    <select name="Role" asp-items="this.Model.Roles" class="form-control"></select>
-                                </div>
-                                <div class="col-md-3">
-                                    <input class="btn btn-sm btn-default" type="submit" value="Add To Role" />
-                                </div>
-                            </div>
-                        </form>
-                    </th>
-                    <th>
-                        <a class="btn btn-sm btn-default" asp-area="" asp-controller="Users" asp-action="Profile" asp-route-username="@user.Username">View Profile</a>
-                    </th>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+        }
+    </tbody>
+</table>
