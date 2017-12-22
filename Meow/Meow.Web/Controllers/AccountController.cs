@@ -1,6 +1,6 @@
 ﻿namespace Meow.Web.Controllers
 {
-    using Meow.Data.Models;
+    using Data.Models;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;

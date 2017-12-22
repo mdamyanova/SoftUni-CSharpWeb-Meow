@@ -19,19 +19,19 @@
 
                 <input asp-for="Password" class="form-control" placeholder="password" />
                 <span asp-validation-for="Password" class="text-danger"></span>
-                <div class="checkbox">
+                @*<div class="checkbox">
                     <label asp-for="RememberMe">
                         <input asp-for="RememberMe" />
                         @Html.DisplayNameFor(m => m.RememberMe)
                     </label>
-                    </div>
-                    <div class="form-group">
-                        <p>
-                            <a asp-action="ForgotPassword">Forgot your password?</a>
-                        </p>
-                        <p>
-                            <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register as a new user?</a>
-                        </p>
+                </div>*@
+                <div class="form-group">
+                    <p>
+                        <a asp-action="ForgotPassword">Forgot your password?</a>
+                    </p>
+                    <p>
+                        <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register as a new user?</a>
+                    </p>
                 </div>
                 <button type="submit" class="login-button">Log in</button>
             </form>   

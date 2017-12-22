@@ -2,7 +2,7 @@
 {
     using Data;
     using Data.Models.Enums;
-    using Meow.Data.Validation;
+    using Data.Validation;
     using Microsoft.AspNetCore.Http;
     using System.ComponentModel.DataAnnotations;
 

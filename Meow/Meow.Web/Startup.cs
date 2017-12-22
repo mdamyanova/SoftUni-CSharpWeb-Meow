@@ -46,9 +46,11 @@
             {
                 options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
             });
+
+            services.AddTransient<Seeder>();
         }
-  
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, Seeder seeder)
         {
             app.UseDatabaseMigration();
 
@@ -77,6 +79,8 @@
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            seeder.Seed().Wait();
         }
     }
 }

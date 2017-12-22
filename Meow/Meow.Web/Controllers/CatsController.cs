@@ -1,5 +1,6 @@
 ﻿namespace Meow.Web.Controllers
 {
+    using Core;
     using Data.Models;
     using Infrastructure.Extensions;
     using Meow.Web.Models.Cats;
@@ -7,8 +8,8 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Models;
-    using Services.Volunteer.Contracts;
     using Services.Contracts;
+    using Services.Volunteer.Contracts;
 
     public class CatsController : Controller
     {
@@ -35,9 +36,7 @@
         public IActionResult Adoption()
         {
             var model = this.adoptionCats.All();
-
-            // if model is empty show message no cats ? 
-
+           
             return this.View(model);
         }
 
@@ -54,8 +53,8 @@
             return this.View();
         }
 
-        [HttpPost]
         [Authorize]
+        [HttpPost]
         public IActionResult Add(HomeCatFormModel model)
         {
             var ownerId = this.userManager.GetUserId(User);
@@ -76,14 +75,14 @@
         [Authorize]
         public IActionResult Edit(int id)
         {        
-            var homeCat = this.homeCats.ById(id);
+            var cat = this.homeCats.ById(id);
 
-            if (homeCat == null)
+            if (cat == null)
             {
                 return this.NotFound();
             }
 
-            if (User.Identity.Name != homeCat.Owner 
+            if (User.Identity.Name != cat.Owner 
                 && User.Identity.Name != WebConstants.AdministratorUsername)
             {
                 // user doesn't have the rights
@@ -92,10 +91,10 @@
 
             return this.View(new HomeCatFormModel
             {
-                Name = homeCat.Name,
-                Age = homeCat.Age,
-                Description = homeCat.Description,
-                Gender = homeCat.Gender
+                Name = cat.Name,
+                Age = cat.Age,
+                Description = cat.Description,
+                Gender = cat.Gender
             });
         }
 
@@ -108,9 +107,9 @@
                 return this.View(model);
             }
 
-            var homeCatExists = this.homeCats.Exists(id);
+            var catExists = this.homeCats.Exists(id);
 
-            if (!homeCatExists)
+            if (!catExists)
             {
                 return this.NotFound();
             }
@@ -125,14 +124,14 @@
         {
             // todo: check if user has rights to delete
 
-            var homeCat = this.homeCats.ById(id);
+            var cat = this.homeCats.ById(id);
 
-            if (homeCat == null)
+            if (cat == null)
             {
                 return this.NotFound();
             }
 
-            if (User.Identity.Name != homeCat.Owner
+            if (User.Identity.Name != cat.Owner
                 && User.Identity.Name != WebConstants.AdministratorUsername)
             {
                 // user doesn't have the rights
@@ -141,10 +140,10 @@
 
             return this.View(new HomeCatFormModel
             {
-                Name = homeCat.Name,
-                Age = homeCat.Age,
-                Description = homeCat.Description,
-                Gender = homeCat.Gender
+                Name = cat.Name,
+                Age = cat.Age,
+                Description = cat.Description,
+                Gender = cat.Gender
             });
         }
 
@@ -157,9 +156,9 @@
                 return this.View(model);
             }
 
-            var homeCatExists = this.homeCats.Exists(id);
+            var catExists = this.homeCats.Exists(id);
 
-            if (!homeCatExists)
+            if (!catExists)
             {
                 return this.NotFound();
             }
@@ -174,45 +173,69 @@
         [Authorize]
         public IActionResult Adopt(int id)
         {
-            var adoptionCat = this.adoptionCats.ById(id);
+            var cat = this.adoptionCats.ById(id);
 
-            if (adoptionCat == null)
+            if (cat == null)
             {
                 return this.NotFound();
             }
 
             return this.View(new AdoptionCatDetailsViewModel
             {
-                Name = adoptionCat.Name,
-                Age = adoptionCat.Age,
-                Image = adoptionCat.Image,
-                Description = adoptionCat.Description,
-                Gender = adoptionCat.Gender,
-                IsAdopted = adoptionCat.IsAdopted
+                Id = cat.Id,
+                Name = cat.Name,
+                Age = cat.Age,
+                Image = cat.Image,
+                Description = cat.Description,
+                Gender = cat.Gender,
+                Owner = cat.Owner,
+                IsAdopted = cat.IsAdopted
             });
         }
 
         [Authorize]
         public new IActionResult Request(int id)
         {
-            return this.View();
+            var cat = this.adoptionCats.ById(id);
+
+            if (cat == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.View(new RequestAdoptionViewModel
+            {
+               Name = cat.Name,
+               Username = User.Identity.Name
+            });
         }
 
         [Authorize]
         [HttpPost]
-        public new IActionResult Request(RequestAdoptionViewModel model)
+        public new IActionResult Request(int id, RequestAdoptionViewModel model)
         {
-            var success = this.adoptionCats.Adopt(model.Id, model.Username);
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
+            var catExists = this.adoptionCats.Exists(id);
+
+            if (!catExists)
+            {
+                return this.NotFound();
+            }
+
+            var success = this.adoptionCats.Adopt(id, User.Identity.Name);
 
             if (!success)
             {
-                //error
+                return this.BadRequest();
             }
 
-            //success msg
-            this.TempData.AddSuccessMessage("Kitty is requested!!!!");
+            this.TempData.AddSuccessMessage($"The cat {model.Name} was requested for adoption successfully!");
 
-            return this.View();
+            return this.RedirectToAction(nameof(Adoption));
         }
     }
 }

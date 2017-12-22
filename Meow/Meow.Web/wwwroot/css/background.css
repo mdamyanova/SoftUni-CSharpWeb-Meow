@@ -6,7 +6,7 @@
     color: #000000;
 }
 
-body {
+.body {
     position: absolute;
     top: -20px;
     left: -20px;
@@ -16,6 +16,9 @@ body {
     height: auto;
     background-image: url(../images/weird-girl.jpg);
     background-size: cover;
-    background-repeat: no-repeat;
     z-index: 0;
+}
+
+.text-on-form {
+    color: white;
 }

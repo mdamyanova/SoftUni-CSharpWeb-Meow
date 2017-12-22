@@ -1,7 +1,7 @@
 ﻿namespace Meow.Web.Areas.Admin.Controllers
 {
-    using Services.Admin.Contracts;
     using Microsoft.AspNetCore.Mvc;
+    using Services.Admin.Contracts;
 
     public class CatsController : BaseAdminController
     {

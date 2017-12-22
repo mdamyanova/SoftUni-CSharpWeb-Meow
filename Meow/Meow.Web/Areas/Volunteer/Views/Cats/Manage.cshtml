@@ -1,10 +1,15 @@
 ﻿@{
-   ViewData["Title"] = "Manage";
+    ViewData["Title"] = "Manage";
 }
 
 <h2>Manage</h2>
-
-<table class="table table-bordered table-hover">
+@if (this.Model.Any())
+{
+    <h1>There's nothing here!</h1>
+}
+else
+{
+    <table class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>
@@ -42,4 +47,5 @@
                 </tr>
             }
         </tbody>
-</table>
+    </table>
+}

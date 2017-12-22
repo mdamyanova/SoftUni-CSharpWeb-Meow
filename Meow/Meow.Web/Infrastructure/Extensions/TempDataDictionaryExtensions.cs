@@ -1,5 +1,6 @@
 ﻿namespace Meow.Web.Infrastructure.Extensions
 {
+    using Core;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
     public static class TempDataDictionaryExtensions

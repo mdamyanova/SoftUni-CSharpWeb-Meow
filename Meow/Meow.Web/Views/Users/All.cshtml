@@ -1,9 +1,6 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "All";
 }
-
-<h2>All</h2>
 
 <div class="container">
 
@@ -16,7 +13,7 @@
             <div class="col-lg-3 col-md-4 col-xs-6 hovereffect">
                 <a asp-action="Profile" asp-route-username="@user.UserName" class="d-block mb-4 h-100">
                     @{
-                        var imgSrc = user.ProfilePhoto != null ? $"" : "../images/default-profile.png";
+                        var imgSrc = user.ProfilePhoto != null ? ImageExtensions.ByteArrayToImage(user.ProfilePhoto) : "../images/default-profile.png";
                     }
                     <img class="img-fluid img-thumbnail img-cat img-circle" src="@imgSrc" alt="@user.Name">
                 </a>

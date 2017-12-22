@@ -1,11 +1,11 @@
 ﻿namespace Meow.Web.Models.Account
 {
     using Data;
+    using Data.Models.Enums;
     using Data.Validation;
+    using Microsoft.AspNetCore.Http;
     using System;
     using System.ComponentModel.DataAnnotations;
-    using Microsoft.AspNetCore.Http;
-    using Meow.Data.Models.Enums;
 
     public class RegisterViewModel
     {

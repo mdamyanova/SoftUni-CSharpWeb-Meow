@@ -1,7 +1,7 @@
-﻿using Meow.Data.Models.Enums;
-
-namespace Meow.Web.Models.Cats
+﻿namespace Meow.Web.Models.Cats
 {
+    using Data.Models.Enums;
+
     public class HomeCatDetailsViewModel
     {
         public string Name { get; set; }

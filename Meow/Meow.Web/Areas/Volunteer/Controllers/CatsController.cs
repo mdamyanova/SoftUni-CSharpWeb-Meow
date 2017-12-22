@@ -1,7 +1,7 @@
 ﻿namespace Meow.Web.Areas.Volunteer.Controllers
 {
     using Data.Models;
-    using Meow.Web.Infrastructure.Extensions;
+    using Infrastructure.Extensions;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Models;
@@ -48,14 +48,14 @@
 
         public IActionResult Edit(int id)
         {
-            var adoptionCat = this.adoptionCats.ById(id);
+            var cat = this.adoptionCats.ById(id);
 
-            if (adoptionCat == null)
+            if (cat == null)
             {
                 return this.NotFound();
             }
 
-            if (User.Identity.Name != adoptionCat.Owner)
+            if (User.Identity.Name != cat.Owner)
             {
                 // user doesn't have the rights
                 return RedirectToAction("Adopted", "Cats", new { area = "" });
@@ -63,10 +63,10 @@
 
             return this.View(new AdoptionCatFormModel
             {
-                Name = adoptionCat.Name,
-                Age = adoptionCat.Age,
-                Description = adoptionCat.Description,
-                Gender = adoptionCat.Gender
+                Name = cat.Name,
+                Age = cat.Age,
+                Description = cat.Description,
+                Gender = cat.Gender
             });
         }
 
@@ -78,9 +78,9 @@
                 return this.View(model);
             }
 
-            var adoptionCatExists = this.adoptionCats.Exists(id);
+            var catExists = this.adoptionCats.Exists(id);
 
-            if (!adoptionCatExists)
+            if (!catExists)
             {
                 return this.NotFound();
             }
@@ -95,14 +95,14 @@
         {
             // todo: check if user has rights to delete
 
-            var adoptionCat = this.adoptionCats.ById(id);
+            var cat = this.adoptionCats.ById(id);
 
-            if (adoptionCat == null)
+            if (cat == null)
             {
                 return this.NotFound();
             }
 
-            if (User.Identity.Name != adoptionCat.Owner)
+            if (User.Identity.Name != cat.Owner)
             {
                 // user doesn't have the rights
                 return RedirectToAction("Adopted", "Cats", new { area = "" });
@@ -110,11 +110,10 @@
 
             return this.View(new AdoptionCatFormModel
             {
-                Name = adoptionCat.Name,
-                Age = adoptionCat.Age,
-                
-                Description = adoptionCat.Description,
-                Gender = adoptionCat.Gender
+                Name = cat.Name,
+                Age = cat.Age,    
+                Description = cat.Description,
+                Gender = cat.Gender
             });
         }
 
@@ -126,9 +125,9 @@
                 return this.View(model);
             }
 
-            var adoptionCatExists = this.adoptionCats.Exists(id);
+            var catExists = this.adoptionCats.Exists(id);
 
-            if (!adoptionCatExists)
+            if (!catExists)
             {
                 return this.NotFound();
             }
@@ -148,14 +147,14 @@
 
         public IActionResult Give(int id)
         {
-            var adoptionCat = this.adoptionCats.ById(id);
+            var cat = this.adoptionCats.ById(id);
 
-            if (adoptionCat == null)
+            if (cat == null)
             {
                 return this.NotFound();
             }
 
-            if (User.Identity.Name != adoptionCat.Owner)
+            if (User.Identity.Name != cat.Owner)
             {
                 // user doesn't have the rights
                 return RedirectToAction("Adopted", "Cats", new { area = "" });

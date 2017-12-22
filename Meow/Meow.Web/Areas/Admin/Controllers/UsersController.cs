@@ -1,14 +1,14 @@
 ﻿namespace Meow.Web.Areas.Admin.Controllers
 {
+    using Data.Models;
+    using Infrastructure.Extensions;
     using Microsoft.AspNetCore.Identity;
-    using Meow.Services.Contracts;
-    using Meow.Data.Models;
-    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
-    using System.Linq;
     using Microsoft.AspNetCore.Mvc.Rendering;
-    using Meow.Web.Areas.Admin.Models;
-    using Meow.Web.Infrastructure.Extensions;
+    using Models;
+    using Services.Contracts;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     public class UsersController : BaseAdminController
     {

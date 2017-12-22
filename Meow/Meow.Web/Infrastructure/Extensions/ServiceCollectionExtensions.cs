@@ -1,7 +1,7 @@
 ﻿namespace Meow.Web.Infrastructure.Extensions
 {
-    using Meow.Services;
     using Microsoft.Extensions.DependencyInjection;
+    using Services;
     using System.Linq;
     using System.Reflection;
 
