@@ -3,20 +3,13 @@ Meow is a cute, friendly web platform for cats and their future owners. In Meow 
 
 ## General Requirements
 The application is implemented using **ASP.NET Core framework**.
--	Web Pages (views) – (count)
--	Entity Models – (count)
--	Controllers – (count)
 Using Visual Studio 2017
 -	View Engine for generating the UI – **Razor**
 -	Using sections and partial views, editor and display templates
-- JavaScript  - Front-end *todo*
 - Database back-end – **Microsoft SQL Server**
 - Database access – **Entity Framework Core**
-- MVC Areas – area for administration
-- Theme – *todo*
+- MVC Areas – area for administration and volunteers
 - Managing users and roles – **ASP.NET Identity System**
-- AJAX ? *todo*
-- Unit tests – I really hope to have time for this. *todo*
 - Error handling and data validation
 - HTML crazy stuff (escaping)
 - **Dependency Injection**
@@ -40,13 +33,14 @@ Best practices for Object-oriented design and High-quality code
 In this cat database we have the following tables and relations 
 
 Cats 
-- Name, ImageUrl, Description, Location, information if it's adopted, Gender
+- Home Cat - Name, Age, Image, Description, Location, Gender, Owner
+- Adoption Cat -  Name, Age, Image, Description, Location, Gender, IsAdopted, IsRequested, RequestedOwnerId, Owner
 
 Users 
-- the default ASP.NET Identity System + Name, Birthdate
+- the default ASP.NET Identity System + Name, Location, Birthdate, Profile Photo, Gender, Home Cats, Adopted Cats
 
 Relations 
-- one cat can have only one owner, and one owner can have many cats adopted
+- one cat can have only one owner, and one owner can have many home and adopted cats
 
 ## Business Logic
 Anonymous users can: 
@@ -58,14 +52,13 @@ Logged in users can:
 -	Logout
 -	Ask for adoption
 -	View users profiles
+- View cats details
 -	Edit their profile
 
 Volunteers can: 
 - View kitties for adoption and add, edit, delete them
-- Move kitty from for adoption to is adopted
+- Move kitty from for adoption to adopted
 
 Administrators can:
--	View admin panel
-  		- admin panel consists list of users, all kitties, when they can manage them
+-	Manage users, all kitties
 -	Edit kitty profile, set if it’s adopted
--	Very bonus thing: users can send message to admin with founded kitties. This is too deep for now.  
