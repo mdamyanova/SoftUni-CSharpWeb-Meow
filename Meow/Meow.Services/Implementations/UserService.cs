@@ -37,11 +37,11 @@
                 .ProjectTo<UserProfileServiceModel>()
                 .FirstOrDefault();
 
-        public async Task<UserProfileServiceModel> ProfileAsync(string id)
+        public async Task<UserProfileServiceModel> ProfileAsync(string id, string role)
              => await this.db
                     .Users
                     .Where(u => u.Id == id)
-                    .ProjectTo<UserProfileServiceModel>(new { userId = id })
+                    .ProjectTo<UserProfileServiceModel>(new { userId = id, UserRole = role })
                     .FirstOrDefaultAsync();
 
         public async Task<IEnumerable<HomeCatListingServiceModel>> HomeCatsAsync(string id)

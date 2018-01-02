@@ -21,6 +21,8 @@
 
         public string Email { get; set; }
 
+        public string UserRole { get; set; }
+
         public IEnumerable<HomeCatServiceModel> HomeCats { get; set; }
 
         public IEnumerable<AdoptionCatListingServiceModel> AdoptedCats { get; set; }

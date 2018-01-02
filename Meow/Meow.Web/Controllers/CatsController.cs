@@ -25,6 +25,7 @@
         }
 
         // all home cats
+        [Authorize]
         public IActionResult All()
         {
             var model = this.homeCats.All();
@@ -138,18 +139,16 @@
                 return this.RedirectToAction(nameof(this.All));
             }
 
-            return this.View(new HomeCatFormModel
+            return this.View(new HomeCatDeleteFormModel
             {
                 Name = cat.Name,
-                Age = cat.Age,
-                Description = cat.Description,
-                Gender = cat.Gender
+                Age = cat.Age
             });
         }
 
         [Authorize]
         [HttpPost]
-        public IActionResult Delete(int id, HomeCatFormModel model)
+        public IActionResult Delete(int id, HomeCatDeleteFormModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -164,8 +163,6 @@
             }
 
             var result = this.homeCats.Remove(id);
-
-            // todo
 
             return this.RedirectToAction(nameof(this.All));
         }
@@ -187,6 +184,7 @@
                 Age = cat.Age,
                 Image = cat.Image,
                 Description = cat.Description,
+                Location = cat.Location,
                 Gender = cat.Gender,
                 Owner = cat.Owner,
                 IsAdopted = cat.IsAdopted

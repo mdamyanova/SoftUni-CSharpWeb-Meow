@@ -7,11 +7,14 @@
 <div class="container">
 
     <h1 class="my-4 text-center text-lg-left">Home Cats in Meow</h1>
-   
-    <!--add home kitty-->
-    <div class="text-center">
-        <a asp-action="Add" class="btn btn-outline-secondary">Add</a>
-    </div>
+  
+    @if (this.User.Identity.IsAuthenticated)
+    {
+        <!--add home kitty-->
+        <div class="text-center">
+            <a asp-action="Add" class="btn btn-outline-secondary">Add</a>
+        </div>
+    }
 
     <div class="row text-center text-lg-left">
 

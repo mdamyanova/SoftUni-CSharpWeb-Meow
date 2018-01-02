@@ -27,21 +27,8 @@
                                         <td>@this.Model.UserName</td>
                                     </tr>
                                     <tr>
-                                        @{
-                                            var role = "Normal User";
-                                           
-                                            if (this.User.IsInRole(WebConstants.AdministratorRole))
-                                            {
-                                                role = WebConstants.AdministratorRole;
-                                            }
-                                            else if (this.User.IsInRole(WebConstants.VolunteerRole))
-                                            {
-                                                role = WebConstants.VolunteerRole;
-                                            }
-                                        }
-
                                         <td>Role:</td>
-                                        <td>@role</td>
+                                        <td>@this.Model.UserRole</td>
                                     </tr>
                                     <tr>
                                         <td>Date of Birth:</td>

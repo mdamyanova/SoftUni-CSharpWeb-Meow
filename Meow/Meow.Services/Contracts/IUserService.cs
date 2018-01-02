@@ -11,7 +11,7 @@
         
         IEnumerable<UserListingServiceModel> All();
 
-        Task<UserProfileServiceModel> ProfileAsync(string username);
+        Task<UserProfileServiceModel> ProfileAsync(string username, string role);
 
         Task<IEnumerable<HomeCatListingServiceModel>> HomeCatsAsync(string id);
 
