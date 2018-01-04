@@ -29,7 +29,7 @@
                         var adminName = WebConstants.AdministratorRole;
                         var volunteerName = WebConstants.VolunteerRole;
 
-                        var defaultProfilePhoto = File.ReadAllBytes("../Meow.Web/wwwroot/images/default-profile.png");
+                        var defaultProfilePhoto = File.ReadAllBytes("../Meow.Web/wwwroot/images/default-cat.png");
 
                         // admin, volunteer, normal user
                         var roles = new[]

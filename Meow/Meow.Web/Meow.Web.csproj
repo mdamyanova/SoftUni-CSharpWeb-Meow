@@ -5,6 +5,13 @@
     <UserSecretsId>aspnet-Meow.Web-C47317A1-83A2-4703-A5FB-F1A41DAEE044</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="wwwroot\images\main\**" />
+    <Content Remove="wwwroot\images\main\**" />
+    <EmbeddedResource Remove="wwwroot\images\main\**" />
+    <None Remove="wwwroot\images\main\**" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
@@ -24,10 +31,6 @@
     <ProjectReference Include="..\Meow.Core\Meow.Core.csproj" />
     <ProjectReference Include="..\Meow.Data\Meow.Data.csproj" />
     <ProjectReference Include="..\Meow.Services\Meow.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\images\main\" />
   </ItemGroup>
 
   <ItemGroup>

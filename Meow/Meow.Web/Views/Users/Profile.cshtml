@@ -15,7 +15,7 @@
                     <div class="row">
                         <div class="col-md-3 col-lg-3 " align="center">
                             @{
-                                var imgSrc = this.Model.ProfilePhoto != null ? $"data:image/gif;base64,{Convert.ToBase64String(this.Model.ProfilePhoto)}" : "../images/default-profile.png";
+                                var imgSrc = this.Model.ProfilePhoto != null ? $"data:image/gif;base64,{Convert.ToBase64String(this.Model.ProfilePhoto)}" : "../images/default-cat.png";
                             }
                             <img alt="@this.Model.UserName photo" src="@imgSrc" class="img-fluid img-thumbnail img-circle">
                         </div>
