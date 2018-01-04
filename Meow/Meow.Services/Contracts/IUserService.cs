@@ -16,5 +16,7 @@
         Task<IEnumerable<HomeCatListingServiceModel>> HomeCatsAsync(string id);
 
         Task<IEnumerable<AdoptionCatListingServiceModel>> AdoptedCatsAsync(string id);
+
+        bool Remove(string id);
     }
 }

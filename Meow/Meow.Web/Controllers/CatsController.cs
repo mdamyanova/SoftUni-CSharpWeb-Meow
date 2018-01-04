@@ -123,8 +123,6 @@
         [Authorize]
         public IActionResult Delete(int id)
         {
-            // todo: check if user has rights to delete
-
             var cat = this.homeCats.ById(id);
 
             if (cat == null)
@@ -147,14 +145,9 @@
         }
 
         [Authorize]
-        [HttpPost]
-        public IActionResult Delete(int id, HomeCatDeleteFormModel model)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.View(model);
-            }
-
+        [HttpPost, ActionName("Delete")]
+        public IActionResult ConfirmDelete(int id)
+        {       
             var catExists = this.homeCats.Exists(id);
 
             if (!catExists)

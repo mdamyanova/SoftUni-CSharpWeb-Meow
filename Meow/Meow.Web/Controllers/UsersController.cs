@@ -1,6 +1,8 @@
 ﻿namespace Meow.Web.Controllers
 {
     using Data.Models;
+    using Meow.Core;
+    using Meow.Web.Models.Users;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
@@ -29,6 +31,7 @@
             return this.View(model);
         }
 
+        [Authorize]
         public async Task<IActionResult> Profile(string username)
         {
             var user = await this.userManager.FindByNameAsync(username);
@@ -52,6 +55,7 @@
             return View(model);
         }
 
+        [Authorize]
         public async Task<IActionResult> HomeCats(string username)
         {
             var user = await this.userManager.FindByNameAsync(username);
@@ -66,6 +70,7 @@
             return View(model);
         }
 
+        [Authorize]
         public async Task<IActionResult> AdoptedCats(string username)
         {
             var user = await this.userManager.FindByNameAsync(username);
@@ -78,6 +83,50 @@
             var model = await this.users.AdoptedCatsAsync(user.Id);
 
             return View(model);
+        }
+        
+        [Authorize]
+        public async Task<IActionResult> Delete(string username)
+        {
+            var user = await this.userManager.FindByNameAsync(username);
+
+            if (user == null)
+            {
+                return this.NotFound();
+            }
+
+            // we won't delete the admin and volunteer
+            if (user.UserName == WebConstants.AdministratorUsername
+                || user.UserName == WebConstants.VolunteerUsername)
+            {
+                return this.RedirectToAction(nameof(All));
+            }
+      
+            if (User.Identity.Name != user.UserName
+                && User.Identity.Name != WebConstants.AdministratorUsername)
+            {
+                // user doesn't have the rights
+                return this.RedirectToAction(nameof(this.All));
+            }
+
+            return this.View(model:username);
+        }
+
+        [Authorize]
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> ConfirmDelete(string username)
+        {       
+            var user = await this.userManager.FindByNameAsync(username);
+            var userExists = this.users.Exists(user.Id);
+
+            if (!userExists)
+            {
+                return this.NotFound();
+            }
+
+            var result = this.users.Remove(user.Id);
+
+            return this.RedirectToAction(nameof(this.All));
         }
     }
 }

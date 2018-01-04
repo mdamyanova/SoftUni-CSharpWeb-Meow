@@ -30,4 +30,24 @@
     <Folder Include="wwwroot\images\main\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\images\cat.gif" />
+    <None Include="wwwroot\images\default-cat.png" />
+    <None Include="wwwroot\images\default-profile.png" />
+    <None Include="wwwroot\images\iCatRescue\bony.jpg" />
+    <None Include="wwwroot\images\iCatRescue\goshi.jpg" />
+    <None Include="wwwroot\images\iCatRescue\kivi.jpg" />
+    <None Include="wwwroot\images\iCatRescue\leya.jpg" />
+    <None Include="wwwroot\images\iCatRescue\maraya.jpg" />
+    <None Include="wwwroot\images\iCatRescue\oreo.jpg" />
+    <None Include="wwwroot\images\logo-meow.jpg" />
+    <None Include="wwwroot\images\main-meow.jpg" />
+    <None Include="wwwroot\images\mirelka\bez-ime.jpg" />
+    <None Include="wwwroot\images\mirelka\mirelka-profile.jpg" />
+    <None Include="wwwroot\images\mirelka\shishi.jpg" />
+    <None Include="wwwroot\images\mirelka\syselcho.jpg" />
+    <None Include="wwwroot\images\mirelka\zvyar.jpg" />
+    <None Include="wwwroot\images\weird-girl.jpg" />
+  </ItemGroup>
+
 </Project>

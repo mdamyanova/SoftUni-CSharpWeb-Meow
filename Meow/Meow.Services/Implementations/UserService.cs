@@ -57,5 +57,35 @@
                 .Where(c => c.OwnerId == id)
                 .ProjectTo<AdoptionCatListingServiceModel>()
                 .ToListAsync();
+
+        public bool Remove(string id)
+        {
+            // first remove cats
+            var homeCats = this.db.HomeCats.Where(c => c.OwnerId == id);
+
+            if (homeCats.Any())
+            {
+                this.db.RemoveRange(homeCats);
+            }
+
+            var adoptedCats = this.db.AdoptionCats.Where(c => c.OwnerId == id);
+
+            if (adoptedCats.Any())
+            {
+                this.db.RemoveRange(adoptedCats);
+            }
+
+            var user = this.db.Users.Find(id);
+
+            if (user == null)
+            {
+                return false;
+            }
+
+            this.db.Users.Remove(user);
+            this.db.SaveChanges();
+
+            return true;
+        }
     }
 }
