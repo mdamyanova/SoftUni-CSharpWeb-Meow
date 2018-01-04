@@ -19,5 +19,10 @@
         public const string Bony = "Бони е малка копринено-мека прекрасница и за ваш късмет си търси дом.";
         public const string Oreo = "Търсите си (или пък той вас) пухкав ,кротък и гальовен мацоран? - Орео е вашият кот.";
         public const string Goshi = "Лапичката на задното му краче липсва. Дали поради инцидент или деформация не знаем, но знаем, че това не му пречи да бъде пълноценен малък мъркач. Гоши е на годинка, послушен и спокоен.";
+
+        public const string DefaultImagesPath = "https://meowcatrescue.blob.core.windows.net/defaultimages/";
+        public const string DefaultCatPath = "https://meowcatrescue.blob.core.windows.net/defaultimages/default-cat.png";
+        public const string DefaultProfilePhotoPath = "https://meowcatrescue.blob.core.windows.net/defaultimages/default-profile.png";
+        public static string DefaultMirelkaProfilePhotoPath = "https://meowcatrescue.blob.core.windows.net/defaultimages/mirelka-profile.jpg";
     }
 }

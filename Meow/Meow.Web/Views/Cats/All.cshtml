@@ -3,10 +3,9 @@
     ViewData["Title"] = "Home Cats";
 }
 
-
 <div class="container">
 
-    <h1 class="my-4 text-center text-lg-left">Home Cats in Meow</h1>
+    <h1 class="my-4 text-center text-lg-left">Home Cats</h1>
   
     @if (this.User.Identity.IsAuthenticated)
     {
@@ -23,7 +22,7 @@
             <div class="col-lg-3 col-md-4 col-xs-6 hovereffect">
                 <a asp-action="Details" asp-route-id="@cat.Id" class="d-block mb-4 h-100">
                     @{
-                        var imgSrc = cat.Image != null ? ImageExtensions.ByteArrayToImage(cat.Image) : "../images/default-cat.png";
+                        var imgSrc = cat.Image != null ? ImageExtensions.ByteArrayToImage(cat.Image) : WebConstants.DefaultCatPath;
                     }
                     <img class="img-fluid img-thumbnail img-cat img-circle" src="@imgSrc" alt="@cat.Name">
                 </a>

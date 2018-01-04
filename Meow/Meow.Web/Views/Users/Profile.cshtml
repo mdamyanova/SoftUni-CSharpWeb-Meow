@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Profile";
 }
-<link rel="stylesheet" href="~/css/details.css">
+<link rel="stylesheet" href="https://meowcatrescue.blob.core.windows.net/styles/details.css">
 <div class="container">
     <div class="row">
         <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
@@ -15,7 +15,7 @@
                     <div class="row">
                         <div class="col-md-3 col-lg-3 " align="center">
                             @{
-                                var imgSrc = this.Model.ProfilePhoto != null ? $"data:image/gif;base64,{Convert.ToBase64String(this.Model.ProfilePhoto)}" : "../images/default-cat.png";
+                                var imgSrc = this.Model.ProfilePhoto != null ? ImageExtensions.ByteArrayToImage(this.Model.ProfilePhoto) : WebConstants.DefaultProfilePhotoPath;
                             }
                             <img alt="@this.Model.UserName photo" src="@imgSrc" class="img-fluid img-thumbnail img-circle">
                         </div>

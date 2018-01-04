@@ -6,6 +6,7 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Net;
     using System.Threading.Tasks;
 
     public class Seeder
@@ -18,12 +19,13 @@
         }
 
         public async Task Seed()
-        {  
+        {
+            var web = new WebClient();
+
             var admin = this.db.Users.FirstOrDefault(u => u.UserName == WebConstants.AdministratorUsername);
             var mirelka = this.db.Users.FirstOrDefault(u => u.UserName == "mirelka");
 
-            var defaultImage = File.ReadAllBytes("../Meow.Web/wwwroot/images/default-cat.png");
-            var mirelkaPath = "../Meow.Web/wwwroot/images/mirelka/";
+            var defaultImage = web.DownloadData(WebConstants.DefaultCatPath);
 
             var homeCats = new List<HomeCat>
             {
@@ -97,7 +99,7 @@
                 {
                     Name = "Shishi",
                     Age = 3,
-                    Image = File.ReadAllBytes(mirelkaPath + "shishi.jpg"),
+                    Image = web.DownloadData("https://meowcatrescue.blob.core.windows.net/defaultimages/shishi.jpg"),
                     Description = "Hi, this is Shishi.",
                     Location = "Sofia",
                     Gender = Gender.Female,
@@ -108,7 +110,7 @@
                 {
                     Name = "Syselcho",
                     Age = 2,
-                    Image = File.ReadAllBytes(mirelkaPath + "syselcho.jpg"),
+                    Image = web.DownloadData("https://meowcatrescue.blob.core.windows.net/defaultimages/syselcho.jpg"),
                     Description = "Hi, this is Syselcho.",
                     Location = "Sofia",
                     Gender = Gender.Male,
@@ -119,7 +121,7 @@
                 {
                     Name = "Hapeshtoto zverche",
                     Age = 2,
-                    Image = File.ReadAllBytes(mirelkaPath + "zvyar.jpg"),
+                    Image = web.DownloadData("https://meowcatrescue.blob.core.windows.net/defaultimages/zvyar.jpg"),
                     Description = "Hi, this is hapeshtoto zverche.",
                     Location = "Sofia",
                     Gender = Gender.Male,
@@ -130,7 +132,7 @@
                 {
                     Name = "Bez ime",
                     Age = 2,
-                    Image = File.ReadAllBytes(mirelkaPath + "bez-ime.jpg"),
+                    Image = web.DownloadData("https://meowcatrescue.blob.core.windows.net/defaultimages/bez-ime.jpg"),
                     Description = "Hi, this cat is without name.",
                     Location = "Sofia",
                     Gender = Gender.Male,
@@ -148,7 +150,6 @@
 
             // add iCatRescue Volunteer
             var volunteer = this.db.Users.FirstOrDefault(u => u.UserName == WebConstants.VolunteerRole);
-            var adoptionCatsPath = "../Meow.Web/wwwroot/images/iCatRescue/";
 
             var adoptionCats = new List<AdoptionCat>
             {
@@ -156,7 +157,7 @@
                 {
                     Name = "Bony",
                     Age = 1,
-                    Image = File.ReadAllBytes(adoptionCatsPath + "bony.jpg"),
+                    Image = web.DownloadData("https://meowcatrescue.blob.core.windows.net/defaultimages/bony.jpg"),
                     Description = WebConstants.Bony,
                     Gender = Gender.Female,
                     OwnerId = volunteer.Id,
@@ -166,7 +167,7 @@
                 {
                     Name = "Goshi",
                     Age = 1,
-                    Image = File.ReadAllBytes(adoptionCatsPath + "goshi.jpg"),
+                    Image = web.DownloadData("https://meowcatrescue.blob.core.windows.net/defaultimages/goshi.jpg"),
                     Description = WebConstants.Goshi,
                     Gender = Gender.Male,
                     OwnerId = volunteer.Id,
@@ -176,7 +177,7 @@
                 {
                     Name = "Kivi",
                     Age = 1,
-                    Image = File.ReadAllBytes(adoptionCatsPath + "kivi.jpg"),
+                    Image = web.DownloadData("https://meowcatrescue.blob.core.windows.net/defaultimages/kivi.jpg"),
                     Description = WebConstants.Kivi,
                     Gender = Gender.Male,
                     OwnerId = volunteer.Id,
@@ -186,7 +187,7 @@
                 {
                     Name = "Leya",
                     Age = 1,
-                    Image = File.ReadAllBytes(adoptionCatsPath + "leya.jpg"),
+                    Image = web.DownloadData("https://meowcatrescue.blob.core.windows.net/defaultimages/leya.jpg"),
                     Description = WebConstants.Leya,
                     Gender = Gender.Female,
                     OwnerId = volunteer.Id,
@@ -196,7 +197,7 @@
                 {
                     Name = "Maraya",
                     Age = 1,
-                    Image = File.ReadAllBytes(adoptionCatsPath + "maraya.jpg"),
+                    Image = web.DownloadData("https://meowcatrescue.blob.core.windows.net/defaultimages/maraya.jpg"),
                     Description = WebConstants.Maraya,
                     Gender = Gender.Female,
                     OwnerId = volunteer.Id,
@@ -206,7 +207,7 @@
                 {
                     Name = "Oreo",
                     Age = 1,
-                    Image = File.ReadAllBytes(adoptionCatsPath + "oreo.jpg"),
+                    Image = web.DownloadData("https://meowcatrescue.blob.core.windows.net/defaultimages/oreo.jpg"),
                     Description = WebConstants.Oreo,
                     Gender = Gender.Male,
                     OwnerId = volunteer.Id,

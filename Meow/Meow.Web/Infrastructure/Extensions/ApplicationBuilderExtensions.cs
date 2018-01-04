@@ -9,7 +9,9 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
     using System;
+    using System.Globalization;
     using System.IO;
+    using System.Net;
     using System.Threading.Tasks;
 
     public static class ApplicationBuilderExtensions
@@ -29,7 +31,8 @@
                         var adminName = WebConstants.AdministratorRole;
                         var volunteerName = WebConstants.VolunteerRole;
 
-                        var defaultProfilePhoto = File.ReadAllBytes("../Meow.Web/wwwroot/images/default-cat.png");
+                        var defaultBirthdate = "08/08/1990";
+                        var defaultProfilePhoto = WebConstants.DefaultProfilePhotoPath;
 
                         // admin, volunteer, normal user
                         var roles = new[]
@@ -54,6 +57,8 @@
                         var adminEmail = "admin@mysite.com";
                         var adminUser = await userManager.FindByEmailAsync(adminEmail);
 
+                        var web = new WebClient();
+
                         if (adminUser == null)
                         {
                             adminUser = new User
@@ -62,9 +67,9 @@
                                 UserName = adminName,
                                 Name = adminName,
                                 Gender = Gender.Female,
-                                Birthdate = DateTime.UtcNow,
+                                Birthdate = DateTime.ParseExact(defaultBirthdate, "MM/dd/yyyy", CultureInfo.CreateSpecificCulture("en-US")),
                                 Location = "Sofia",
-                                ProfilePhoto = defaultProfilePhoto
+                                ProfilePhoto = web.DownloadData(defaultProfilePhoto)
                             };
 
                             var result = await userManager.CreateAsync(adminUser, "admin11");
@@ -75,7 +80,7 @@
 
                         var volunteerEmail = "contact@icatrescue.com";
                         var volunteerUser = await userManager.FindByEmailAsync(volunteerEmail);
-
+                       
                         if (volunteerUser == null)
                         {
                             volunteerUser = new User
@@ -84,9 +89,9 @@
                                 UserName = volunteerName,
                                 Name = volunteerName,
                                 Gender = Gender.Male,
-                                Birthdate = DateTime.UtcNow,
+                                Birthdate = DateTime.ParseExact(defaultBirthdate, "MM/dd/yyyy", CultureInfo.CreateSpecificCulture("en-US")),
                                 Location = "Sofia",
-                                ProfilePhoto = defaultProfilePhoto
+                                ProfilePhoto = web.DownloadData(defaultProfilePhoto)
                             };
 
                             var result = await userManager.CreateAsync(volunteerUser, "icatrescue1");
@@ -98,6 +103,7 @@
 
                         var mirelkaEmail = "mdamyanova181@gmail.com";
                         var mirelkaUser = await userManager.FindByEmailAsync(mirelkaEmail);
+                        var mirelkaBirthdate = "07/25/1995";
 
                         if (mirelkaUser == null)
                         {
@@ -107,9 +113,9 @@
                                 UserName = "mirelka",
                                 Name = "Mirelka",
                                 Gender = Gender.Female,
-                                Birthdate = DateTime.Parse("25/07/1995"),
+                                Birthdate = DateTime.ParseExact(mirelkaBirthdate, "MM/dd/yyyy", CultureInfo.CreateSpecificCulture("en-US")),
                                 Location = "Sofia",
-                                ProfilePhoto = File.ReadAllBytes("../Meow.Web/wwwroot/images/mirelka/mirelka-profile.jpg")
+                                ProfilePhoto = web.DownloadData(WebConstants.DefaultMirelkaProfilePhotoPath)
                             };
 
                             var result = await userManager.CreateAsync(mirelkaUser, "mirelka1");

@@ -152,7 +152,7 @@
 
             if (!catExists)
             {
-                return this.NotFound();
+                return this.RedirectToAction(nameof(this.All));
             }
 
             var result = this.homeCats.Remove(id);
@@ -160,7 +160,6 @@
             return this.RedirectToAction(nameof(this.All));
         }
 
-        [Authorize]
         public IActionResult Adopt(int id)
         {
             var cat = this.adoptionCats.ById(id);

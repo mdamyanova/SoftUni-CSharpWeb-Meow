@@ -3,13 +3,50 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <UserSecretsId>aspnet-Meow.Web-C47317A1-83A2-4703-A5FB-F1A41DAEE044</UserSecretsId>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="wwwroot\images\main\**" />
-    <Content Remove="wwwroot\images\main\**" />
-    <EmbeddedResource Remove="wwwroot\images\main\**" />
-    <None Remove="wwwroot\images\main\**" />
+    <None Remove="css\background.css" />
+    <None Remove="css\details.css" />
+    <None Remove="css\form.css" />
+    <None Remove="css\home.css" />
+    <None Remove="css\site.css" />
+    <None Remove="css\site.min.css" />
+    <None Remove="css\tables.css" />
+    <None Remove="default-profile.png" />
+    <None Remove="fonts\All things CAT!.ttf" />
+    <None Remove="fonts\Evolventa-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="css\background.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="css\details.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="css\form.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="css\home.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="css\site.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="css\site.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="css\tables.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="fonts\All things CAT!.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="fonts\Evolventa-Regular.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 
@@ -19,6 +56,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" PrivateAssets="All" />
+    <PackageReference Include="WindowsAzure.Storage" Version="8.7.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,23 +72,134 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\images\cat.gif" />
-    <None Include="wwwroot\images\default-cat.png" />
-    <None Include="wwwroot\images\default-profile.png" />
-    <None Include="wwwroot\images\iCatRescue\bony.jpg" />
-    <None Include="wwwroot\images\iCatRescue\goshi.jpg" />
-    <None Include="wwwroot\images\iCatRescue\kivi.jpg" />
-    <None Include="wwwroot\images\iCatRescue\leya.jpg" />
-    <None Include="wwwroot\images\iCatRescue\maraya.jpg" />
-    <None Include="wwwroot\images\iCatRescue\oreo.jpg" />
-    <None Include="wwwroot\images\logo-meow.jpg" />
-    <None Include="wwwroot\images\main-meow.jpg" />
-    <None Include="wwwroot\images\mirelka\bez-ime.jpg" />
-    <None Include="wwwroot\images\mirelka\mirelka-profile.jpg" />
-    <None Include="wwwroot\images\mirelka\shishi.jpg" />
-    <None Include="wwwroot\images\mirelka\syselcho.jpg" />
-    <None Include="wwwroot\images\mirelka\zvyar.jpg" />
-    <None Include="wwwroot\images\weird-girl.jpg" />
+    <None Include="wwwroot\js\form.js" />
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\js\site.min.js" />
+    <None Include="wwwroot\lib\bootstrap\CHANGELOG.md" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\npm.js" />
+    <None Include="wwwroot\lib\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\lib\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\lib\bootstrap\Gemfile" />
+    <None Include="wwwroot\lib\bootstrap\Gemfile.lock" />
+    <None Include="wwwroot\lib\bootstrap\Gruntfile.js" />
+    <None Include="wwwroot\lib\bootstrap\grunt\.jshintrc" />
+    <None Include="wwwroot\lib\bootstrap\grunt\bs-commonjs-generator.js" />
+    <None Include="wwwroot\lib\bootstrap\grunt\bs-glyphicons-data-generator.js" />
+    <None Include="wwwroot\lib\bootstrap\grunt\bs-lessdoc-parser.js" />
+    <None Include="wwwroot\lib\bootstrap\grunt\bs-raw-files-generator.js" />
+    <None Include="wwwroot\lib\bootstrap\grunt\change-version.js" />
+    <None Include="wwwroot\lib\bootstrap\grunt\sauce_browsers.yml" />
+    <None Include="wwwroot\lib\bootstrap\ISSUE_TEMPLATE.md" />
+    <None Include="wwwroot\lib\bootstrap\js\.jscsrc" />
+    <None Include="wwwroot\lib\bootstrap\js\.jshintrc" />
+    <None Include="wwwroot\lib\bootstrap\js\affix.js" />
+    <None Include="wwwroot\lib\bootstrap\js\alert.js" />
+    <None Include="wwwroot\lib\bootstrap\js\button.js" />
+    <None Include="wwwroot\lib\bootstrap\js\carousel.js" />
+    <None Include="wwwroot\lib\bootstrap\js\collapse.js" />
+    <None Include="wwwroot\lib\bootstrap\js\dropdown.js" />
+    <None Include="wwwroot\lib\bootstrap\js\modal.js" />
+    <None Include="wwwroot\lib\bootstrap\js\popover.js" />
+    <None Include="wwwroot\lib\bootstrap\js\scrollspy.js" />
+    <None Include="wwwroot\lib\bootstrap\js\tab.js" />
+    <None Include="wwwroot\lib\bootstrap\js\tooltip.js" />
+    <None Include="wwwroot\lib\bootstrap\js\transition.js" />
+    <None Include="wwwroot\lib\bootstrap\less\.csslintrc" />
+    <None Include="wwwroot\lib\bootstrap\less\alerts.less" />
+    <None Include="wwwroot\lib\bootstrap\less\badges.less" />
+    <None Include="wwwroot\lib\bootstrap\less\bootstrap.less" />
+    <None Include="wwwroot\lib\bootstrap\less\breadcrumbs.less" />
+    <None Include="wwwroot\lib\bootstrap\less\button-groups.less" />
+    <None Include="wwwroot\lib\bootstrap\less\buttons.less" />
+    <None Include="wwwroot\lib\bootstrap\less\carousel.less" />
+    <None Include="wwwroot\lib\bootstrap\less\close.less" />
+    <None Include="wwwroot\lib\bootstrap\less\code.less" />
+    <None Include="wwwroot\lib\bootstrap\less\component-animations.less" />
+    <None Include="wwwroot\lib\bootstrap\less\dropdowns.less" />
+    <None Include="wwwroot\lib\bootstrap\less\forms.less" />
+    <None Include="wwwroot\lib\bootstrap\less\glyphicons.less" />
+    <None Include="wwwroot\lib\bootstrap\less\grid.less" />
+    <None Include="wwwroot\lib\bootstrap\less\input-groups.less" />
+    <None Include="wwwroot\lib\bootstrap\less\jumbotron.less" />
+    <None Include="wwwroot\lib\bootstrap\less\labels.less" />
+    <None Include="wwwroot\lib\bootstrap\less\list-group.less" />
+    <None Include="wwwroot\lib\bootstrap\less\media.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\alerts.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\background-variant.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\border-radius.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\buttons.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\center-block.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\clearfix.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\forms.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\gradients.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\grid-framework.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\grid.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\hide-text.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\image.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\labels.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\list-group.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\nav-divider.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\nav-vertical-align.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\opacity.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\pagination.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\panels.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\progress-bar.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\reset-filter.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\reset-text.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\resize.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\responsive-visibility.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\size.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\tab-focus.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\table-row.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\text-emphasis.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\text-overflow.less" />
+    <None Include="wwwroot\lib\bootstrap\less\mixins\vendor-prefixes.less" />
+    <None Include="wwwroot\lib\bootstrap\less\modals.less" />
+    <None Include="wwwroot\lib\bootstrap\less\navbar.less" />
+    <None Include="wwwroot\lib\bootstrap\less\navs.less" />
+    <None Include="wwwroot\lib\bootstrap\less\normalize.less" />
+    <None Include="wwwroot\lib\bootstrap\less\pager.less" />
+    <None Include="wwwroot\lib\bootstrap\less\pagination.less" />
+    <None Include="wwwroot\lib\bootstrap\less\panels.less" />
+    <None Include="wwwroot\lib\bootstrap\less\popovers.less" />
+    <None Include="wwwroot\lib\bootstrap\less\print.less" />
+    <None Include="wwwroot\lib\bootstrap\less\progress-bars.less" />
+    <None Include="wwwroot\lib\bootstrap\less\responsive-embed.less" />
+    <None Include="wwwroot\lib\bootstrap\less\responsive-utilities.less" />
+    <None Include="wwwroot\lib\bootstrap\less\scaffolding.less" />
+    <None Include="wwwroot\lib\bootstrap\less\tables.less" />
+    <None Include="wwwroot\lib\bootstrap\less\theme.less" />
+    <None Include="wwwroot\lib\bootstrap\less\thumbnails.less" />
+    <None Include="wwwroot\lib\bootstrap\less\tooltip.less" />
+    <None Include="wwwroot\lib\bootstrap\less\type.less" />
+    <None Include="wwwroot\lib\bootstrap\less\utilities.less" />
+    <None Include="wwwroot\lib\bootstrap\less\variables.less" />
+    <None Include="wwwroot\lib\bootstrap\less\wells.less" />
+    <None Include="wwwroot\lib\bootstrap\LICENSE" />
+    <None Include="wwwroot\lib\bootstrap\nuget\bootstrap.less.nuspec" />
+    <None Include="wwwroot\lib\bootstrap\nuget\bootstrap.nuspec" />
+    <None Include="wwwroot\lib\bootstrap\nuget\MyGet.ps1" />
+    <None Include="wwwroot\lib\bootstrap\package.js" />
+    <None Include="wwwroot\lib\bootstrap\README.md" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
   </ItemGroup>
 
 </Project>

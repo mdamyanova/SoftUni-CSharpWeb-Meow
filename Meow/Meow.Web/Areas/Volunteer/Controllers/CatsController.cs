@@ -2,6 +2,8 @@
 {
     using Data.Models;
     using Infrastructure.Extensions;
+    using Meow.Core;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Models;
@@ -55,10 +57,11 @@
                 return this.NotFound();
             }
 
-            if (User.Identity.Name != cat.Owner)
+            if (User.Identity.Name != cat.Owner &&
+                !this.User.IsInRole(WebConstants.AdministratorRole))
             {
                 // user doesn't have the rights
-                return RedirectToAction("Adopted", "Cats", new { area = "" });
+                return RedirectToAction("Adoption", "Cats", new { area = "" });
             }
 
             return this.View(new AdoptionCatFormModel
@@ -88,13 +91,12 @@
             this.adoptionCats.Edit(
                 model.Id, model.Name, model.Age, model.Image, model.Description, model.Gender, "");
 
-            return RedirectToAction("Adopted", "Cats", new { area = "" });
+            return RedirectToAction("Adoption", "Cats", new { area = "" });
         }
-        
+
+        [Authorize]
         public IActionResult Delete(int id)
         {
-            // todo: check if user has rights to delete
-
             var cat = this.adoptionCats.ById(id);
 
             if (cat == null)
@@ -102,42 +104,37 @@
                 return this.NotFound();
             }
 
-            if (User.Identity.Name != cat.Owner)
+            if (User.Identity.Name != cat.Owner
+                && User.Identity.Name != WebConstants.AdministratorUsername)
             {
                 // user doesn't have the rights
-                return RedirectToAction("Adopted", "Cats", new { area = "" });
+                return RedirectToAction("Adoption", "Cats", new { area = "" });
             }
 
             return this.View(new AdoptionCatFormModel
             {
                 Name = cat.Name,
-                Age = cat.Age,    
+                Age = cat.Age,
                 Description = cat.Description,
                 Gender = cat.Gender
             });
         }
 
-        [HttpPost]
-        public IActionResult Delete(int id, AdoptionCatFormModel model)
+        [Authorize]
+        [HttpPost, ActionName("Delete")]
+        public IActionResult ConfirmDelete(int id, AdoptionCatFormModel model)
         {
-            if (!this.ModelState.IsValid)
-            {
-                return this.View(model);
-            }
-
             var catExists = this.adoptionCats.Exists(id);
 
             if (!catExists)
             {
-                return this.NotFound();
+                return RedirectToAction("Adoption", "Cats", new { area = "" });
             }
 
             var result = this.adoptionCats.Remove(id);
 
-            // todo
-            return RedirectToAction("Adopted", "Cats", new { area = "" });
+            return RedirectToAction("Adoption", "Cats", new { area = "" });
         }
-
         public IActionResult Requests()
         {
             var model = this.adoptionCats.Requested();
@@ -157,7 +154,7 @@
             if (User.Identity.Name != cat.Owner)
             {
                 // user doesn't have the rights
-                return RedirectToAction("Adopted", "Cats", new { area = "" });
+                return RedirectToAction("Adoption", "Cats", new { area = "" });
             }
 
             var success = this.adoptionCats.Give(id);

@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="col-md-3 col-lg-3 " align="center">
                             @{
-                                var imgSrc = this.Model.Image != null ? ImageExtensions.ByteArrayToImage(this.Model.Image) : "../images/default-cat.png";
+                                var imgSrc = this.Model.Image != null ? ImageExtensions.ByteArrayToImage(this.Model.Image) : WebConstants.DefaultCatPath;
                             }
                             <img alt="@this.Model.Name photo" src="@imgSrc" class="img-fluid img-thumbnail img-circle">
                         </div>
@@ -46,12 +46,13 @@
                     </div>
                 </div>
                 <div class="panel-footer">
-                     @if (this.Model.IsRequested == false)
+                     @if (this.User.Identity.IsAuthenticated && this.Model.IsRequested == false)
                      {
                          <a asp-area="" asp-controller="Cats" asp-action="Request" asp-route-id="@this.Model.Id" data-original-title="Request Adoption" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-heart"></i></a>
                      }
                      <span class="pull-right">
-                         @if ((this.Model.Owner == User.Identity.Name) ||
+                         @if ((this.User.Identity.IsAuthenticated || 
+                             this.Model.Owner == User.Identity.Name) ||
                             this.User.IsInRole(WebConstants.AdministratorRole))
                          {
                             <a asp-area="Volunteer" asp-controller="Cats" asp-action="Edit" asp-route-id="@this.Model.Id" data-original-title="Edit" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-edit"></i></a>
