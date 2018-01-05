@@ -7,63 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="css\background.css" />
-    <None Remove="css\details.css" />
-    <None Remove="css\form.css" />
-    <None Remove="css\home.css" />
-    <None Remove="css\site.css" />
-    <None Remove="css\site.min.css" />
-    <None Remove="css\tables.css" />
     <None Remove="default-profile.png" />
-    <None Remove="fonts\All things CAT!.ttf" />
-    <None Remove="fonts\Evolventa-Regular.ttf" />
-    <None Remove="js\form.js" />
-    <None Remove="js\site.js" />
-    <None Remove="js\site.min.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="css\background.css">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="css\details.css">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="css\form.css">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="css\home.css">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="css\site.css">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="css\site.min.css">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="css\tables.css">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="fonts\All things CAT!.ttf">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="fonts\Evolventa-Regular.ttf">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="js\form.js">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="js\site.js">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="js\site.min.js">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
   </ItemGroup>
 
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
+    <PackageReference Include="BuildBundlerMinifier" Version="2.6.362" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" PrivateAssets="All" />
@@ -84,6 +34,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\js\form.js" />
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\js\site.min.js" />
     <None Include="wwwroot\lib\bootstrap\CHANGELOG.md" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.min.css.map" />

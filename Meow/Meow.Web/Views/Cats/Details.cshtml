@@ -2,8 +2,8 @@
 @{
     ViewData["Title"] = $"The sweet {this.Model.Name}";
 }
-
-<link rel="stylesheet" href="~/css/details.css">
+<link href="../css/temp.css" rel="stylesheet" />
+<link rel="stylesheet" href="../css/details.css">
 <div class="container">
     <div class="row">
         <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
@@ -39,10 +39,10 @@
                                     <tr>
                                         <td>Location:</td>
                                         <td>@this.Model.Location</td>
-                                    </tr>                                
+                                    </tr>
                                 </tbody>
                             </table>
-                            <a asp-controller="Users" asp-action="Profile" asp-route-username="@this.Model.Owner" class="btn btn-outline-success">Owner</a>       
+                            <a asp-controller="Users" asp-action="Profile" asp-route-username="@this.Model.Owner" class="btn btn-outline-success">Owner</a>
                         </div>
                     </div>
                 </div>
@@ -51,9 +51,9 @@
                     <a data-original-title="Broadcast Message" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-envelope"></i></a>
                     <span class="pull-right">
                         @if ((this.Model.Owner == User.Identity.Name) ||
-                              this.User.IsInRole(WebConstants.AdministratorRole))
+                             this.User.IsInRole(WebConstants.AdministratorRole))
                         {
-                            <a asp-action="Edit"  asp-route-id="@this.Model.Id" data-original-title="Edit" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a asp-action="Edit" asp-route-id="@this.Model.Id" data-original-title="Edit" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-edit"></i></a>
                             <a asp-action="Delete" asp-route-id="@this.Model.Id" data-original-title="Remove" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-remove"></i></a>
                         }
                     </span>

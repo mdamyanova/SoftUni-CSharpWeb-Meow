@@ -14,7 +14,7 @@
     bottom: -40px;
     width: auto;
     height: auto;
-    background-image: url(https://meowcatrescue.blob.core.windows.net/defaultimages/weird-girl.jpg);
+    background-image: url(../images/weird-girl.jpg);
     background-size: cover;
     -webkit-filter: blur(5px);
     z-index: 0;
