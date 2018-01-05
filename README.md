@@ -2,8 +2,7 @@
 Meow is a cute, friendly web platform for cats and their future owners. In Meow you can adopt a kitty and give it love, care and such nice things. 
 
 ## General Requirements
-The application is implemented using **ASP.NET Core framework**.
-Using Visual Studio 2017
+The application is implemented using **ASP.NET Core Framework**.
 -	View Engine for generating the UI – **Razor**
 -	Using sections and partial views, editor and display templates
 - Database back-end – **Microsoft SQL Server**
