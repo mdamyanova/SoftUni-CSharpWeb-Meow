@@ -41,10 +41,20 @@
             return this.View(model);
         }
 
+        // details about home cat
         [Authorize]
         public IActionResult Details(int id)
         {
             var cat = this.homeCats.ById(id);
+
+            return this.ViewOrNotFound(cat);
+        }
+
+        // details about adoption cat
+        public IActionResult Adopt(int id)
+        {
+            var cat = this.adoptionCats.ById(id);
+
             return this.ViewOrNotFound(cat);
         }
 
@@ -159,30 +169,7 @@
 
             return this.RedirectToAction(nameof(this.All));
         }
-
-        public IActionResult Adopt(int id)
-        {
-            var cat = this.adoptionCats.ById(id);
-
-            if (cat == null)
-            {
-                return this.NotFound();
-            }
-
-            return this.View(new AdoptionCatDetailsViewModel
-            {
-                Id = cat.Id,
-                Name = cat.Name,
-                Age = cat.Age,
-                Image = cat.Image,
-                Description = cat.Description,
-                Location = cat.Location,
-                Gender = cat.Gender,
-                Owner = cat.Owner,
-                IsAdopted = cat.IsAdopted
-            });
-        }
-
+       
         [Authorize]
         public new IActionResult Request(int id)
         {
@@ -201,14 +188,9 @@
         }
 
         [Authorize]
-        [HttpPost]
-        public new IActionResult Request(int id, RequestAdoptionViewModel model)
+        [HttpPost, ActionName("Request")]
+        public IActionResult ConfirmRequest(int id)
         {
-            if (!this.ModelState.IsValid)
-            {
-                return this.View(model);
-            }
-
             var catExists = this.adoptionCats.Exists(id);
 
             if (!catExists)
@@ -221,9 +203,7 @@
             if (!success)
             {
                 return this.BadRequest();
-            }
-
-            this.TempData.AddSuccessMessage($"The cat {model.Name} was requested for adoption successfully!");
+            }      
 
             return this.RedirectToAction(nameof(Adoption));
         }

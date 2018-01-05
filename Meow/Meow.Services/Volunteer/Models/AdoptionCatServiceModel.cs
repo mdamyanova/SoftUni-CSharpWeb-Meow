@@ -23,6 +23,8 @@
 
         public bool IsAdopted { get; set; }
 
+        public bool IsRequested { get; set; }
+
         public string OwnerId { get; set; }
 
         public string Owner { get; set; }

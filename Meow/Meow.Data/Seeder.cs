@@ -161,6 +161,7 @@
                     Description = WebConstants.Bony,
                     Gender = Gender.Female,
                     OwnerId = volunteer.Id,
+                    Owner = volunteer,
                     Location = "Sofia"
                 },
                 new AdoptionCat
@@ -171,6 +172,7 @@
                     Description = WebConstants.Goshi,
                     Gender = Gender.Male,
                     OwnerId = volunteer.Id,
+                    Owner = volunteer,
                     Location = "Sofia"
                 },
                 new AdoptionCat
@@ -181,6 +183,7 @@
                     Description = WebConstants.Kivi,
                     Gender = Gender.Male,
                     OwnerId = volunteer.Id,
+                    Owner = volunteer,
                     Location = "Sofia"
                 },
                 new AdoptionCat
@@ -191,6 +194,7 @@
                     Description = WebConstants.Leya,
                     Gender = Gender.Female,
                     OwnerId = volunteer.Id,
+                    Owner = volunteer,
                     Location = "Sofia"
                 },
                 new AdoptionCat
@@ -201,6 +205,7 @@
                     Description = WebConstants.Maraya,
                     Gender = Gender.Female,
                     OwnerId = volunteer.Id,
+                    Owner = volunteer,
                     Location = "Sofia"
                 },
                 new AdoptionCat
@@ -211,6 +216,7 @@
                     Description = WebConstants.Oreo,
                     Gender = Gender.Male,
                     OwnerId = volunteer.Id,
+                    Owner = volunteer,
                     Location = "Sofia"
                 }
             };

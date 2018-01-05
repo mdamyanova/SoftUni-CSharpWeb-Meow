@@ -135,6 +135,7 @@
 
             return RedirectToAction("Adoption", "Cats", new { area = "" });
         }
+
         public IActionResult Requests()
         {
             var model = this.adoptionCats.Requested();
@@ -151,7 +152,8 @@
                 return this.NotFound();
             }
 
-            if (User.Identity.Name != cat.Owner)
+            if (User.Identity.Name != cat.Owner 
+                && User.Identity.Name != WebConstants.AdministratorUsername)
             {
                 // user doesn't have the rights
                 return RedirectToAction("Adoption", "Cats", new { area = "" });
@@ -159,13 +161,6 @@
 
             var success = this.adoptionCats.Give(id);
 
-            if (!success)
-            {
-                //error message
-               
-            }
-
-            //success message
             return this.RedirectToAction(nameof(Manage));
         }
     }

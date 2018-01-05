@@ -21,16 +21,17 @@
             this.db = db;
         }
 
+        // by default the owner is set to be the volunteer profile
         public bool Add(string name, IFormFile image, int age, string location, string description, Gender gender)
         {
-            if (!this.db.Users.Any(u => u.UserName == WebConstants.AdministratorUsername))
+            if (!this.db.Users.Any(u => u.UserName == WebConstants.VolunteerUsername))
             {
                 return false;
             }
 
-            var adminId = this.db
+            var volunteerId = this.db
                     .Users
-                    .Where(u => u.UserName == WebConstants.AdministratorUsername)
+                    .Where(u => u.UserName == WebConstants.VolunteerUsername)
                     .Select(u => u.Id)
                     .FirstOrDefault();
 
@@ -40,7 +41,8 @@
                 Age = age,
                 Description = description,
                 Gender = gender,
-                OwnerId = adminId,
+                OwnerId = volunteerId,
+                Owner = this.db.Users.FirstOrDefault(u => u.Id == volunteerId),
                 Location = location
             };
 
@@ -147,7 +149,7 @@
             var cat = this.db.AdoptionCats.FirstOrDefault(c => c.Id == id);
             var user = this.db.Users.FirstOrDefault(u => u.UserName == username);
 
-            if (cat == null || user == null || cat.Owner.UserName == username)
+            if (cat == null || user == null || cat.OwnerId == user.Id)
             {
                 return false;
             } 
