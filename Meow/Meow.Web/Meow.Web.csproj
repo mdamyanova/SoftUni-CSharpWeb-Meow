@@ -17,6 +17,9 @@
     <None Remove="default-profile.png" />
     <None Remove="fonts\All things CAT!.ttf" />
     <None Remove="fonts\Evolventa-Regular.ttf" />
+    <None Remove="js\form.js" />
+    <None Remove="js\site.js" />
+    <None Remove="js\site.min.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -47,6 +50,15 @@
     <Content Include="fonts\Evolventa-Regular.ttf">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
+    <Content Include="js\form.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="js\site.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="js\site.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 
@@ -72,9 +84,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\js\form.js" />
-    <None Include="wwwroot\js\site.js" />
-    <None Include="wwwroot\js\site.min.js" />
     <None Include="wwwroot\lib\bootstrap\CHANGELOG.md" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.min.css.map" />

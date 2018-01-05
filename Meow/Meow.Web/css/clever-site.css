@@ -1,12 +1,12 @@
 ﻿/*fonts*/
 @font-face {
     font-family: 'Evolventa-Regular';
-    src: url("../fonts/Evolventa-Regular.ttf");
+    src: url("/fonts/Evolventa-Regular.ttf");
 }
 
 @font-face {
     font-family: 'Cats';
-    src: url("'../fonts/All things CAT!.ttf'")
+    src: url("/fonts/All things CAT!.ttf'")
 }
 
 body {
