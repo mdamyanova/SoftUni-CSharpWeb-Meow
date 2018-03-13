@@ -121,7 +121,7 @@
                 {
                     Name = "Bez ime",
                     Age = 2,
-                    Image = web.DownloadData("https://scontent-sof1-1.xx.fbcdn.net/v/t1.0-0/s2048x2048/29214373_1720525684635031_4958485922996813824_o.jpg?oh=d117e8409e10acd7d32c96beff838202&oe=5B45FD0D"),
+                    Image = web.DownloadData("https://scontent-sof1-1.xx.fbcdn.net/v/t1.0-0/s2048x2048/29216475_10208686503639562_5744457022540087296_o.jpg?oh=0ec34c02c39a1cf42969273b372dc292&oe=5B44DD94"),
                     Description = "Hi, this cat is without name.",
                     Location = "Sofia",
                     Gender = Gender.Male,
