@@ -25,103 +25,103 @@
                 var userManager = serviceScope.ServiceProvider.GetService<UserManager<User>>();
                 var roleManager = serviceScope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
 
-                //Task
-                //    .Run(async () =>
-                //    {
-                //        var adminName = WebConstants.AdministratorRole;
-                //        var volunteerName = WebConstants.VolunteerRole;
+                Task
+                    .Run(async () =>
+                    {
+                        var adminName = WebConstants.AdministratorRole;
+                        var volunteerName = WebConstants.VolunteerRole;
 
-                //        var defaultBirthdate = "08/08/1990";
-                //        var defaultProfilePhoto = WebConstants.DefaultProfilePhotoPath;
+                        var defaultBirthdate = "08/08/1990";
+                        var defaultProfilePhoto = WebConstants.DefaultProfilePhotoPath;
 
-                //            // admin, volunteer, normal user
-                //            var roles = new[]
-                //        {
-                //                adminName,
-                //                volunteerName
-                //        };
+                        // admin, volunteer, normal user
+                        var roles = new[]
+                    {
+                                adminName,
+                                volunteerName
+                        };
 
-                //        foreach (var role in roles)
-                //        {
-                //            var roleExists = await roleManager.RoleExistsAsync(role);
+                        foreach (var role in roles)
+                        {
+                            var roleExists = await roleManager.RoleExistsAsync(role);
 
-                //            if (!roleExists)
-                //            {
-                //                await roleManager.CreateAsync(new IdentityRole
-                //                {
-                //                    Name = role
-                //                });
-                //            }
-                //        }
+                            if (!roleExists)
+                            {
+                                await roleManager.CreateAsync(new IdentityRole
+                                {
+                                    Name = role
+                                });
+                            }
+                        }
 
-                //        var adminEmail = "admin@mysite.com";
-                //        var adminUser = await userManager.FindByEmailAsync(adminEmail);
+                        var adminEmail = "admin@mysite.com";
+                        var adminUser = await userManager.FindByEmailAsync(adminEmail);
 
-                //        var web = new WebClient();
+                        var web = new WebClient();
 
-                //        if (adminUser == null)
-                //        {
-                //            adminUser = new User
-                //            {
-                //                Email = adminEmail,
-                //                UserName = adminName,
-                //                Name = adminName,
-                //                Gender = Gender.Female,
-                //                Birthdate = DateTime.ParseExact(defaultBirthdate, "MM/dd/yyyy", CultureInfo.CreateSpecificCulture("en-US")),
-                //                Location = "Sofia",
-                //                ProfilePhoto = web.DownloadData(defaultProfilePhoto)
-                //            };
+                        if (adminUser == null)
+                        {
+                            adminUser = new User
+                            {
+                                Email = adminEmail,
+                                UserName = adminName,
+                                Name = adminName,
+                                Gender = Gender.Female,
+                                Birthdate = DateTime.ParseExact(defaultBirthdate, "MM/dd/yyyy", CultureInfo.CreateSpecificCulture("en-US")),
+                                Location = "Sofia",
+                                ProfilePhoto = web.DownloadData(defaultProfilePhoto)
+                            };
 
-                //            var result = await userManager.CreateAsync(adminUser, "admin11");
+                            var result = await userManager.CreateAsync(adminUser, "admin11");
 
-                //            await userManager.AddToRoleAsync(adminUser, adminName);
-                //            await userManager.AddToRoleAsync(adminUser, volunteerName);
-                //        }
+                            await userManager.AddToRoleAsync(adminUser, adminName);
+                            await userManager.AddToRoleAsync(adminUser, volunteerName);
+                        }
 
-                //        var volunteerEmail = "contact@icatrescue.com";
-                //        var volunteerUser = await userManager.FindByEmailAsync(volunteerEmail);
+                        var volunteerEmail = "contact@icatrescue.com";
+                        var volunteerUser = await userManager.FindByEmailAsync(volunteerEmail);
 
-                //        if (volunteerUser == null)
-                //        {
-                //            volunteerUser = new User
-                //            {
-                //                Email = volunteerEmail,
-                //                UserName = volunteerName,
-                //                Name = volunteerName,
-                //                Gender = Gender.Male,
-                //                Birthdate = DateTime.ParseExact(defaultBirthdate, "MM/dd/yyyy", CultureInfo.CreateSpecificCulture("en-US")),
-                //                Location = "Sofia",
-                //                ProfilePhoto = web.DownloadData(defaultProfilePhoto)
-                //            };
+                        if (volunteerUser == null)
+                        {
+                            volunteerUser = new User
+                            {
+                                Email = volunteerEmail,
+                                UserName = volunteerName,
+                                Name = volunteerName,
+                                Gender = Gender.Male,
+                                Birthdate = DateTime.ParseExact(defaultBirthdate, "MM/dd/yyyy", CultureInfo.CreateSpecificCulture("en-US")),
+                                Location = "Sofia",
+                                ProfilePhoto = web.DownloadData(defaultProfilePhoto)
+                            };
 
-                //            var result = await userManager.CreateAsync(volunteerUser, "icatrescue1");
+                            var result = await userManager.CreateAsync(volunteerUser, "icatrescue1");
 
-                //            await userManager.AddToRoleAsync(volunteerUser, volunteerName);
-                //        }
+                            await userManager.AddToRoleAsync(volunteerUser, volunteerName);
+                        }
 
-                //            // how narcissistic
+                        // how narcissistic
 
-                //            var mirelkaEmail = "mdamyanova181@gmail.com";
-                //        var mirelkaUser = await userManager.FindByEmailAsync(mirelkaEmail);
-                //        var mirelkaBirthdate = "07/25/1995";
+                        var mirelkaEmail = "mdamyanova181@gmail.com";
+                        var mirelkaUser = await userManager.FindByEmailAsync(mirelkaEmail);
+                        var mirelkaBirthdate = "07/25/1995";
 
-                //        if (mirelkaUser == null)
-                //        {
-                //            mirelkaUser = new User
-                //            {
-                //                Email = mirelkaEmail,
-                //                UserName = "mirelka",
-                //                Name = "Mirelka",
-                //                Gender = Gender.Female,
-                //                Birthdate = DateTime.ParseExact(mirelkaBirthdate, "MM/dd/yyyy", CultureInfo.CreateSpecificCulture("en-US")),
-                //                Location = "Sofia",
-                //                ProfilePhoto = web.DownloadData(WebConstants.DefaultMirelkaProfilePhotoPath)
-                //            };
+                        if (mirelkaUser == null)
+                        {
+                            mirelkaUser = new User
+                            {
+                                Email = mirelkaEmail,
+                                UserName = "mirelka",
+                                Name = "Mirelka",
+                                Gender = Gender.Female,
+                                Birthdate = DateTime.ParseExact(mirelkaBirthdate, "MM/dd/yyyy", CultureInfo.CreateSpecificCulture("en-US")),
+                                Location = "Sofia",
+                                ProfilePhoto = web.DownloadData(WebConstants.DefaultMirelkaProfilePhotoPath)
+                            };
 
-                //            var result = await userManager.CreateAsync(mirelkaUser, "mirelka1");
-                //        }
-                //    })
-                //    .Wait();
+                            var result = await userManager.CreateAsync(mirelkaUser, "mirelka1");
+                        }
+                    })
+                    .Wait();
             }
 
             return app;
