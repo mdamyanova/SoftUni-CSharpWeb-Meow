@@ -54,10 +54,10 @@
                 new HomeCat()
                 {
                     Name = "Anastasiya",
-                    Age = 7,
-                    Image = defaultImage,
+                    Age = 3,
+                    Image = web.DownloadData("https://cdn.shopify.com/s/files/1/0673/5325/files/LadyDinahs_Cat_Cafe_Alice-Block_2048x.jpg?v=1517059999"),
                     Description = "Hi, this is a cute cat lqlqlq.",
-                    Location = "Sofia",
+                    Location = "Plovdiv",
                     Gender = Gender.Female,
                     OwnerId = admin.Id,
                     Owner = admin
@@ -66,7 +66,7 @@
                 {
                     Name = "Sa6ko",
                     Age = 9,
-                    Image = defaultImage,
+                    Image = web.DownloadData("https://news.nationalgeographic.com/news/2014/01/140127-cats-pets-animals-nation-dogs-people-science/"),
                     Description = "I'm Sa6ko.",
                     Location = "Sofia",
                     Gender = Gender.Male,
@@ -76,19 +76,30 @@
                 new HomeCat()
                 {
                     Name = "Katty",
-                    Age = 2,
-                    Image = defaultImage,
+                    Age = 1,
+                    Image = web.DownloadData("http://www.buzzly.fr/uploads/thumb/960/phpM8gt3i.jpg"),
                     Description = "Hi, this is Katty. I'm a sweet cat born in Sofia. I have a cute owner and even cuter paws.",
-                    Location = "Sofia",
-                    Gender = Gender.Male,
+                    Location = "Plovdiv",
+                    Gender = Gender.Female,
                     OwnerId = admin.Id,
                     Owner = admin
                 },
                 new HomeCat()
                 {
+                    Name = "Shishi",
+                    Age = 2,
+                    Image = web.DownloadData("https://scontent-sof1-1.xx.fbcdn.net/v/t1.0-0/s2048x2048/29186662_1720523821301884_8464872763612463104_o.jpg?oh=40461c7e1672cd9526037f452399ae2f&oe=5B359632"),
+                    Description = "Hi, this is shishi.",
+                    Location = "Sofia",
+                    Gender = Gender.Male,
+                    OwnerId = mirelka.Id,
+                    Owner = mirelka
+                },
+                new HomeCat()
+                {
                     Name = "Syselcho",
                     Age = 2,
-                    Image = web.DownloadData("https://meowcatrescue.blob.core.windows.net/defaultimages/syselcho.jpg"),
+                    Image = web.DownloadData("https://scontent-sof1-1.xx.fbcdn.net/v/t1.0-0/29136082_1720523811301885_2063271412478509056_o.jpg?oh=21e2c1fa70e5004bf6b4ba2190bba0eb&oe=5B445FE1"),
                     Description = "Hi, this is Syselcho.",
                     Location = "Sofia",
                     Gender = Gender.Male,
@@ -99,7 +110,7 @@
                 {
                     Name = "Hapeshtoto zverche",
                     Age = 2,
-                    Image = web.DownloadData("https://meowcatrescue.blob.core.windows.net/defaultimages/zvyar.jpg"),
+                    Image = web.DownloadData("https://scontent-sof1-1.xx.fbcdn.net/v/t1.0-0/29177266_1720523801301886_5756089700943134720_o.jpg?oh=ae5dcd2503bf69e061e9379a192c6b95&oe=5B338DCB"),
                     Description = "Hi, this is hapeshtoto zverche.",
                     Location = "Sofia",
                     Gender = Gender.Male,
@@ -110,12 +121,100 @@
                 {
                     Name = "Bez ime",
                     Age = 2,
-                    Image = web.DownloadData("https://meowcatrescue.blob.core.windows.net/defaultimages/bez-ime.jpg"),
+                    Image = web.DownloadData("https://scontent-sof1-1.xx.fbcdn.net/v/t1.0-0/s2048x2048/29214373_1720525684635031_4958485922996813824_o.jpg?oh=d117e8409e10acd7d32c96beff838202&oe=5B45FD0D"),
                     Description = "Hi, this cat is without name.",
                     Location = "Sofia",
                     Gender = Gender.Male,
                     OwnerId = mirelka.Id,
                     Owner = mirelka
+                },
+                new HomeCat()
+                {
+                    Name = "Oliver",
+                    Age = 2,
+                    Image = web.DownloadData("https://scontent-sof1-1.xx.fbcdn.net/v/t1.0-9/29136441_1720261874661412_8697264119625023488_n.jpg?oh=60d8c6ba8133afe8f3adc9282aa3ed85&oe=5B3C65FE"),
+                    Description = "Hi, this is Oliver.",
+                    Location = "Plovdiv",
+                    Gender = Gender.Male,
+                    OwnerId = admin.Id,
+                    Owner = admin
+                },
+                new HomeCat()
+                {
+                    Name = "Moshino",
+                    Age = 2,
+                    Image = web.DownloadData("http://i.dailymail.co.uk/i/pix/2017/07/16/09/42623C4B00000578-4700660-image-a-1_1500194523431.jpg"),
+                    Description = "Здравейте, това е мъжкарят Мошино, той е много мил и игрив, но стане ли върпос за женската му, винаги се стига до котешка свада.",
+                    Location = "Plovdiv",
+                    Gender = Gender.Male,
+                    OwnerId = admin.Id,
+                    Owner = admin
+                },
+                new HomeCat()
+                {
+                    Name = "Krivogledcho",
+                    Age = 4,
+                    Image = web.DownloadData("https://cdn.images.express.co.uk/img/dynamic/galleries/x701/177020.jpg"),
+                    Description = "Здравейте, това е мъжкарят Мошино, той е много мил и игрив, но стане ли върпос за женската му, винаги се стига до котешка свада.",
+                    Location = "Plovdiv",
+                    Gender = Gender.Male,
+                    OwnerId = admin.Id,
+                    Owner = admin
+                },
+                new HomeCat()
+                {
+                    Name = "Pisan",
+                    Age = 1,
+                    Image = web.DownloadData("http://a57.foxnews.com/images.foxnews.com/content/fox-news/lifestyle/2017/11/09/how-to-keep-cat-from-scratching-your-sofa-to-shreds/_jcr_content/par/featured_image/media-0.img.jpg/931/524/1510172827500.jpg?ve=1&tl=1&text=big-top-image"),
+                    Description = "Hi this is pisan and he is very cute.",
+                    Location = "Sofia",
+                    Gender = Gender.Male,
+                    OwnerId = admin.Id,
+                    Owner = admin
+                },
+                new HomeCat()
+                {
+                    Name = "Molly",
+                    Age = 6,
+                    Image = web.DownloadData("https://boygeniusreport.files.wordpress.com/2017/01/cat.jpg?quality=98&strip=all&w=782"),
+                    Description = "Hi this is Molly and she is very aggressive.",
+                    Location = "Sofia",
+                    Gender = Gender.Female,
+                    OwnerId = admin.Id,
+                    Owner = admin
+                },
+                new HomeCat()
+                {
+                    Name = "Niya",
+                    Age = 3,
+                    Image = web.DownloadData("http://purrtacular.com/wp-content/uploads/2016/08/fluffy-cats-10.jpg"),
+                    Description = "Hi this is Niya and she love to eat Whiskas.",
+                    Location = "Plovdiv",
+                    Gender = Gender.Female,
+                    OwnerId = admin.Id,
+                    Owner = admin
+                },
+                new HomeCat()
+                {
+                    Name = "Mustachko",
+                    Age = 2,
+                    Image = web.DownloadData("http://www.propaganda.co.uk/wp-content/uploads/2016/11/Cat-1.png"),
+                    Description = "Hi this is Mustachko and he is having a moustache.",
+                    Location = "Sofia",
+                    Gender = Gender.Male,
+                    OwnerId = admin.Id,
+                    Owner = admin
+                },
+                new HomeCat()
+                {
+                    Name = "Fintifliushko",
+                    Age = 1,
+                    Image = web.DownloadData("https://i.ytimg.com/vi/geqVuYmo8Y0/hqdefault.jpg"),
+                    Description = "Hi this is Fintifliushko and he is the most lazy cat in the world.",
+                    Location = "Sofia",
+                    Gender = Gender.Male,
+                    OwnerId = admin.Id,
+                    Owner = admin
                 }
             };
        
