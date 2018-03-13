@@ -1,11 +1,8 @@
 ﻿@{
     ViewData["Title"] = "All Cats";
 }
-
 <div class="container">
-
     <h1 class="my-4 text-center text-lg-left">Cats for Adoption</h1>
-
     @if (this.User.IsInRole(WebConstants.VolunteerRole))
     {
         <!--add home kitty-->
@@ -13,9 +10,7 @@
             <a asp-area="Volunteer" asp-controller="Cats" asp-action="Add" class="btn btn-outline-secondary">Add</a>
         </div>
     }
-
     <div class="row text-center text-lg-left">
-
         @foreach (var cat in this.Model)
         {
             <div class="col-lg-3 col-md-4 col-xs-6 hovereffect">
@@ -29,3 +24,4 @@
         }
     </div>
 </div>
+

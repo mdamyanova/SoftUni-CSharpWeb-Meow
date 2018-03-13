@@ -51,7 +51,7 @@
                     <a data-original-title="Broadcast Message" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-envelope"></i></a>
                     <span class="pull-right">
                         @if ((this.Model.Owner == User.Identity.Name) ||
-                             this.User.IsInRole(WebConstants.AdministratorRole))
+                            this.User.IsInRole(WebConstants.AdministratorRole))
                         {
                             <a asp-action="Edit" asp-route-id="@this.Model.Id" data-original-title="Edit" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-edit"></i></a>
                             <a asp-action="Delete" asp-route-id="@this.Model.Id" data-original-title="Remove" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-remove"></i></a>

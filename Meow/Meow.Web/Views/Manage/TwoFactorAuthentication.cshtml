@@ -3,7 +3,6 @@
     ViewData["Title"] = "Two-factor authentication";
     ViewData.AddActivePage(ManageNavPages.TwoFactorAuthentication);
 }
-
 <h4>@ViewData["Title"]</h4>
 @if (Model.Is2faEnabled)
 {
@@ -32,7 +31,6 @@
     <a asp-action="Disable2faWarning" class="btn btn-default">Disable 2FA</a>
     <a asp-action="GenerateRecoveryCodes" class="btn btn-default">Reset recovery codes</a>
 }
-
 <h5>Authenticator app</h5>
 @if (!Model.HasAuthenticator)
 {
@@ -43,7 +41,6 @@ else
     <a asp-action="EnableAuthenticator" class="btn btn-default">Configure authenticator app</a>
     <a asp-action="ResetAuthenticatorWarning" class="btn btn-default">Reset authenticator key</a>
 }
-
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
 }

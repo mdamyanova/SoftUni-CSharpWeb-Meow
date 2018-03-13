@@ -82,7 +82,7 @@
             }
             var img = new byte[] { };
 
-            // smarter look pls 
+            // smarter look pls -- I think its okay/Kalin
             using (var memoryStream = new MemoryStream())
             {
                 image.CopyToAsync(memoryStream);

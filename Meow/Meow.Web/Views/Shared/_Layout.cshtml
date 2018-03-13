@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>@ViewData["Title"] - Meow</title>
 
     <environment include="Development">
@@ -102,8 +103,17 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer class="text-center">
+
+        <!--Round icons problem...-->
+        <footer id="footer">
             <p>&copy; 2017 - Meow</p>
+            <div class="inner">
+                <div class="icons">
+                    <a href="https://www.facebook.com/iCatRescue/" class="icon round fa-facebook"><span class="label">Facebook</span></a>
+                    <a href="https://www.instagram.com/iCat_Rescue/" class="icon round fa-instagram"><span class="label">Instagram</span></a>
+                    <a href="https://www.youtube.com/channel/UC60WnyKkAtApMDCjDAp1HVQ" class="icon round fa-fa-youtube"><span class="label">Youtube</span></a>
+                </div>
+            </div>
         </footer>
     </div>
 
