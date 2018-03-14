@@ -11,11 +11,11 @@
     <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post" enctype="multipart/form-data">
         <p class="text-on-form">Are you sure you want to request adoption to the cat?</p>
         <div asp-validation-summary="All" class="text-danger"></div>
-        <input asp-for="Name" class="form-control" placeholder="name" disabled />
+        <input asp-for="Name" class="form-control" style="color:black" placeholder="name" disabled />
         <span asp-validation-for="Name" class="text-danger"></span>
-        <input asp-for="Username" class="form-control" placeholder="username" disabled />
+        <input asp-for="Username" class="form-control" style="color:black" placeholder="username" disabled />
         <span asp-validation-for="Username" class="text-danger"></span>
-        <button type="submit" class="login-button">Adopt</button>
+        <button type="submit" class="login-button" style="width:250px; color:black">Adopt</button>
     </form>
 </div>
 

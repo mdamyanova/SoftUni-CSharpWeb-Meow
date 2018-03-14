@@ -7,9 +7,9 @@
     @if (this.User.Identity.IsAuthenticated)
     {
         <!--add home kitty-->
-        <div class="text-center">
-            <a asp-action="Add" class="btn btn-outline-secondary">Add</a>
-        </div>
+    <div class="text-center">
+        <a asp-action="Add" class="btn btn-default" style="color: black">Add</a>
+    </div>
     }
     <div class="row text-center text-lg-left">
         @foreach (var cat in this.Model)

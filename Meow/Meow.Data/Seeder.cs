@@ -67,7 +67,7 @@
                 {
                     Name = "Sa6ko",
                     Age = 9,
-                    Image = web.DownloadData("https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.adapt.1900.1.jpg"),
+                    Image = web.DownloadData("https://www.communitycatspodcast.com/wp-content/uploads/2017/05/GuestBlog1-750x750.jpeg"),
                     Description = "I'm Sa6ko.",
                     Location = "Sofia",
                     Gender = Gender.Male,

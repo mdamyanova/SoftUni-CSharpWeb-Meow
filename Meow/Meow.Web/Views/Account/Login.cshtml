@@ -14,25 +14,23 @@
 <br>
 <div class="login">
     <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
-        <input asp-for="Username" class="form-control" placeholder="username" />
+        <input asp-for="Username" class="form-control" placeholder="Username" />
         <span asp-validation-for="Username" class="text-danger"></span>
-        <input asp-for="Password" class="form-control" placeholder="password" />
+        <input asp-for="Password" class="form-control" placeholder="Password" />
         <span asp-validation-for="Password" class="text-danger"></span>
         @*<div class="checkbox">
-                <label asp-for="RememberMe">
-                    <input asp-for="RememberMe" />
-                    @Html.DisplayNameFor(m => m.RememberMe)
-                </label>
-            </div>*@
+            <label asp-for="RememberMe" style="color:gray">
+                <input asp-for="RememberMe" />
+                @Html.DisplayNameFor(m => m.RememberMe)
+            </label>
+        </div>*@
         <div class="form-group">
-            <p>
-                <a asp-action="ForgotPassword">Forgot your password?</a>
-            </p>
-            <p>
-                <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register as a new user?</a>
-            </p>
+            <br />
+                <a asp-action="ForgotPassword" style="color:gray">Forgot your password?</a>
+            <br />
+                <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" style="color:gray">Register as a new user?</a>
         </div>
-        <button type="submit" class="login-button">Log in</button>
+        <button type="submit" class="login-button" style="width:250px">Log in</button>
     </form>
 
     <!--FB login form-->
@@ -46,7 +44,7 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
-    <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true">
+    <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true" >
     </div>
 </div>
 
