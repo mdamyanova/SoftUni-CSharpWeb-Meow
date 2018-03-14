@@ -13,6 +13,7 @@
     <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" enctype="multipart/form-data">
         <input asp-for="Email" class="form-control broken-input" placeholder="Email" />
         <span asp-validation-for="Email" class="text-danger"></span>
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>   
         <input asp-for="Name" class="form-control" placeholder="Name" />
         <span asp-validation-for="Name" class="text-danger"></span>
         <input asp-for="Username" class="form-control" placeholder="Username" />

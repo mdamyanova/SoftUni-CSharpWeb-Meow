@@ -16,6 +16,7 @@
     <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
         <input asp-for="Username" class="form-control" placeholder="Username" />
         <span asp-validation-for="Username" class="text-danger"></span>
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         <input asp-for="Password" class="form-control" placeholder="Password" />
         <span asp-validation-for="Password" class="text-danger"></span>
         @*<div class="checkbox">
@@ -26,9 +27,9 @@
         </div>*@
         <div class="form-group">
             <br />
-                <a asp-action="ForgotPassword" style="color:gray">Forgot your password?</a>
+            <a asp-action="ForgotPassword" style="color:gray">Forgot your password?</a>
             <br />
-                <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" style="color:gray">Register as a new user?</a>
+            <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" style="color:gray">Register as a new user?</a>
         </div>
         <button type="submit" class="login-button" style="width:250px">Log in</button>
     </form>
