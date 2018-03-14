@@ -24,6 +24,7 @@
 
             var admin = this.db.Users.FirstOrDefault(u => u.UserName == WebConstants.AdministratorUsername);
             var mirelka = this.db.Users.FirstOrDefault(u => u.UserName == "mirelka");
+            var kalincho = this.db.Users.FirstOrDefault(u => u.UserName == "DESKTOP-0GN2RO6\\Dell");
 
             var defaultImage = web.DownloadData(WebConstants.DefaultCatPath);
 
@@ -66,7 +67,7 @@
                 {
                     Name = "Sa6ko",
                     Age = 9,
-                    Image = web.DownloadData("https://news.nationalgeographic.com/news/2014/01/140127-cats-pets-animals-nation-dogs-people-science/"),
+                    Image = web.DownloadData("https://news.nationalgeographic.com/content/dam/news/photos/000/755/75552.adapt.1900.1.jpg"),
                     Description = "I'm Sa6ko.",
                     Location = "Sofia",
                     Gender = Gender.Male,
