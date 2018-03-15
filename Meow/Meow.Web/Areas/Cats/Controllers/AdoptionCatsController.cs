@@ -6,8 +6,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using Models;
-    using Services.Volunteer.Contracts;
+    using Models.AdoptionCats;
     using Services.Cats.Contracts;
 
 
@@ -24,6 +23,22 @@
         {
             this.userManager = userManager;
             this.adoptionCats = adoptionCats;
+        }
+
+        // all adoption cats 
+        public IActionResult Adoption()
+        {
+            var model = this.adoptionCats.AllAdoptionCats();
+
+            return this.View(model);
+        }
+
+        // details about adoption cat
+        public IActionResult Adopt(int id)
+        {
+            var cat = this.adoptionCats.ById(id);
+
+            return this.ViewOrNotFound(cat);
         }
 
         public IActionResult Manage()
@@ -168,6 +183,27 @@
             var success = this.adoptionCats.Give(id);
 
             return this.RedirectToAction(nameof(Manage));
+        }
+
+        [Authorize]
+        [HttpPost, ActionName("Request")]
+        public IActionResult ConfirmRequest(int id)
+        {
+            var catExists = this.adoptionCats.Exists(id);
+
+            if (!catExists)
+            {
+                return this.NotFound();
+            }
+
+            var success = this.adoptionCats.Adopt(id, User.Identity.Name);
+
+            if (!success)
+            {
+                return this.BadRequest();
+            }
+
+            return this.RedirectToAction(nameof(Adoption));
         }
     }
 }

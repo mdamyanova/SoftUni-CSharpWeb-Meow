@@ -1,15 +1,11 @@
-﻿namespace Meow.Web.Areas.Cats.Models.AdoptionCats
+﻿namespace Meow.Web.Areas.Cats.Models.HomeCats
 {
     using Data;
     using Data.Models.Enums;
-    using Data.Validation;
-    using Microsoft.AspNetCore.Http;
     using System.ComponentModel.DataAnnotations;
 
-    public class AdoptionCatFormModel
+    public class HomeCatEditFormModel
     {
-        public int Id { get; set; }
-
         [Required]
         [MinLength(DataConstants.CatNameMinLength)]
         [MaxLength(DataConstants.CatNameMaxLength)]
@@ -18,12 +14,8 @@
         [Range(DataConstants.CatMinAge, DataConstants.CatMaxAge)]
         public int Age { get; set; }
 
-        [Required]
-        [DataType(DataType.Upload)]
-        public IFormFile Image { get; set; }
-
-        [Location]
-        public string Location { get; set; }
+        //[DataType(DataType.Upload)]
+        //public byte[] Image { get; set; }
 
         [MaxLength(DataConstants.CatDescriptionMaxLength)]
         public string Description { get; set; }

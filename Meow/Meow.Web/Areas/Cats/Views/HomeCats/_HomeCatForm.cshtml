@@ -1,0 +1,30 @@
+﻿@model HomeCatFormModel
+@{
+    ViewData["Title"] = "Home Cat";
+}
+<link rel="stylesheet" href="~/css/form.css">
+<div class="body"></div>
+<div class="grad"></div>
+<br>
+<div class="login">
+    <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post" enctype="multipart/form-data">
+        <div style="color:gray; font-size:x-large">Add your home cat.</div>
+        <!--<div asp-validation-summary="All" class="text-danger"></div> it's unnecessary-->
+        <input asp-for="Name" class="form-control" placeholder="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+
+        <input asp-for="Age" class="form-control" placeholder="Age" />
+        <span asp-validation-for="Age" class="text-danger"></span>
+
+        <input asp-for="Description" class="form-control" placeholder="Description" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+
+        <select asp-for="Gender" asp-items="@Html.GetEnumSelectList<Gender>()" style="width:250px; height:25px"></select>
+        <span asp-validation-for="Gender" class="text-danger"></span>
+
+        <input asp-for="Image" type="file" class="form-control" />
+
+        <button type="submit" class="login-button" style="width:250px">Submit</button>
+    </form>
+</div>
+
