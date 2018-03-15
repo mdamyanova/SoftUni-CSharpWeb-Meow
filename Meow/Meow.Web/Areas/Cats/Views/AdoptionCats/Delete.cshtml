@@ -1,0 +1,36 @@
+﻿@model AdoptionCatFormModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<link rel="stylesheet" href="~/css/form.css">
+<div class="body"></div>
+<div class="grad"></div>
+
+<br>
+<div class="login">
+    <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <input asp-for="Name" class="form-control" placeholder="name" disabled />
+        <span asp-validation-for="Name" class="text-danger"></span>
+
+        <input asp-for="Age" class="form-control" placeholder="age" disabled />
+        <span asp-validation-for="Age" class="text-danger"></span>
+
+        @*<input asp-for="Image" type="file" class="form-control" />*@
+
+        <input asp-for="Description" class="form-control" placeholder="description" disabled />
+        <span asp-validation-for="Description" class="text-danger"></span>
+
+        <input asp-for="Gender" disabled />
+        <span asp-validation-for="Gender" class="text-danger"></span>
+
+        <button type="submit" class="login-button">Delete</button>
+    </form>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

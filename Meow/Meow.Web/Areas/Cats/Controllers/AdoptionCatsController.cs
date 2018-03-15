@@ -8,6 +8,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Models;
     using Services.Volunteer.Contracts;
+    using Services.Cats.Contracts;
 
 
     using static Core.WebConstants;
@@ -17,9 +18,9 @@
     public class AdoptionCatsController : Controller
     {
         private readonly UserManager<User> userManager;
-        private readonly IAdoptionCatService adoptionCats;
+        private readonly ICatService adoptionCats;
 
-        public AdoptionCatsController(UserManager<User> userManager, IAdoptionCatService adoptionCats)
+        public AdoptionCatsController(UserManager<User> userManager, ICatService adoptionCats)
         {
             this.userManager = userManager;
             this.adoptionCats = adoptionCats;
@@ -27,7 +28,7 @@
 
         public IActionResult Manage()
         {
-            var model = this.adoptionCats.All();
+            var model = this.adoptionCats.AllAdoptionCats();
 
             return this.View(model);
         }
@@ -63,7 +64,7 @@
             }
 
             if (User.Identity.Name != cat.Owner &&
-                !this.User.IsInRole(WebConstants.AdministratorRole))
+                !this.User.IsInRole(AdministratorRole))
             {
                 // user doesn't have the rights
                 return RedirectToAction("Adoption", "Cats", new { area = "" });

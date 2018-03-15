@@ -1,11 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Meow.Web.Areas.Cats.Controllers
+﻿namespace Meow.Web.Areas.Cats.Controllers
 {
+    using Services.Cats.Contracts;
+    using Microsoft.AspNetCore.Mvc;
+
     public class HomeCatsController
     {
+        private readonly ICatService cats;
+
+        public HomeCatsController(ICatService cats)
+        {
+            this.cats = cats;
+        }
+
+        public IActionResult Manage()
+        {
+            var model = this.cats.AllHomeCats();
+
+            return this.View(model);
+        }
     }
 }
