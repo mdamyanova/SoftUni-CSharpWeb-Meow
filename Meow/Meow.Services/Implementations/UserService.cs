@@ -8,7 +8,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Volunteer.Models;
+    using Cats.Models;
 
     public class UserService : IUserService
     {

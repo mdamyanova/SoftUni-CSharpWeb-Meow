@@ -5,7 +5,7 @@
     using Data.Models.Enums;
     using System;
     using System.Collections.Generic;
-    using Volunteer.Models;
+    using Cats.Models;
 
     public class UserProfileServiceModel : IMapFrom<User>
     {

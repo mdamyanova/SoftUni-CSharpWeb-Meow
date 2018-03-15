@@ -3,7 +3,7 @@
     using Models;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Volunteer.Models;
+    using Cats.Models;
 
     public interface IUserService
     {

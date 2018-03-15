@@ -9,7 +9,7 @@ namespace Meow.Services.Cats.Implementations
     using Data.Models;
     using Data.Models.Enums;
     using Contracts;
-    using Volunteer.Models;
+    using Models;
     using Microsoft.AspNetCore.Http;
     using System.Collections.Generic;
     using System.IO;
