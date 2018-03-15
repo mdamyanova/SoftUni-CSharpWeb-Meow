@@ -164,4 +164,10 @@
     <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Cats\Models\HomeCats\" />
+    <Folder Include="Areas\Cats\Views\AdoptionCats\" />
+    <Folder Include="Areas\Cats\Views\HomeCats\" />
+  </ItemGroup>
+
 </Project>

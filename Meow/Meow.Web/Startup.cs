@@ -80,7 +80,7 @@
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            //seeder.Seed().Wait();
+            seeder.Seed().Wait();
         }
     }
 }
