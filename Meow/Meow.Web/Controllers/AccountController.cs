@@ -1,6 +1,7 @@
 ﻿namespace Meow.Web.Controllers
 {
     using Data.Models;
+    using Meow.Core;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
@@ -230,8 +231,16 @@
 
                 using (var memoryStream = new MemoryStream())
                 {
-                    await model.ProfilePhoto.CopyToAsync(memoryStream);
-                    user.ProfilePhoto = memoryStream.ToArray();
+                    if (model.ProfilePhoto == null)
+                    { 
+                        var imgToArr = ImageConvertions.ImagePathToArray(environment.WebRootPath + "/images/default-profile.png");
+                        user.ProfilePhoto = imgToArr;
+                    }
+                    else
+                    {
+                        await model.ProfilePhoto.CopyToAsync(memoryStream);
+                        user.ProfilePhoto = memoryStream.ToArray();
+                    }            
                 }
 
                 var result = await _userManager.CreateAsync(user, model.Password);

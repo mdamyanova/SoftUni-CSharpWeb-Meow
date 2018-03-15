@@ -17,7 +17,7 @@
                     <div class="row">
                         <div class="col-md-3 col-lg-3 " align="center">
                             @{
-                                var imgSrc = this.Model.Image != null ? ImageExtensions.ByteArrayToImage(this.Model.Image) : WebConstants.DefaultCatPath;
+                                var imgSrc = this.Model.Image != null ? ImageConvertions.ByteArrayToImage(this.Model.Image) : WebConstants.DefaultCatPath;
                             }
                             <img alt="@this.Model.Name photo" src="@imgSrc" class="img-fluid img-thumbnail img-circle">
                         </div>

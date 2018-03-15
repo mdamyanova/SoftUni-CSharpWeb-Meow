@@ -1,6 +1,4 @@
-﻿using Meow.Services.Cats.Models;
-
-namespace Meow.Services.Cats.Implementations
+﻿namespace Meow.Services.Cats.Implementations
 {
 
     using AutoMapper.QueryableExtensions;

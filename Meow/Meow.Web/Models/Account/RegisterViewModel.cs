@@ -30,7 +30,6 @@
         [Display(Name = "Birth date")]
         public DateTime Birthdate { get; set; }
 
-        [Required]
         [Location]
         public string Location { get; set; }
 
@@ -45,7 +44,7 @@
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
+        // todo - add max size
         [DataType(DataType.Upload)]
         [Display(Name = "Profile Photo")]
         public IFormFile ProfilePhoto { get; set; }

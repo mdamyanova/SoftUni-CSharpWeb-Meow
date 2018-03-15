@@ -4,7 +4,7 @@
     using System;
     using System.IO;
 
-    public static class ImageExtensions
+    public static class ImageConvertions
     {
         public static byte[] ImageToByteArray(IFormFile image)
         {
@@ -16,8 +16,9 @@
         }
 
         public static string ByteArrayToImage(byte[] imageArray)
-        {
-            return $"data:image/gif;base64,{Convert.ToBase64String(imageArray)}";
-        }
+            => $"data:image/gif;base64,{Convert.ToBase64String(imageArray)}";
+
+        public static byte[] ImagePathToArray(string path)
+            => File.ReadAllBytes(path);
     }
 }
