@@ -1,5 +1,6 @@
 ﻿namespace Meow.Data.Validation
 {
+    using Meow.Data.Models.Enums;
     using System;
 
     public class LocationAttribute : Attribute
@@ -13,8 +14,12 @@
                 return true;
             }
 
-            // todo: add all cities in bg
-            return true;
+            if (Enum.TryParse(location, out Towns town))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

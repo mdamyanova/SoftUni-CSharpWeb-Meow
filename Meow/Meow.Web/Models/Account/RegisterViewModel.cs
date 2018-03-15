@@ -30,6 +30,8 @@
         [Display(Name = "Birth date")]
         public DateTime Birthdate { get; set; }
 
+        [Required]
+        [Location]
         public string Location { get; set; }
 
         [Required]

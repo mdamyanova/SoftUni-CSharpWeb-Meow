@@ -1,8 +1,8 @@
 ﻿namespace Meow.Data
 {
-    using Meow.Data.Models;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using Models;
 
     public class MeowDbContext : IdentityDbContext<User>
     {

@@ -69,8 +69,7 @@ namespace Meow.Data.Migrations
 
                     b.Property<int>("Gender");
 
-                    b.Property<byte[]>("Image")
-                        .IsRequired();
+                    b.Property<byte[]>("Image");
 
                     b.Property<string>("Location")
                         .IsRequired();
