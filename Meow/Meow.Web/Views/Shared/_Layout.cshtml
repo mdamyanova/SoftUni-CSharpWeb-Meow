@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
     <title>@ViewData["Title"] - Meow</title>
 
     <environment include="Development">
@@ -96,6 +97,7 @@
                     }
 
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="CatsDMS">CatsDMS</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
