@@ -41,8 +41,8 @@
                         <li class="dropdown">
                             <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Cats<span class="caret"></span></a>  
                             <ul class="dropdown-menu" role="menu">
-                                <li><a asp-area="" asp-controller="Cats" asp-action="All">Home Cats</a></li>
-                                <li><a asp-area="Admin" asp-controller="Cats" asp-action="Manage">Manage</a></li>
+                                <li><a asp-area="Cats" asp-controller="HomeCats" asp-action="All">Home Cats</a></li>
+                                <li><a asp-area="Cats" asp-controller="HomeCats" asp-action="Manage">Manage</a></li>
                             </ul>
                         </li>
 
@@ -50,9 +50,9 @@
                         <li class="dropdown">
                             <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">iCatRescue<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a asp-area="" asp-controller="Cats" asp-action="Adoption">Cats</a></li>
-                                <li><a asp-area="Volunteer" asp-controller="Cats" asp-action="Manage">Manage</a></li>
-                                <li><a asp-area="Volunteer" asp-controller="Cats" asp-action="Requests">Requests</a></li>
+                                <li><a asp-area="Cats" asp-controller="AdoptionCats" asp-action="Adoption">Cats</a></li>
+                                <li><a asp-area="Cats" asp-controller="AdoptionCats" asp-action="Manage">Manage</a></li>
+                                <li><a asp-area="Cats" asp-controller="AdoptionCats" asp-action="Requests">Requests</a></li>
                             </ul>
                         </li>
 
@@ -72,14 +72,14 @@
                     @if (this.User.IsInRole(WebConstants.VolunteerRole) && 
                             !this.User.IsInRole(WebConstants.AdministratorRole))
                     {
-                        <li><a asp-area="" asp-controller="Cats" asp-action="All">Cats</a></li>
+                        <li><a asp-area="Cats" asp-controller="HomeCats" asp-action="All">Cats</a></li>
                          <!--cats for adoption-->
                         <li class="dropdown">
                             <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">iCatRescue<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a asp-area="" asp-controller="Cats" asp-action="Adoption">Cats</a></li>
-                                <li><a asp-area="Volunteer" asp-controller="Cats" asp-action="Manage">Manage</a></li>
-                                <li><a asp-area="Volunteer" asp-controller="Cats" asp-action="Requests">Requests</a></li>
+                                <li><a asp-area="Cats" asp-controller="AdoptionCats" asp-action="Adoption">Cats</a></li>
+                                <li><a asp-area="Cats" asp-controller="AdoptionCats" asp-action="Manage">Manage</a></li>
+                                <li><a asp-area="Cats" asp-controller="AdoptionCats" asp-action="Requests">Requests</a></li>
                             </ul>
                         </li>
 
@@ -91,8 +91,8 @@
                     @if (!this.User.IsInRole(WebConstants.AdministratorRole)
                             && !this.User.IsInRole(WebConstants.VolunteerRole))
                     {
-                        <li><a asp-area="" asp-controller="Cats" asp-action="All">Cats</a></li>
-                        <li><a asp-area="" asp-controller="Cats" asp-action="Adoption">iCatRescue</a></li>
+                        <li><a asp-area="Cats" asp-controller="HomeCats" asp-action="All">Cats</a></li>
+                        <li><a asp-area="Cats" asp-controller="AdoptionCats" asp-action="Adoption">iCatRescue</a></li>
                         <li><a asp-area="" asp-controller="Users" asp-action="All">Users</a></li>
                     }
 

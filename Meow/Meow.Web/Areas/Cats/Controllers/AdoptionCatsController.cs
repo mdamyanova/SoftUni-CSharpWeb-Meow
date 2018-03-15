@@ -17,9 +17,9 @@
     public class AdoptionCatsController : Controller
     {
         private readonly UserManager<User> userManager;
-        private readonly ICatService adoptionCats;
+        private readonly IAdoptionCatService adoptionCats;
 
-        public AdoptionCatsController(UserManager<User> userManager, ICatService adoptionCats)
+        public AdoptionCatsController(UserManager<User> userManager, IAdoptionCatService adoptionCats)
         {
             this.userManager = userManager;
             this.adoptionCats = adoptionCats;
@@ -28,7 +28,7 @@
         // all adoption cats 
         public IActionResult Adoption()
         {
-            var model = this.adoptionCats.AllAdoptionCats();
+            var model = this.adoptionCats.All();
 
             return this.View(model);
         }
@@ -43,7 +43,7 @@
 
         public IActionResult Manage()
         {
-            var model = this.adoptionCats.AllAdoptionCats();
+            var model = this.adoptionCats.All();
 
             return this.View(model);
         }

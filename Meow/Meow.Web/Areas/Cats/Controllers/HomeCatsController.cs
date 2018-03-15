@@ -10,27 +10,28 @@
 
     using static Core.WebConstants;
 
+    [Area(CatsArea)]
+    [Authorize]
     public class HomeCatsController : Controller
     {
         private readonly UserManager<User> userManager;
-        private readonly ICatService cats;
+        private readonly IHomeCatService cats;
 
-        public HomeCatsController(ICatService cats)
+        public HomeCatsController(IHomeCatService cats)
         {
             this.cats = cats;
         }
 
         // all home cats
-        [Authorize]
+        [AllowAnonymous]
         public IActionResult All()
         {
-            var model = this.cats.AllHomeCats();
+            var model = this.cats.All();
 
             return this.View(model);
         }
 
         // details about home cat
-        [Authorize]
         public IActionResult Details(int id)
         {
             var cat = this.cats.ById(id);
@@ -38,7 +39,6 @@
             return this.ViewOrNotFound(cat);
         }
 
-        [Authorize]
         public IActionResult Add()
         {
             return this.View();
@@ -152,7 +152,7 @@
 
         public IActionResult Manage()
         {
-            var model = this.cats.AllHomeCats();
+            var model = this.cats.All();
 
             return this.View(model);
         }

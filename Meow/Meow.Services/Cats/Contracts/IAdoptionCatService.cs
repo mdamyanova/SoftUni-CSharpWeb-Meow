@@ -7,10 +7,9 @@ namespace Meow.Services.Cats.Contracts
     using Volunteer.Models;
     using Microsoft.AspNetCore.Http;
 
-    public interface ICatService
+    public interface IAdoptionCatService
     {
-        IEnumerable<AdoptionCatListingServiceModel> AllAdoptionCats();
-        IEnumerable<HomeCatListingServiceModel> AllHomeCats();
+        IEnumerable<AdoptionCatListingServiceModel> All();
 
         AdoptionCatServiceModel ById(int id);
 

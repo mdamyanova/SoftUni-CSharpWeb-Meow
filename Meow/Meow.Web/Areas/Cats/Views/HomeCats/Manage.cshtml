@@ -32,11 +32,11 @@
                     @cat.Owner
                 </th>
                 <th>
-                    <a class="btn btn-sm btn-default" asp-area="Cats" asp-controller="AdoptionCats" asp-action="Adopt" asp-route-id="@cat.Id">Details</a>
+                    <a class="btn btn-sm btn-default" asp-area="Cats" asp-controller="HomeCats" asp-action="Details" asp-route-id="@cat.Id">Details</a>
                 </th>
-                <th>  
-                    <a class="btn btn-sm btn-default" asp-area="Cats" asp-controller="AdoptionCats" asp-action="Edit" asp-route-id="@cat.Id">Edit</a>
-                    <a class="btn btn-sm btn-default" asp-area="Cats" asp-controller="AdoptionCats" asp-action="Delete" asp-route-id="@cat.Id">Delete</a>
+                <th>
+                    <a class="btn btn-sm btn-default" asp-area="Cats" asp-controller="HomeCats" asp-action="Edit" asp-route-id="@cat.Id">Edit</a>
+                    <a class="btn btn-sm btn-default" asp-area="Cats" asp-controller="HomeCats" asp-action="Delete" asp-route-id="@cat.Id">Delete</a>
                 </th>
             </tr>
         }

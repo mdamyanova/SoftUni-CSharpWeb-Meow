@@ -15,21 +15,16 @@ namespace Meow.Services.Cats.Implementations
     using System.IO;
     using System.Linq;
 
-    public class CatService : ICatService
+    public class AdoptionCatService : IAdoptionCatService
     {
         private MeowDbContext db;
 
-        public CatService(MeowDbContext db)
+        public AdoptionCatService(MeowDbContext db)
         {
             this.db = db;
         }
 
-        public IEnumerable<HomeCatListingServiceModel> AllHomeCats()
-            => this.db
-                .HomeCats
-                .ProjectTo<HomeCatListingServiceModel>()
-                .ToList();
-        public IEnumerable<AdoptionCatListingServiceModel> AllAdoptionCats()
+        public IEnumerable<AdoptionCatListingServiceModel> All()
             => this.db
                 .AdoptionCats
                 .ProjectTo<AdoptionCatListingServiceModel>()
