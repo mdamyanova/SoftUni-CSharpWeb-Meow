@@ -59,7 +59,7 @@
                                this.User.IsInRole(WebConstants.AdministratorRole))
                         {
                             <!--todo - edit user - add route-->
-                            <a asp-controller="Manage" asp-action="Index" data-original-title="Edit this user" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a asp-controller="Users" asp-action="Edit" asp-route-username="@this.Model.UserName" data-original-title="Edit this user" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-edit"></i></a>
                             <a asp-controller="Users" asp-action="Delete" asp-route-username="@this.Model.UserName" data-original-title="Remove this user" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-remove"></i></a>
                         }
                     </span>

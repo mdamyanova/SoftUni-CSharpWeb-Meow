@@ -38,6 +38,11 @@
 
         public bool Add(string name, IFormFile image, int age, string description, Gender gender, string ownerId)
         {
+            if (this.db.HomeCats.Any(c => c.Name == name))
+            {
+                return false;
+            }
+
             if (!this.db.Users.Any(u => u.Id == ownerId))
             {
                 return false;

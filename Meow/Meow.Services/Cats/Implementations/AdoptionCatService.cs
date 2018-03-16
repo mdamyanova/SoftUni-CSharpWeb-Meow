@@ -30,6 +30,11 @@
         // by default the owner is set to be the volunteer profile
         public bool Add(string name, IFormFile image, int age, string location, string description, Gender gender)
         {
+            if (this.db.AdoptionCats.Any(c => c.Name == name))
+            {
+                return false;
+            }
+
             if (!this.db.Users.Any(u => u.UserName == WebConstants.VolunteerUsername))
             {
                 return false;

@@ -4,9 +4,13 @@
     using Cats.Models;
     using Contracts;
     using Data;
+    using Meow.Data.Models.Enums;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
     using Models;
+    using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -57,6 +61,38 @@
                 .Where(c => c.OwnerId == id)
                 .ProjectTo<AdoptionCatListingServiceModel>()
                 .ToListAsync();
+
+        public void Edit(string username, string name, string location, DateTime birthdate, Gender gender, IFormFile image)
+        {
+            var user = this.db.Users.Find(name);
+
+            if (user == null)
+            {
+                return;
+            }
+       
+            user.Name = name;
+            user.UserName = username;
+            user.Location = location;
+            user.Birthdate = birthdate;
+            user.Gender = gender;
+
+            if (image != null)
+            {
+                var profilePhoto = new byte[] { };
+
+                // smarter look pls 
+                using (var memoryStream = new MemoryStream())
+                {
+                    image.CopyToAsync(memoryStream);
+                    profilePhoto = memoryStream.ToArray();
+                }
+
+                user.ProfilePhoto = profilePhoto;
+            }
+         
+            this.db.SaveChanges();
+        }
 
         public bool Remove(string id)
         {

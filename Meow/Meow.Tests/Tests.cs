@@ -2,8 +2,11 @@
 {
     using AutoMapper;
     using Data;
+    using Data.Models;
+    using Meow.Data.Models.Enums;
     using Meow.Web.Infrastructure.Mapping;
     using Microsoft.EntityFrameworkCore;
+    using System;
 
     public class Tests
     {

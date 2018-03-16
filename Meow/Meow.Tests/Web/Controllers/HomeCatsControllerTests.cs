@@ -1,25 +1,25 @@
 ﻿namespace Meow.Tests.Web.Controllers
 {
+    using Data.Models;
     using FluentAssertions;
-    using Meow.Data.Models;
-    using Meow.Services.Contracts;
-    using Meow.Web.Controllers;
+    using Meow.Services.Cats.Contracts;
+    using Meow.Services.Cats.Models;
+    using Meow.Web.Areas.Cats.Controllers;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Moq;
-    using Services.Models;
     using System.Linq;
     using Xunit;
 
-    public class CatsControllerTests
+    public class HomeCatsControllerTests
     {
         [Fact]
         public void AllHomeCatsShouldBeOnlyForAuthorizedUsers()
         {
             // Arrange
-            var method = typeof(CatsController)
-                .GetMethod(nameof(CatsController.All));
+            var method = typeof(HomeCatsController)
+                .GetMethod(nameof(HomeCatsController.All));
 
             // Act
             var attributes = method.GetCustomAttributes(true);
@@ -37,7 +37,7 @@
             var userManager = this.GetUserManagerMock();
             var homeCats = this.GetIHomeCatServiceMock();
 
-            var controller = new CatsController(userManager.Object, homeCats.Object, null);
+            var controller = new HomeCatsController(homeCats.Object, userManager.Object);
 
             // Act 
             var result = controller.Details(999);
@@ -56,9 +56,9 @@
             var homeCats = this.GetIHomeCatServiceMock();
             homeCats
                 .Setup(c => c.ById(It.IsAny<int>()))
-                .Returns(new HomeCatServiceModel { Id = 1 });
+                .Returns(new HomeCatServiceModel() { Id = 1 });
 
-            var controller = new CatsController(userManager.Object, homeCats.Object, null);
+            var controller = new HomeCatsController(homeCats.Object, userManager.Object);
           
             // Act 
             var result = controller.Details(555);

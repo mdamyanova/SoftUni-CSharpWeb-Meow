@@ -23,7 +23,6 @@
 
             var admin = this.db.Users.FirstOrDefault(u => u.UserName == WebConstants.AdministratorUsername);
             var mirelka = this.db.Users.FirstOrDefault(u => u.UserName == "mirelka");
-            var kalincho = this.db.Users.FirstOrDefault(u => u.UserName == "DESKTOP-0GN2RO6\\Dell");
 
             var defaultImage = web.DownloadData(WebConstants.DefaultCatUrl);
 

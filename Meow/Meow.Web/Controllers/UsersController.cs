@@ -5,6 +5,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Models;
     using Services.Contracts;
     using System.Linq;
     using System.Threading.Tasks;
@@ -83,7 +84,55 @@
 
             return View(model);
         }
-        
+
+        public IActionResult Edit(string username)
+        {
+            var task = this.userManager.FindByNameAsync(username);
+            var user = task.Result;
+
+            if (user == null)
+            {
+                return this.NotFound();
+            }
+
+            if (User.Identity.Name != user.Name &&
+                !this.User.IsInRole(WebConstants.AdministratorRole))
+            {
+                // user doesn't have the rights
+                return RedirectToAction("All");
+            }
+
+            return this.View(new UserFormModel
+            {
+                Username = user.UserName,
+                Name = user.Name,
+                Location = user.Location,
+                Birthdate = user.Birthdate,
+                Gender = user.Gender
+            });
+        }
+
+        [HttpPost]
+        public IActionResult Edit(string username, UserFormModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
+            var user = this.userManager.FindByNameAsync(username);
+            var userExists = this.users.Exists(user.Result.Id);
+
+            if (!userExists)
+            {
+                return this.NotFound();
+            }
+
+            this.users.Edit(model.Username, model.Name, model.Location, model.Birthdate, model.Gender, model.Image);
+
+            return RedirectToAction("All");
+        }
+
         [Authorize]
         public async Task<IActionResult> Delete(string username)
         {

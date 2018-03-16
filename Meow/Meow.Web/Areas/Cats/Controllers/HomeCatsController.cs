@@ -23,6 +23,7 @@
         }
 
         // all home cats
+        [Authorize]
         public IActionResult All()
         {
             var model = this.cats.All();
