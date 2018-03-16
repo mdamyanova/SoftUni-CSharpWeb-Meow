@@ -1,9 +1,9 @@
 ﻿namespace Meow.Services.Contracts
 {
+    using Cats.Models;
     using Models;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Cats.Models;
 
     public interface IUserService
     {

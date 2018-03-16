@@ -1,8 +1,7 @@
 ﻿namespace Meow.Web.Controllers
 {
+    using Core;
     using Data.Models;
-    using Meow.Core;
-    using Meow.Web.Models.Users;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;

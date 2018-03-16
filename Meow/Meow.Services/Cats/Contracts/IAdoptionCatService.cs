@@ -1,9 +1,9 @@
 ﻿namespace Meow.Services.Cats.Contracts
 {
-    using System.Collections.Generic;
     using Data.Models.Enums;
-    using Models;
     using Microsoft.AspNetCore.Http;
+    using Models;
+    using System.Collections.Generic;
 
     public interface IAdoptionCatService
     {

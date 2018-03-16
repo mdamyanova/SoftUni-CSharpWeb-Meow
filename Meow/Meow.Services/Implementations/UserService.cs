@@ -1,6 +1,7 @@
 ﻿namespace Meow.Services.Implementations
 {
     using AutoMapper.QueryableExtensions;
+    using Cats.Models;
     using Contracts;
     using Data;
     using Microsoft.EntityFrameworkCore;
@@ -8,7 +9,6 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Cats.Models;
 
     public class UserService : IUserService
     {

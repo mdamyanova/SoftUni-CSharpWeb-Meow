@@ -25,11 +25,11 @@
             var mirelka = this.db.Users.FirstOrDefault(u => u.UserName == "mirelka");
             var kalincho = this.db.Users.FirstOrDefault(u => u.UserName == "DESKTOP-0GN2RO6\\Dell");
 
-            var defaultImage = web.DownloadData(WebConstants.DefaultCatPath);
+            var defaultImage = web.DownloadData(WebConstants.DefaultCatUrl);
 
             var homeCats = new List<HomeCat>
             {
-                new HomeCat()
+                new HomeCat
                 {
                     Name = "Samuil",
                     Age = 1,
@@ -40,7 +40,7 @@
                     OwnerId = admin.Id,
                     Owner = admin
                 },
-                new HomeCat()
+                new HomeCat
                 {
                     Name = "Siika",
                     Age = 3,
@@ -51,7 +51,7 @@
                     OwnerId = admin.Id,
                     Owner = admin
                 },
-                new HomeCat()
+                new HomeCat
                 {
                     Name = "Anastasiya",
                     Age = 3,
@@ -62,7 +62,7 @@
                     OwnerId = admin.Id,
                     Owner = admin
                 },
-                new HomeCat()
+                new HomeCat
                 {
                     Name = "Sa6ko",
                     Age = 9,
@@ -73,7 +73,7 @@
                     OwnerId = admin.Id,
                     Owner = admin
                 },
-                new HomeCat()
+                new HomeCat
                 {
                     Name = "Katty",
                     Age = 1,
@@ -84,7 +84,7 @@
                     OwnerId = admin.Id,
                     Owner = admin
                 },
-                new HomeCat()
+                new HomeCat
                 {
                     Name = "Shishi",
                     Age = 2,
@@ -95,7 +95,7 @@
                     OwnerId = mirelka.Id,
                     Owner = mirelka
                 },
-                new HomeCat()
+                new HomeCat
                 {
                     Name = "Syselcho",
                     Age = 2,
@@ -106,7 +106,7 @@
                     OwnerId = mirelka.Id,
                     Owner = mirelka
                 },
-                new HomeCat()
+                new HomeCat
                 {
                     Name = "Hapeshtoto zverche",
                     Age = 2,
@@ -117,7 +117,7 @@
                     OwnerId = mirelka.Id,
                     Owner = mirelka
                 },
-                new HomeCat()
+                new HomeCat
                 {
                     Name = "Bez ime",
                     Age = 2,
@@ -128,7 +128,7 @@
                     OwnerId = mirelka.Id,
                     Owner = mirelka
                 },
-                new HomeCat()
+                new HomeCat
                 {
                     Name = "Oliver",
                     Age = 2,
@@ -139,7 +139,7 @@
                     OwnerId = admin.Id,
                     Owner = admin
                 },
-                new HomeCat()
+                new HomeCat
                 {
                     Name = "Moshino",
                     Age = 2,
@@ -150,7 +150,7 @@
                     OwnerId = admin.Id,
                     Owner = admin
                 },
-                new HomeCat()
+                new HomeCat
                 {
                     Name = "Krivogledcho",
                     Age = 4,
@@ -161,7 +161,7 @@
                     OwnerId = admin.Id,
                     Owner = admin
                 },
-                new HomeCat()
+                new HomeCat
                 {
                     Name = "Pisan",
                     Age = 1,
@@ -172,7 +172,7 @@
                     OwnerId = admin.Id,
                     Owner = admin
                 },
-                new HomeCat()
+                new HomeCat
                 {
                     Name = "Molly",
                     Age = 6,
@@ -183,7 +183,7 @@
                     OwnerId = admin.Id,
                     Owner = admin
                 },
-                new HomeCat()
+                new HomeCat
                 {
                     Name = "Niya",
                     Age = 3,
@@ -194,7 +194,7 @@
                     OwnerId = admin.Id,
                     Owner = admin
                 },
-                new HomeCat()
+                new HomeCat
                 {
                     Name = "Mustachko",
                     Age = 2,
@@ -205,7 +205,7 @@
                     OwnerId = admin.Id,
                     Owner = admin
                 },
-                new HomeCat()
+                new HomeCat
                 {
                     Name = "Fintifliushko",
                     Age = 1,
@@ -241,7 +241,7 @@
                     Owner = volunteer,
                     Location = "Sofia"
                 },
-                new AdoptionCat()
+                new AdoptionCat
                 {
                     Name = "Dobi",
                     Age = 1,
@@ -252,7 +252,7 @@
                     OwnerId = volunteer.Id,
                     Owner = volunteer
                 },
-                new AdoptionCat()
+                new AdoptionCat
                 {
                     Name = "Gizmo",
                     Age = 1,

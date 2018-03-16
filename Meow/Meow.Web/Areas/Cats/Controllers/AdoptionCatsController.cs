@@ -1,18 +1,15 @@
 ﻿namespace Meow.Web.Areas.Cats.Controllers
 {
+    using Core;
     using Data.Models;
     using Infrastructure.Extensions;
-    using Core;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Models.AdoptionCats;
     using Services.Cats.Contracts;
 
-
-    using static Core.WebConstants;
-
-    [Area(CatsArea)]
+    [Area(WebConstants.CatsArea)]
     [Authorize]
     public class AdoptionCatsController : Controller
     {
@@ -79,7 +76,7 @@
             }
 
             if (User.Identity.Name != cat.Owner &&
-                !this.User.IsInRole(AdministratorRole))
+                !this.User.IsInRole(WebConstants.AdministratorRole))
             {
                 // user doesn't have the rights
                 return RedirectToAction("Adoption", "Cats", new { area = "" });
@@ -174,7 +171,7 @@
             }
 
             if (User.Identity.Name != cat.Owner
-                && User.Identity.Name != AdministratorUsername)
+                && User.Identity.Name != WebConstants.AdministratorUsername)
             {
                 // user doesn't have the rights
                 return RedirectToAction("Adoption", "Cats", new { area = "" });

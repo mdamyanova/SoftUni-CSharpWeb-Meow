@@ -10,8 +10,6 @@
     using Microsoft.Extensions.DependencyInjection;
     using System;
     using System.Globalization;
-    using System.IO;
-    using System.Net;
     using System.Threading.Tasks;
 
     public static class ApplicationBuilderExtensions
@@ -20,7 +18,7 @@
         {
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
-               serviceScope.ServiceProvider.GetService<MeowDbContext>().Database.Migrate();
+                serviceScope.ServiceProvider.GetService<MeowDbContext>().Database.Migrate();
 
                 var userManager = serviceScope.ServiceProvider.GetService<UserManager<User>>();
                 var roleManager = serviceScope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
@@ -32,11 +30,11 @@
                         var volunteerName = WebConstants.VolunteerRole;
 
                         var defaultBirthdate = "08/08/1990";
-                        var defaultProfilePhoto = WebConstants.DefaultProfilePhotoPath;
+                        var defaultProfilePhoto = WebConstants.DefaultProfilePhotoUrl;
 
                         // admin, volunteer, normal user
                         var roles = new[]
-                    {
+                        {
                                 adminName,
                                 volunteerName
                         };
@@ -57,8 +55,6 @@
                         var adminEmail = "admin@mysite.com";
                         var adminUser = await userManager.FindByEmailAsync(adminEmail);
 
-                        var web = new WebClient();
-
                         if (adminUser == null)
                         {
                             adminUser = new User
@@ -69,7 +65,7 @@
                                 Gender = Gender.Female,
                                 Birthdate = DateTime.ParseExact(defaultBirthdate, "MM/dd/yyyy", CultureInfo.CreateSpecificCulture("en-US")),
                                 Location = "Sofia",
-                                ProfilePhoto = web.DownloadData(defaultProfilePhoto)
+                                ProfilePhoto = ImageConvertions.ImageUrlToArray(defaultProfilePhoto)
                             };
 
                             var result = await userManager.CreateAsync(adminUser, "admin11");
@@ -91,7 +87,7 @@
                                 Gender = Gender.Male,
                                 Birthdate = DateTime.ParseExact(defaultBirthdate, "MM/dd/yyyy", CultureInfo.CreateSpecificCulture("en-US")),
                                 Location = "Sofia",
-                                ProfilePhoto = web.DownloadData(defaultProfilePhoto)
+                                ProfilePhoto = ImageConvertions.ImageUrlToArray(defaultProfilePhoto)
                             };
 
                             var result = await userManager.CreateAsync(volunteerUser, "icatrescue1");
@@ -100,10 +96,10 @@
                         }
 
                         // how narcissistic
-
                         var mirelkaEmail = "mdamyanova181@gmail.com";
                         var mirelkaUser = await userManager.FindByEmailAsync(mirelkaEmail);
                         var mirelkaBirthdate = "07/25/1995";
+                        var mirelkaDefaultProfilePhoto = WebConstants.DefaultMirelkaProfilePhotoUrl;
 
                         if (mirelkaUser == null)
                         {
@@ -115,7 +111,7 @@
                                 Gender = Gender.Female,
                                 Birthdate = DateTime.ParseExact(mirelkaBirthdate, "MM/dd/yyyy", CultureInfo.CreateSpecificCulture("en-US")),
                                 Location = "Sofia",
-                                ProfilePhoto = web.DownloadData(WebConstants.DefaultMirelkaProfilePhotoPath)
+                                ProfilePhoto = ImageConvertions.ImageUrlToArray(mirelkaDefaultProfilePhoto)
                             };
 
                             var result = await userManager.CreateAsync(mirelkaUser, "mirelka1");
@@ -125,6 +121,6 @@
             }
 
             return app;
-            }
         }
     }
+}

@@ -70,15 +70,18 @@
             }
 
             var user = await _userManager.GetUserAsync(User);
+
             if (user == null)
             {
                 throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
             var email = user.Email;
+
             if (model.Email != email)
             {
                 var setEmailResult = await _userManager.SetEmailAsync(user, model.Email);
+
                 if (!setEmailResult.Succeeded)
                 {
                     throw new ApplicationException($"Unexpected error occurred setting email for user with ID '{user.Id}'.");
@@ -86,9 +89,11 @@
             }
 
             var phoneNumber = user.PhoneNumber;
+
             if (model.PhoneNumber != phoneNumber)
             {
                 var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, model.PhoneNumber);
+
                 if (!setPhoneResult.Succeeded)
                 {
                     throw new ApplicationException($"Unexpected error occurred setting phone number for user with ID '{user.Id}'.");
@@ -96,6 +101,7 @@
             }
 
             StatusMessage = "Your profile has been updated";
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -109,6 +115,7 @@
             }
 
             var user = await _userManager.GetUserAsync(User);
+
             if (user == null)
             {
                 throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
@@ -120,6 +127,7 @@
             //await _emailSender.SendEmailConfirmationAsync(email, callbackUrl);
 
             //StatusMessage = "Verification email sent. Please check your email.";
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -127,18 +135,21 @@
         public async Task<IActionResult> ChangePassword()
         {
             var user = await _userManager.GetUserAsync(User);
+
             if (user == null)
             {
                 throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
             var hasPassword = await _userManager.HasPasswordAsync(user);
+
             if (!hasPassword)
             {
                 return RedirectToAction(nameof(SetPassword));
             }
 
             var model = new ChangePasswordViewModel { StatusMessage = StatusMessage };
+
             return View(model);
         }
 
@@ -152,15 +163,18 @@
             }
 
             var user = await _userManager.GetUserAsync(User);
+
             if (user == null)
             {
                 throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
             var changePasswordResult = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
+
             if (!changePasswordResult.Succeeded)
             {
                 AddErrors(changePasswordResult);
+
                 return View(model);
             }
 
@@ -175,6 +189,7 @@
         public async Task<IActionResult> SetPassword()
         {
             var user = await _userManager.GetUserAsync(User);
+
             if (user == null)
             {
                 throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
@@ -188,6 +203,7 @@
             }
 
             var model = new SetPasswordViewModel { StatusMessage = StatusMessage };
+
             return View(model);
         }
 
@@ -201,15 +217,18 @@
             }
 
             var user = await _userManager.GetUserAsync(User);
+
             if (user == null)
             {
                 throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
             var addPasswordResult = await _userManager.AddPasswordAsync(user, model.NewPassword);
+
             if (!addPasswordResult.Succeeded)
             {
                 AddErrors(addPasswordResult);
+
                 return View(model);
             }
 
@@ -223,6 +242,7 @@
         public async Task<IActionResult> ExternalLogins()
         {
             var user = await _userManager.GetUserAsync(User);
+
             if (user == null)
             {
                 throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
@@ -248,6 +268,7 @@
             // Request a redirect to the external login provider to link a login for the current user
             var redirectUrl = Url.Action(nameof(LinkLoginCallback));
             var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl, _userManager.GetUserId(User));
+
             return new ChallengeResult(provider, properties);
         }
 
@@ -261,12 +282,14 @@
             }
 
             var info = await _signInManager.GetExternalLoginInfoAsync(user.Id);
+
             if (info == null)
             {
                 throw new ApplicationException($"Unexpected error occurred loading external login info for user with ID '{user.Id}'.");
             }
 
             var result = await _userManager.AddLoginAsync(user, info);
+
             if (!result.Succeeded)
             {
                 throw new ApplicationException($"Unexpected error occurred adding external login for user with ID '{user.Id}'.");
@@ -276,6 +299,7 @@
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
             StatusMessage = "The external login was added.";
+
             return RedirectToAction(nameof(ExternalLogins));
         }
 
@@ -284,12 +308,14 @@
         public async Task<IActionResult> RemoveLogin(RemoveLoginViewModel model)
         {
             var user = await _userManager.GetUserAsync(User);
+
             if (user == null)
             {
                 throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
             var result = await _userManager.RemoveLoginAsync(user, model.LoginProvider, model.ProviderKey);
+
             if (!result.Succeeded)
             {
                 throw new ApplicationException($"Unexpected error occurred removing external login for user with ID '{user.Id}'.");
@@ -297,6 +323,7 @@
 
             await _signInManager.SignInAsync(user, isPersistent: false);
             StatusMessage = "The external login was removed.";
+
             return RedirectToAction(nameof(ExternalLogins));
         }
 
@@ -304,6 +331,7 @@
         public async Task<IActionResult> TwoFactorAuthentication()
         {
             var user = await _userManager.GetUserAsync(User);
+
             if (user == null)
             {
                 throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
@@ -323,6 +351,7 @@
         public async Task<IActionResult> Disable2faWarning()
         {
             var user = await _userManager.GetUserAsync(User);
+
             if (user == null)
             {
                 throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
@@ -341,18 +370,21 @@
         public async Task<IActionResult> Disable2fa()
         {
             var user = await _userManager.GetUserAsync(User);
+
             if (user == null)
             {
                 throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
             var disable2faResult = await _userManager.SetTwoFactorEnabledAsync(user, false);
+
             if (!disable2faResult.Succeeded)
             {
                 throw new ApplicationException($"Unexpected error occured disabling 2FA for user with ID '{user.Id}'.");
             }
 
             _logger.LogInformation("User with ID {UserId} has disabled 2fa.", user.Id);
+
             return RedirectToAction(nameof(TwoFactorAuthentication));
         }
 
@@ -360,12 +392,14 @@
         public async Task<IActionResult> EnableAuthenticator()
         {
             var user = await _userManager.GetUserAsync(User);
+
             if (user == null)
             {
                 throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
             var unformattedKey = await _userManager.GetAuthenticatorKeyAsync(user);
+
             if (string.IsNullOrEmpty(unformattedKey))
             {
                 await _userManager.ResetAuthenticatorKeyAsync(user);
@@ -391,6 +425,7 @@
             }
 
             var user = await _userManager.GetUserAsync(User);
+
             if (user == null)
             {
                 throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
@@ -410,6 +445,7 @@
 
             await _userManager.SetTwoFactorEnabledAsync(user, true);
             _logger.LogInformation("User with ID {UserId} has enabled 2FA with an authenticator app.", user.Id);
+
             return RedirectToAction(nameof(GenerateRecoveryCodes));
         }
 
@@ -424,6 +460,7 @@
         public async Task<IActionResult> ResetAuthenticator()
         {
             var user = await _userManager.GetUserAsync(User);
+
             if (user == null)
             {
                 throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
@@ -440,6 +477,7 @@
         public async Task<IActionResult> GenerateRecoveryCodes()
         {
             var user = await _userManager.GetUserAsync(User);
+
             if (user == null)
             {
                 throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
@@ -472,11 +510,13 @@
         {
             var result = new StringBuilder();
             int currentPosition = 0;
+
             while (currentPosition + 4 < unformattedKey.Length)
             {
                 result.Append(unformattedKey.Substring(currentPosition, 4)).Append(" ");
                 currentPosition += 4;
             }
+
             if (currentPosition < unformattedKey.Length)
             {
                 result.Append(unformattedKey.Substring(currentPosition));

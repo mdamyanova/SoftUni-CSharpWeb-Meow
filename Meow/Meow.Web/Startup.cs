@@ -2,8 +2,8 @@
 {
     using AutoMapper;
     using Data;
-    using Infrastructure.Extensions;
     using Data.Models;
+    using Infrastructure.Extensions;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;

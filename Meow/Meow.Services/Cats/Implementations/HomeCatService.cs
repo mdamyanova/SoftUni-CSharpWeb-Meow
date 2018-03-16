@@ -34,9 +34,7 @@
                 .FirstOrDefault();
 
         public bool Exists(int id)
-        {
-            return this.db.HomeCats.Any(c => c.Id == id);
-        }
+            => this.db.HomeCats.Any(c => c.Id == id);
 
         public bool Add(string name, IFormFile image, int age, string description, Gender gender, string ownerId)
         {
@@ -73,7 +71,6 @@
             }
 
             this.db.Add(cat);
-
             this.db.SaveChanges();
 
             return true;
@@ -87,6 +84,7 @@
             {
                 return;
             }
+
             var img = new byte[] { };
 
             // smarter look pls 

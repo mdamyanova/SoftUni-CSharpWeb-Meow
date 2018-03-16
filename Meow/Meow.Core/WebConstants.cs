@@ -33,9 +33,9 @@
         public const string Wolly = "Уоли обича да следва плътно всяка ваша стъпка, подскачайки в тон с вас като гъзелка, за да не ви изпусне, случайно! Дребосъчко е изключително любвеобилен и обожава да го чешат по гръбчето.";
         public const string Teo = "Тео обожава хората и любимото му занимание е да бъде гален. С хигиенни навици и ценител на пилешкото месо, Тео очаква своята партия.";
         
-        public const string DefaultImagesPath = "https://www.hsjaa.com/images/joomlart/demo/default.jpg";
-        public const string DefaultCatPath = "https://scontent-sof1-1.xx.fbcdn.net/v/t1.0-0/29177286_1720551344632465_2320239168359235584_o.png?oh=538d8e4100a98570379f96884dc1766c&oe=5B349E46";
-        public const string DefaultProfilePhotoPath = "https://scontent-sof1-1.xx.fbcdn.net/v/t1.0-9/29178196_1720551317965801_2347022348193890304_n.png?oh=7615832df566f8c434c514435251783c&oe=5B457896";
-        public static string DefaultMirelkaProfilePhotoPath = "https://scontent-sof1-1.xx.fbcdn.net/v/t1.0-0/s2048x2048/29133535_1720551224632477_2814940592503521280_o.jpg?oh=65f2305057b1186d8d830c61abad6ef5&oe=5B47D422";
+        public const string DefaultImagesUrl = "https://www.hsjaa.com/images/joomlart/demo/default.jpg";
+        public const string DefaultCatUrl = "https://scontent-sof1-1.xx.fbcdn.net/v/t1.0-0/29177286_1720551344632465_2320239168359235584_o.png?oh=538d8e4100a98570379f96884dc1766c&oe=5B349E46";
+        public const string DefaultProfilePhotoUrl = "https://scontent-sof1-1.xx.fbcdn.net/v/t1.0-9/29178196_1720551317965801_2347022348193890304_n.png?oh=7615832df566f8c434c514435251783c&oe=5B457896";
+        public static string DefaultMirelkaProfilePhotoUrl = "https://scontent-sof1-1.xx.fbcdn.net/v/t1.0-0/s2048x2048/29133535_1720551224632477_2814940592503521280_o.jpg?oh=65f2305057b1186d8d830c61abad6ef5&oe=5B47D422";
     }
 }

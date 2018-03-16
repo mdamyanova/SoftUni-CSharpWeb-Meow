@@ -1,14 +1,13 @@
 ﻿namespace Meow.Services.Cats.Implementations
 {
-
     using AutoMapper.QueryableExtensions;
+    using Contracts;
     using Core;
     using Data;
     using Data.Models;
     using Data.Models.Enums;
-    using Contracts;
-    using Models;
     using Microsoft.AspNetCore.Http;
+    using Models;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
@@ -60,7 +59,6 @@
             }
 
             this.db.AdoptionCats.Add(cat);
-
             this.db.SaveChanges();
 
             return true;
@@ -81,6 +79,7 @@
             {
                 return;
             }
+
             var img = new byte[] { };
 
             // smarter look pls -- I think its okay/Kalin
@@ -100,9 +99,7 @@
         }
 
         public bool Exists(int id)
-        {
-            return this.db.AdoptionCats.Any(c => c.Id == id);
-        }
+            => this.db.AdoptionCats.Any(c => c.Id == id);     
 
         public bool Give(int id)
         {

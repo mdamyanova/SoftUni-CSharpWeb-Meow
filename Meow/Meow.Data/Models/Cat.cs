@@ -1,27 +1,24 @@
 ﻿namespace Meow.Data.Models
 {
-
-    using System.ComponentModel.DataAnnotations;
     using Enums;
+    using System.ComponentModel.DataAnnotations;
     using Validation;
-
-    using static DataConstants;
 
     public abstract class Cat
     {
         public int Id { get; set; }
 
         [Required]
-        [MinLength(CatNameMinLength)]
-        [MaxLength(CatNameMaxLength)]
+        [MinLength(DataConstants.CatNameMinLength)]
+        [MaxLength(DataConstants.CatNameMaxLength)]
         public string Name { get; set; }
 
-        [Range(CatMinAge, CatMaxAge)]
+        [Range(DataConstants.CatMinAge, DataConstants.CatMaxAge)]
         public int Age { get; set; }
 
         public byte[] Image { get; set; }
 
-        [MaxLength(CatDescriptionMaxLength)]
+        [MaxLength(DataConstants.CatDescriptionMaxLength)]
         public string Description { get; set; }
 
         [Required]
