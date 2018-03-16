@@ -4,8 +4,8 @@
     using Microsoft.AspNetCore.Mvc;
     using Infrastructure.Extensions;
     using Microsoft.AspNetCore.Authorization;
-    using Meow.Data.Models;
-    using Meow.Web.Areas.Cats.Models.HomeCats;
+    using Data.Models;
+    using Models.HomeCats;
     using Microsoft.AspNetCore.Identity;
 
     using static Core.WebConstants;

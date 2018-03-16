@@ -2,13 +2,11 @@
 {
     using Data.Models;
     using Infrastructure.Extensions;
-    using Core;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Models.AdoptionCats;
     using Services.Cats.Contracts;
-
 
     using static Core.WebConstants;
 
@@ -183,6 +181,23 @@
             var success = this.adoptionCats.Give(id);
 
             return this.RedirectToAction(nameof(Manage));
+        }
+
+        [Authorize]
+        public new IActionResult Request(int id)
+        {
+            var cat = this.adoptionCats.ById(id);
+
+            if (cat == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.View(new RequestAdoptionViewModel
+            {
+                Name = cat.Name,
+                Username = User.Identity.Name
+            });
         }
 
         [Authorize]

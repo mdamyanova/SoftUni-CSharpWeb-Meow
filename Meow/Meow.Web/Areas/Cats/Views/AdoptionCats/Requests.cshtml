@@ -33,10 +33,10 @@
                     @cat.Owner
                 </th>
                 <th>
-                    <a class="btn btn-sm btn-default" asp-area="" asp-controller="Cats" asp-action="Details" asp-route-id="@cat.Id">Details</a>
+                    <a class="btn btn-sm btn-default" asp-area="Cats" asp-controller="AdoptionCats" asp-action="Adopt" asp-route-id="@cat.Id">Details</a>
                 </th>
                 <th>
-                    <a class="btn btn-sm btn-default" asp-area="Volunteer" asp-controller="Cats" asp-action="Give" asp-route-id="@cat.Id">Give</a>
+                    <a class="btn btn-sm btn-default" asp-area="Cats" asp-controller="AdoptionCats" asp-action="Give" asp-route-id="@cat.Id">Give</a>
                 </th>
             </tr>
         }
