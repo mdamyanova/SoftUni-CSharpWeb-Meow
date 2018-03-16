@@ -4,11 +4,6 @@
     using Data.Models;
     using Infrastructure.Extensions;
     using Microsoft.AspNetCore.Authorization;
-<<<<<<< HEAD
-=======
-    using Data.Models;
-    using Models.HomeCats;
->>>>>>> c5c9279b49769c7ee97ef29a94cc11cdb60495ae
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Models.HomeCats;
@@ -28,7 +23,6 @@
         }
 
         // all home cats
-        [AllowAnonymous]
         public IActionResult All()
         {
             var model = this.cats.All();

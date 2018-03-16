@@ -9,13 +9,7 @@
     using Models.AdoptionCats;
     using Services.Cats.Contracts;
 
-<<<<<<< HEAD
     [Area(WebConstants.CatsArea)]
-=======
-    using static Core.WebConstants;
-
-    [Area(CatsArea)]
->>>>>>> c5c9279b49769c7ee97ef29a94cc11cdb60495ae
     [Authorize]
     public class AdoptionCatsController : Controller
     {
@@ -28,7 +22,8 @@
             this.adoptionCats = adoptionCats;
         }
 
-        // all adoption cats 
+        // all adoption cats
+        [AllowAnonymous]
         public IActionResult Adoption()
         {
             var model = this.adoptionCats.All();
@@ -129,7 +124,7 @@
             }
 
             if (User.Identity.Name != cat.Owner
-                && User.Identity.Name != AdministratorUsername)
+                && User.Identity.Name != WebConstants.AdministratorUsername)
             {
                 // user doesn't have the rights
                 return RedirectToAction("Adoption", "AdoptionCats", "Cats");
