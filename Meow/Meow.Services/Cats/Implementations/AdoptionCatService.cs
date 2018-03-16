@@ -85,18 +85,22 @@
                 return;
             }
 
-            var img = new byte[] { };
-
-            // smarter look pls -- I think its okay/Kalin
-            using (var memoryStream = new MemoryStream())
+            if (image != null)
             {
-                image.CopyToAsync(memoryStream);
-                img = memoryStream.ToArray();
+                var catImage = new byte[] { };
+
+                // smarter look pls 
+                using (var memoryStream = new MemoryStream())
+                {
+                    image.CopyToAsync(memoryStream);
+                    catImage = memoryStream.ToArray();
+                }
+
+                cat.Image = catImage;
             }
 
             cat.Name = name;
             cat.Age = age;
-            cat.Image = img;
             cat.Description = description;
             cat.Gender = gender;
 

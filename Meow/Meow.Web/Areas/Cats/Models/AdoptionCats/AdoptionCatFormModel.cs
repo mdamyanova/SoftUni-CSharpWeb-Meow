@@ -17,8 +17,7 @@
 
         [Range(DataConstants.CatMinAge, DataConstants.CatMaxAge)]
         public int Age { get; set; }
-
-        [Required]
+     
         [DataType(DataType.Upload)]
         public IFormFile Image { get; set; }
 
