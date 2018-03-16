@@ -9,7 +9,13 @@
     using Models.AdoptionCats;
     using Services.Cats.Contracts;
 
+<<<<<<< HEAD
     [Area(WebConstants.CatsArea)]
+=======
+    using static Core.WebConstants;
+
+    [Area(CatsArea)]
+>>>>>>> c5c9279b49769c7ee97ef29a94cc11cdb60495ae
     [Authorize]
     public class AdoptionCatsController : Controller
     {
@@ -63,7 +69,7 @@
 
             this.TempData.AddSuccessMessage($"The cat {model.Name} was added successfully!");
 
-            return RedirectToAction("Adoption", "Cats", new { area = "" });
+            return RedirectToAction("Adoption", "AdoptionCats", "Cats");
         }
 
         public IActionResult Edit(int id)
@@ -79,7 +85,7 @@
                 !this.User.IsInRole(WebConstants.AdministratorRole))
             {
                 // user doesn't have the rights
-                return RedirectToAction("Adoption", "Cats", new { area = "" });
+                return RedirectToAction("Adoption", "AdoptionCats", "Cats");
             }
 
             return this.View(new AdoptionCatFormModel
@@ -109,7 +115,7 @@
             this.adoptionCats.Edit(
                 model.Id, model.Name, model.Age, model.Image, model.Description, model.Gender, "");
 
-            return RedirectToAction("Adoption", "Cats", new { area = "" });
+            return RedirectToAction("Adoption", "AdoptionCats", "Cats");
         }
 
         [Authorize]
@@ -123,10 +129,10 @@
             }
 
             if (User.Identity.Name != cat.Owner
-                && User.Identity.Name != WebConstants.AdministratorUsername)
+                && User.Identity.Name != AdministratorUsername)
             {
                 // user doesn't have the rights
-                return RedirectToAction("Adoption", "Cats", new { area = "" });
+                return RedirectToAction("Adoption", "AdoptionCats", "Cats");
             }
 
             return this.View(new AdoptionCatFormModel
@@ -146,12 +152,12 @@
 
             if (!catExists)
             {
-                return RedirectToAction("Adoption", "Cats", new { area = "" });
+                return RedirectToAction("Adoption", "AdoptionCats", "Cats");
             }
 
             var result = this.adoptionCats.Remove(id);
 
-            return RedirectToAction("Adoption", "Cats", new { area = "" });
+            return RedirectToAction("Adoption", "AdoptionCats", "Cats");
         }
 
         public IActionResult Requests()
@@ -174,12 +180,29 @@
                 && User.Identity.Name != WebConstants.AdministratorUsername)
             {
                 // user doesn't have the rights
-                return RedirectToAction("Adoption", "Cats", new { area = "" });
+                return RedirectToAction("Adoption", "AdoptionCats", "Cats");
             }
 
             var success = this.adoptionCats.Give(id);
 
             return this.RedirectToAction(nameof(Manage));
+        }
+
+        [Authorize]
+        public new IActionResult Request(int id)
+        {
+            var cat = this.adoptionCats.ById(id);
+
+            if (cat == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.View(new RequestAdoptionViewModel
+            {
+                Name = cat.Name,
+                Username = User.Identity.Name
+            });
         }
 
         [Authorize]

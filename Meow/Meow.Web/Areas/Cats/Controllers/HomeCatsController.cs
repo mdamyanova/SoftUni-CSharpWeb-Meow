@@ -4,6 +4,11 @@
     using Data.Models;
     using Infrastructure.Extensions;
     using Microsoft.AspNetCore.Authorization;
+<<<<<<< HEAD
+=======
+    using Data.Models;
+    using Models.HomeCats;
+>>>>>>> c5c9279b49769c7ee97ef29a94cc11cdb60495ae
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Models.HomeCats;
@@ -16,9 +21,10 @@
         private readonly UserManager<User> userManager;
         private readonly IHomeCatService cats;
 
-        public HomeCatsController(IHomeCatService cats)
+        public HomeCatsController(IHomeCatService cats, UserManager<User> userManager)
         {
             this.cats = cats;
+            this.userManager = userManager;
         }
 
         // all home cats
