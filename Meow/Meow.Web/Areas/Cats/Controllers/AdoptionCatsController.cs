@@ -66,7 +66,7 @@
 
             this.TempData.AddSuccessMessage($"The cat {model.Name} was added successfully!");
 
-            return RedirectToAction("Adoption", "Cats", new { area = "" });
+            return RedirectToAction("Adoption", "AdoptionCats", "Cats");
         }
 
         public IActionResult Edit(int id)
@@ -82,7 +82,7 @@
                 !this.User.IsInRole(AdministratorRole))
             {
                 // user doesn't have the rights
-                return RedirectToAction("Adoption", "Cats", new { area = "" });
+                return RedirectToAction("Adoption", "AdoptionCats", "Cats");
             }
 
             return this.View(new AdoptionCatFormModel
@@ -112,7 +112,7 @@
             this.adoptionCats.Edit(
                 model.Id, model.Name, model.Age, model.Image, model.Description, model.Gender, "");
 
-            return RedirectToAction("Adoption", "Cats", new { area = "" });
+            return RedirectToAction("Adoption", "AdoptionCats", "Cats");
         }
 
         [Authorize]
@@ -126,10 +126,10 @@
             }
 
             if (User.Identity.Name != cat.Owner
-                && User.Identity.Name != WebConstants.AdministratorUsername)
+                && User.Identity.Name != AdministratorUsername)
             {
                 // user doesn't have the rights
-                return RedirectToAction("Adoption", "Cats", new { area = "" });
+                return RedirectToAction("Adoption", "AdoptionCats", "Cats");
             }
 
             return this.View(new AdoptionCatFormModel
@@ -149,12 +149,12 @@
 
             if (!catExists)
             {
-                return RedirectToAction("Adoption", "Cats", new { area = "" });
+                return RedirectToAction("Adoption", "AdoptionCats", "Cats");
             }
 
             var result = this.adoptionCats.Remove(id);
 
-            return RedirectToAction("Adoption", "Cats", new { area = "" });
+            return RedirectToAction("Adoption", "AdoptionCats", "Cats");
         }
 
         public IActionResult Requests()
@@ -177,7 +177,7 @@
                 && User.Identity.Name != AdministratorUsername)
             {
                 // user doesn't have the rights
-                return RedirectToAction("Adoption", "Cats", new { area = "" });
+                return RedirectToAction("Adoption", "AdoptionCats", "Cats");
             }
 
             var success = this.adoptionCats.Give(id);

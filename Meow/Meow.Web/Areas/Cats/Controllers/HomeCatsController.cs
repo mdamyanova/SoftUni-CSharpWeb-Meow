@@ -17,9 +17,10 @@
         private readonly UserManager<User> userManager;
         private readonly IHomeCatService cats;
 
-        public HomeCatsController(IHomeCatService cats)
+        public HomeCatsController(IHomeCatService cats, UserManager<User> userManager)
         {
             this.cats = cats;
+            this.userManager = userManager;
         }
 
         // all home cats
