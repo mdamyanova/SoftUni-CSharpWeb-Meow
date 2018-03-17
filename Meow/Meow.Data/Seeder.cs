@@ -109,7 +109,7 @@
                 {
                     Name = "Hapeshtoto zverche",
                     Age = 2,
-                    Image = web.DownloadData("https://scontent-sof1-1.xx.fbcdn.net/v/t1.0-0/29177266_1720523801301886_5756089700943134720_o.jpg?oh=ae5dcd2503bf69e061e9379a192c6b95&oe=5B338DCB"),
+                    Image = web.DownloadData("https://scontent-sof1-1.xx.fbcdn.net/v/t1.0-9/29261146_10208712373846301_7114706256031383552_o.jpg?_nc_eui2=v1%3AAeHL-stYJrv9YYMnnEhuVYhfuGzHxBFFUzc1qew8rXy7t0IHMFizwwngklTCdHW6sESnA9BGV4Xp7gUPeIW9v2e3w8BtCRT68Qo73LUOwxZH6w&oh=d51f23e14d45d91e1027fab1a18345e0&oe=5B394F03"),
                     Description = "Hi, this is hapeshtoto zverche.",
                     Location = "Sofia",
                     Gender = Gender.Male,
@@ -120,7 +120,7 @@
                 {
                     Name = "Bez ime",
                     Age = 2,
-                    Image = web.DownloadData("https://scontent-sof1-1.xx.fbcdn.net/v/t1.0-0/s2048x2048/29216475_10208686503639562_5744457022540087296_o.jpg?oh=0ec34c02c39a1cf42969273b372dc292&oe=5B44DD94"),
+                    Image = web.DownloadData("https://scontent-sof1-1.xx.fbcdn.net/v/t1.0-9/29261869_10208712374086307_4121366457357434880_n.jpg?_nc_eui2=v1%3AAeFu4xkpjmZezGXUIt2bblwy4SQsdqEH0l18HljA1r9zrx16Oa_aIwgJjLu6ETDynpGWLREpAp4o38ww2Uo7JE5VeVFfdy-Qhy8Pww04Sa1Hqw&oh=a872542efffe6bce0d85fb30e29fc3f3&oe=5B473FC6"),
                     Description = "Hi, this cat is without name.",
                     Location = "Sofia",
                     Gender = Gender.Male,

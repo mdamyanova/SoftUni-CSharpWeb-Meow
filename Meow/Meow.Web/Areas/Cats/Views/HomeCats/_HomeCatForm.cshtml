@@ -8,7 +8,6 @@
 <br>
 <div class="login">
     <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post" enctype="multipart/form-data">
-        <div style="color:gray; font-size:x-large">Add your home cat.</div>
         <!--<div asp-validation-summary="All" class="text-danger"></div> it's unnecessary-->
         <input asp-for="Name" class="form-control" placeholder="Name" />
         <span asp-validation-for="Name" class="text-danger"></span>
