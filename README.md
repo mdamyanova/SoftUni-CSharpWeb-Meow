@@ -1,6 +1,8 @@
 # Meow
 Meow is a cute, friendly web platform for cats and their owners. In Meow, despite you can brag with your cats, you can also adopt a kitty and give it love, care and such nice things.
 
+The project is a template for connection between cat owners and voluntary initiatives for cats
+
 ![Meow Home](https://imgur.com/fN7JZN3.jpg)
 
 ## General Requirements
@@ -32,7 +34,7 @@ Best practices for Object-oriented design and High-quality code
 - Using source control system - **GitHub**
 
 ## Data Structure 
-In this cat database we have the following tables and relations 
+In this cat database we have the following tables and relations:
 
 Cats 
 - Home Cat - Name, Age, Image, Description, Location, Gender, Owner
@@ -53,6 +55,9 @@ Anonymous users can:
 -	View kitties for adoption page
 - View About page
 
+![Adoption Cats](https://imgur.com/03S0Bar.jpg)
+![About page](https://imgur.com/RZh8kw5.jpg)
+
 Logged in users can: 
 -	Logout
 -	Ask for adoption
@@ -60,14 +65,22 @@ Logged in users can:
 - View cats details
 -	CRUD operations of their cats
 
+![View Profile](https://imgur.com/QVl9fCo.jpg)
+![View Cat](https://imgur.com/qzmVma7.jpg)
+
 Volunteers can: 
 - CRUD operations of their cats and all cats for adoption
 - Listing and managing cats for adoption
 - Move kitty from for adoption to adopted
 
+![Give kitty](https://imgur.com/HduAM5X.jpg)
+
 Administrators can:
 -	Manage all kitties
 -	Manage all users and set them roles
+
+![Manage Cats](https://imgur.com/ttNzc8e.jpg)
+![Manage Users](https://imgur.com/ehgnnww.jpg)
 
 ## Team and Contribution
 - [@mdamyanova](https://github.com/mdamyanova) - idea of Meow, development of the project, defense, deploy, documentation, giving assignments
