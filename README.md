@@ -76,7 +76,7 @@ Administrators can:
 - [iCatRescue](https://www.facebook.com/iCatRescue/) - allowing using real cats who need love and care
 
 ## Meow
-Thank you for stoping by! They say Meow means I love you in kitty. So here's a dozen of Meows!🐈😻💕
+Thank you for stopping by! They say Meow means 'I love you' in Kitty. So here's a dozen of Meows!🐈😻💕
 <p align="center">
   <img src="https://i.pinimg.com/originals/92/60/1b/92601b2087dc6a24cf873495d27370ad.gif?raw=true" alt="Weird-girl-and-Mr-Whiskers"/>
 </p>
