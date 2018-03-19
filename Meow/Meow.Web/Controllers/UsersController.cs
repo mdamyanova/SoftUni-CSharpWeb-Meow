@@ -35,7 +35,7 @@
         public async Task<IActionResult> Profile(string username)
         {
             var user = await this.userManager.FindByNameAsync(username);
-          
+
             if (user == null)
             {
                 return this.NotFound();
@@ -95,7 +95,7 @@
                 return this.NotFound();
             }
 
-            if (User.Identity.Name != user.Name &&
+            if (User.Identity.Name != user.UserName &&
                 !this.User.IsInRole(WebConstants.AdministratorRole))
             {
                 // user doesn't have the rights

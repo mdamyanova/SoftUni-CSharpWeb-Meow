@@ -1,21 +1,17 @@
 ﻿@{
-    ViewData["Title"] = "Adopted Cats";
+    ViewData["Title"] = "HomeCats";
 }
 
 <div class="container">
 
-    <h1 class="my-4 text-center text-lg-left">Adopted Cats</h1>
+    <h1 class="my-4 text-center text-lg-left">Home Cats</h1>
 
     <div class="row text-center text-lg-left">
 
         @foreach (var cat in this.Model)
         {
             <div class="col-lg-3 col-md-4 col-xs-6 hovereffect">
-<<<<<<< HEAD
-                <a asp-controller="AdoptionCats" asp-action="Adopt" asp-route-id="@cat.Id" class="d-block mb-4 h-100">
-=======
-                <a asp-area="Cats" asp-controller="AdoptionCats" asp-action="Adopt" asp-route-id="@cat.Id" class="d-block mb-4 h-100">
->>>>>>> a2246876eef2e765b9e46a8488e0245849c829ce
+                <a asp-area="Cats" asp-controller="HomeCats" asp-action="Details" asp-route-id="@cat.Id" class="d-block mb-4 h-100">
                     @{
                         var imgSrc = cat.Image != null ? ImageConvertions.ByteArrayToImage(cat.Image) : WebConstants.DefaultCatUrl;
                     }
