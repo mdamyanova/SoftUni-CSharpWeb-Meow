@@ -11,11 +11,9 @@
         @foreach (var cat in this.Model)
         {
             <div class="col-lg-3 col-md-4 col-xs-6 hovereffect">
-<<<<<<< HEAD
-                <a asp-controller="AdoptionCats" asp-action="Adopt" asp-route-id="@cat.Id" class="d-block mb-4 h-100">
-=======
+
                 <a asp-area="Cats" asp-controller="AdoptionCats" asp-action="Adopt" asp-route-id="@cat.Id" class="d-block mb-4 h-100">
->>>>>>> a2246876eef2e765b9e46a8488e0245849c829ce
+
                     @{
                         var imgSrc = cat.Image != null ? ImageConvertions.ByteArrayToImage(cat.Image) : WebConstants.DefaultCatUrl;
                     }
