@@ -8,11 +8,16 @@
 <div class="login">
     <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post" enctype="multipart/form-data">
         <div asp-validation-summary="All" class="text-danger"></div>
-        <input asp-for="Name" class="form-control" disabled />
-        <span asp-validation-for="Name" class="text-danger"></span>
-        <input asp-for="Age" class="form-control" disabled />
-        <span asp-validation-for="Age" class="text-danger"></span>
-        <button type="submit" class="login-button" style="width:250px">Submit</button>
+        <div class="form-group">
+            <input asp-for="Name" class="form-control" disabled />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input asp-for="Age" class="form-control" disabled />
+            <span asp-validation-for="Age" class="text-danger"></span>
+        </div>
+
+            <button type="submit" class="login-button" style="width:250px">Submit</button>
     </form>
 </div>
 @section Scripts {
