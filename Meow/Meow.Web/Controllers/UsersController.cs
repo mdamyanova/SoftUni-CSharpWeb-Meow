@@ -40,17 +40,17 @@
             {
                 return this.NotFound();
             }
-
-            var role = await this.userManager.GetRolesAsync(user);
-            var userRole = "Normal";
+            var roles = await this.userManager.GetRolesAsync(user);
+            //var userRole = "Normal";
 
             // we can use this at this moment, because I have only one multiple roles - admin :)
-            if (role != null && role.Count() != 0)
-            {
-                userRole = role[0];
-            }
+            //if (role != null && role.Count() != 0)
+            //{
+            //    userRole = role[0];
+            //}
 
-            var model = await this.users.ProfileAsync(user.Id, userRole);
+            var model = await this.users.ProfileAsync(user.Id);
+            model.UserRoles = roles;
 
             return View(model);
         }
