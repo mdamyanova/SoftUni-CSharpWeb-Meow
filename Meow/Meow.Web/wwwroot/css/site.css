@@ -197,8 +197,8 @@ a {
 
 .login {
     position: absolute;
-    top: calc(50% - 75px);
-    left: calc(50% - 50px);
+    top: calc(50% - 200px);
+    left: calc(50% - 150px);
     height: 150px;
     width: 350px;
     padding: 10px;
