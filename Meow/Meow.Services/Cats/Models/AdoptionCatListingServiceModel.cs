@@ -14,6 +14,8 @@
 
         public string Owner { get; set; }
 
+        public bool IsAdopted { get; set; }
+
         public void ConfigureMapping(Profile mapper)
             => mapper
                 .CreateMap<AdoptionCat, AdoptionCatListingServiceModel>()

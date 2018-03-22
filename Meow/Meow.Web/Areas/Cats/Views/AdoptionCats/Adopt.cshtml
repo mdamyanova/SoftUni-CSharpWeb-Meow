@@ -50,17 +50,26 @@
                     }
                     else
                     {
-                        <a data-original-title="Request Adoption" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-heart"></i></a>
+                        <button data-original-title="Request Adoption" data-toggle="tooltip" class="btn btn-sm btn-default disabled"><i class="glyphicon glyphicon-heart"></i></button>
                     }
                     <span class="pull-right">
                         @if ((this.User.Identity.IsAuthenticated ||
-                          this.Model.Owner == User.Identity.Name) ||
-                          this.User.IsInRole(WebConstants.AdministratorRole))
+                              this.Model.Owner == User.Identity.Name) ||
+                             this.User.IsInRole(WebConstants.AdministratorRole))
                         {
                             <a asp-area="Cats" asp-controller="AdoptionCats" asp-action="Edit" asp-route-id="@this.Model.Id" data-original-title="Edit" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-edit"></i></a>
                             <a asp-area="Cats" asp-controller="AdoptionCats" asp-action="Delete" asp-route-id="@this.Model.Id" data-original-title="Remove" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-remove"></i></a>
                         }
                     </span>
+                    
+                    @if (this.Model.IsRequested == true)
+                    {
+                    <p>
+                        This kitty is requested by someone. 
+                        <br/>
+                        We are processing the request at the moment.
+                    </p>
+                    }
                 </div>
             </div>
         </div>
