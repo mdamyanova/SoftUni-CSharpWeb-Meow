@@ -1,6 +1,6 @@
 ﻿namespace Meow.Data.Validation
 {
-    using Meow.Data.Models.Enums;
+    using Models.Enums;
     using System;
 
     public class LocationAttribute : Attribute

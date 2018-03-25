@@ -70,11 +70,23 @@
         }
 
         public AdoptionCatServiceModel ById(int id)
-              => this.db
+        {
+            var cat = this.db
                 .AdoptionCats
                 .Where(a => a.Id == id)
                 .ProjectTo<AdoptionCatServiceModel>()
                 .FirstOrDefault();
+
+            foreach (var adoptionCatUser in cat.Adopters)
+            {
+                var adobter = this.db.Users.FirstOrDefault(u => u.Id == adoptionCatUser.AdopterId);
+
+                cat.AdoptersList.Add(adobter);
+            }
+
+            return cat;
+        }
+
 
         public void Edit(int id, string name, int age, IFormFile image, string description, Gender gender, string ownerId)
         {
@@ -163,6 +175,14 @@
 
             cat.IsRequested = true;
             cat.RequestedOwnerId = user.Id;
+
+            var adoptionCatUser = new AdoptionCatUser
+            {
+                AdopterId = user.Id,
+                AdoptionCatId = id
+            };
+
+            this.db.Add(adoptionCatUser);
 
             this.db.SaveChanges();
 

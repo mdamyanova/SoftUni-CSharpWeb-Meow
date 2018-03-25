@@ -29,5 +29,7 @@
         public IEnumerable<AdoptionCat> AdoptedCats { get; set; } = new List<AdoptionCat>();
 
         public IEnumerable<HomeCat> HomeCats { get; set; } = new List<HomeCat>();
+
+        public List<AdoptionCatUser> CatsForAdoption { get; set; } = new List<AdoptionCatUser>();
     }
 }

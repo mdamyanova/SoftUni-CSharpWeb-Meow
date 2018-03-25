@@ -18,6 +18,22 @@
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder
+                .Entity<AdoptionCatUser>()
+                .HasKey(au => new {au.AdoptionCatId, au.AdopterId});
+
+            builder
+                .Entity<AdoptionCatUser>()
+                .HasOne(au => au.AdoptionCat)
+                .WithMany(s => s.Adopters)
+                .HasForeignKey(au => au.AdoptionCatId);
+
+            builder
+                .Entity<AdoptionCatUser>()
+                .HasOne(au => au.Adopter)
+                .WithMany(c => c.CatsForAdoption)
+                .HasForeignKey(au => au.AdopterId);
+
+            builder
                 .Entity<AdoptionCat>()
                 .HasOne(c => c.Owner)
                 .WithMany(o => o.AdoptedCats)

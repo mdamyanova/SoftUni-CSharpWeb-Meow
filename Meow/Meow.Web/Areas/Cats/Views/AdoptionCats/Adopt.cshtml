@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="panel-footer">
-                    @if (this.User.Identity.IsAuthenticated && this.Model.IsRequested == false && this.Model.IsAdopted == false)
+                    @if (this.User.Identity.IsAuthenticated && this.Model.IsRequested == false && this.Model.IsAdopted)
                     {
                         <a asp-area="Cats" asp-controller="AdoptionCats" asp-action="Request" asp-route-id="@this.Model.Id" data-original-title="Request Adoption" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-heart"></i></a>
                     }
@@ -54,23 +54,59 @@
                     }
                     <span class="pull-right">
                         @if ((this.User.Identity.IsAuthenticated ||
-                              this.Model.Owner == User.Identity.Name) ||
-                             this.User.IsInRole(WebConstants.AdministratorRole))
+                this.Model.Owner == User.Identity.Name) ||
+               this.User.IsInRole(WebConstants.AdministratorRole))
                         {
                             <a asp-area="Cats" asp-controller="AdoptionCats" asp-action="Edit" asp-route-id="@this.Model.Id" data-original-title="Edit" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-edit"></i></a>
                             <a asp-area="Cats" asp-controller="AdoptionCats" asp-action="Delete" asp-route-id="@this.Model.Id" data-original-title="Remove" data-toggle="tooltip" class="btn btn-sm btn-default"><i class="glyphicon glyphicon-remove"></i></a>
                         }
                     </span>
-                    
+
                     @if (this.Model.IsRequested == true)
                     {
-                    <p>
-                        This kitty is requested by someone. 
-                        <br/>
-                        We are processing the request at the moment.
-                    </p>
+                        <p>
+                            This kitty is requested by someone.
+                            <br />
+                            We are processing the request at the moment.
+                        </p>
                     }
                 </div>
+                
+                <table class="table table-bordered table-hover">
+
+                    <thead>
+                    <tr>
+                        <th class="text-center">
+                            <h3>Waiting list</h3>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            Number
+                        </th>
+                        <th>
+                            Name
+                        </th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < this.Model.AdoptersList.Count; i++)
+                        {
+                            <tr>
+                                <th>
+                                    @{
+                                        var num = i + 1;
+                                    }
+                                    @num
+                                </th>
+                                <th>
+                                    @this.Model.AdoptersList[i].Name
+                                </th>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

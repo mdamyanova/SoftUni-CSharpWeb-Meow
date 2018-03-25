@@ -1,4 +1,6 @@
-﻿namespace Meow.Services.Cats.Models
+﻿using System.Collections.Generic;
+
+namespace Meow.Services.Cats.Models
 {
     using AutoMapper;
     using Core.Mapping;
@@ -28,6 +30,10 @@
         public string OwnerId { get; set; }
 
         public string Owner { get; set; }
+
+        public List<AdoptionCatUser> Adopters { get; set; }
+
+        public List<User> AdoptersList { get; set; } = new List<User>();
 
         public void ConfigureMapping(Profile mapper)
             => mapper
