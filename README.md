@@ -1,12 +1,13 @@
 # Meow
 Meow is a cute, friendly web platform for cats and their owners. In Meow, despite you can brag with your cats, you can also adopt a kitty and give it love, care and such nice things.
 
-The project is a template for connection between cat owners and voluntary initiatives for cats
+The project is a template for connection between cat owners and voluntary initiatives for cats.
 
 ![Meow Home](https://imgur.com/fN7JZN3.jpg)
 
 ## General Requirements
 The application is implemented during the course [C# MVC Frameworks - ASP.NET Core](https://github.com/mdamyanova/C-Sharp-Web-Development/tree/master/09.C%23%20Web/09.02.C%23%20MVC%20Frameworks%20-%20ASP.NET%20Core) using **ASP.NET Core Framework** and follows the requirements of the project assignment.
+
 -	View Engine for generating the UI – **Razor**
 -	Using sections and partial views, editor and display templates
 - Database back-end – **Microsoft SQL Server**
