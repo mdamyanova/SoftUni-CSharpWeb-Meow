@@ -90,31 +90,31 @@
                                 ProfilePhoto = ImageConvertions.ImageUrlToArray(defaultProfilePhoto)
                             };
 
-                            var result = await userManager.CreateAsync(volunteerUser, "icatrescue1");
+                             var result = await userManager.CreateAsync(volunteerUser, "icatrescue1");
 
-                            await userManager.AddToRoleAsync(volunteerUser, volunteerName);
+                             await userManager.AddToRoleAsync(volunteerUser, volunteerName);
                         }
 
                         // how narcissistic
-                        var mirelkaEmail = "mdamyanova181@gmail.com";
-                        var mirelkaUser = await userManager.FindByEmailAsync(mirelkaEmail);
-                        var mirelkaBirthdate = "07/25/1995";
-                        var mirelkaDefaultProfilePhoto = WebConstants.DefaultMirelkaProfilePhotoUrl;
+                        var kalinEmail = "kstoev9316@gmail.com";
+                        var kalinUser = await userManager.FindByEmailAsync(kalinEmail);
+                        var kalinBirthdate = "03/05/1997";
+                        var kalinDefaultProfilePhoto = WebConstants.DefaultKalinProfilePhotoUrl;
 
-                        if (mirelkaUser == null)
+                        if (kalinUser == null)
                         {
-                            mirelkaUser = new User
+                            kalinUser = new User
                             {
-                                Email = mirelkaEmail,
-                                UserName = "mirelka",
-                                Name = "Mirelka",
+                                Email = kalinEmail,
+                                UserName = "kalin",
+                                Name = "Kalin",
                                 Gender = Gender.Female,
-                                Birthdate = DateTime.ParseExact(mirelkaBirthdate, "MM/dd/yyyy", CultureInfo.CreateSpecificCulture("en-US")),
+                                Birthdate = DateTime.ParseExact(kalinBirthdate, "MM/dd/yyyy", CultureInfo.CreateSpecificCulture("en-US")),
                                 Location = "Sofia",
-                                ProfilePhoto = ImageConvertions.ImageUrlToArray(mirelkaDefaultProfilePhoto)
+                                ProfilePhoto = ImageConvertions.ImageUrlToArray(kalinDefaultProfilePhoto)
                             };
 
-                            var result = await userManager.CreateAsync(mirelkaUser, "mirelka1");
+                            var result = await userManager.CreateAsync(kalinUser, "kalin1");
                         }
                     })
                     .Wait();

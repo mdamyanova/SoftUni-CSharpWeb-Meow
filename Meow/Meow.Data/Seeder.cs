@@ -22,7 +22,7 @@
             var web = new WebClient();
 
             var admin = this.db.Users.FirstOrDefault(u => u.UserName == WebConstants.AdministratorUsername);
-            var mirelka = this.db.Users.FirstOrDefault(u => u.UserName == "mirelka");
+            var kalin = this.db.Users.FirstOrDefault(u => u.UserName == "kalin");
 
             var defaultImage = web.DownloadData(WebConstants.DefaultCatUrl);
 
@@ -91,8 +91,8 @@
                     Description = "Hi, this is shishi.",
                     Location = "Sofia",
                     Gender = Gender.Male,
-                    OwnerId = mirelka.Id,
-                    Owner = mirelka
+                    OwnerId = kalin.Id,
+                    Owner = kalin
                 },
                 new HomeCat
                 {
@@ -102,8 +102,8 @@
                     Description = "Hi, this is Syselcho.",
                     Location = "Sofia",
                     Gender = Gender.Male,
-                    OwnerId = mirelka.Id,
-                    Owner = mirelka
+                    OwnerId = kalin.Id,
+                    Owner = kalin
                 },
                 new HomeCat
                 {
@@ -113,8 +113,8 @@
                     Description = "Hi, this is hapeshtoto zverche.",
                     Location = "Sofia",
                     Gender = Gender.Male,
-                    OwnerId = mirelka.Id,
-                    Owner = mirelka
+                    OwnerId = kalin.Id,
+                    Owner = kalin
                 },
                 new HomeCat
                 {
@@ -124,8 +124,8 @@
                     Description = "Hi, this cat is without name.",
                     Location = "Sofia",
                     Gender = Gender.Male,
-                    OwnerId = mirelka.Id,
-                    Owner = mirelka
+                    OwnerId = kalin.Id,
+                    Owner = kalin
                 },
                 new HomeCat
                 {
